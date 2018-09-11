@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas2.Core", "Atlas.Core\Atlas2.Core.csproj", "{1BEF7D41-0167-4DB5-9119-3889C0020363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas2", "Atlas2\Atlas2.csproj", "{F1CC8990-4736-4E2F-876A-82837FD1E9E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BEF7D41-0167-4DB5-9119-3889C0020363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BEF7D41-0167-4DB5-9119-3889C0020363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BEF7D41-0167-4DB5-9119-3889C0020363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BEF7D41-0167-4DB5-9119-3889C0020363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1CC8990-4736-4E2F-876A-82837FD1E9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1CC8990-4736-4E2F-876A-82837FD1E9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1CC8990-4736-4E2F-876A-82837FD1E9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1CC8990-4736-4E2F-876A-82837FD1E9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99FDB166-D1F8-494C-85A7-8B6E06632F9F}
+	EndGlobalSection
+EndGlobal
