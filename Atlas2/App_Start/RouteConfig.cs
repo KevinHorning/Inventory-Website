@@ -16,7 +16,7 @@ namespace Atlas2
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller="Default", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller="LogIn", action = "message", id = UrlParameter.Optional }
             );
         }
     }
