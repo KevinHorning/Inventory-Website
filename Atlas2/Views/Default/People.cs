@@ -18,7 +18,7 @@ using System.Text;
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorTemplatePreprocessor", "2.6.0.0")]
-public partial class LogIn : LogInBase
+public partial class People : PeopleBase
 {
 
 #line hidden
@@ -31,73 +31,18 @@ WriteLiteral(" name=\"viewport\"");
 
 WriteLiteral(" content=\"width=device-width\"");
 
-WriteLiteral(" />\r\n\r\n    <script");
+WriteLiteral(" />\r\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-WriteLiteral("></script>\r\n\r\n    <title></title>\r\n</head>\r\n<body>\r\n    <div>\r\n        <h2");
+WriteLiteral("></script>\r\n    <title></title>\r\n</head>\r\n</html>\r\n<body>\r\n    <div>\r\n        <h2" +
+"");
 
-WriteLiteral(" id=\"MainLbl\"");
+WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Log In Page</h2>\r\n        <label");
-
-WriteLiteral(" id=\"Unlbl\"");
-
-WriteLiteral(">Username: </label>\r\n        <input");
-
-WriteLiteral(" type=\"text\"");
-
-WriteLiteral(" id=\"Username\"");
-
-WriteLiteral(" style=\"width: 120px; height: 30px;\"");
-
-WriteLiteral(" />\r\n        <br />\r\n        <label");
-
-WriteLiteral(" id=\"Pwlbl\"");
-
-WriteLiteral(">Password:  </label>\r\n        <input");
-
-WriteLiteral(" type=\"text\"");
-
-WriteLiteral(" id=\"Password\"");
-
-WriteLiteral(" style=\"width: 120px; height: 30px;\"");
-
-WriteLiteral(" />\r\n        <br />\r\n        <button");
-
-WriteLiteral(" id=\"LogIn\"");
-
-WriteLiteral(@">Log In</button>
-
-        <script>
-
-            $(document).ready(function() {
-
-
-                $(""#LogIn"").click(function() {
-                     var model = {
-                        Username: $(""#Username"").val(),
-                        Password: $(""#Password"").val()
-                     };
-
-                     $.post(""/api/LogIn/"", model)
-                        .done(function (data) {
-                            console.log(data);
-                            $(""#Mainlbl"").text(data);
-                            window.location.href = ""default/Inventory"";
-                        })
-                        .fail(function() {
-                            alert(""error"");
-                        });
-                });
-
-            });
-        </script>
-    </div>
-</body>
-</html>");
+WriteLiteral(">People Page</h2>\r\n    </div>\r\n</body>");
 
 }
 }
@@ -105,7 +50,7 @@ WriteLiteral(@">Log In</button>
 // NOTE: this is the default generated helper class. You may choose to extract it to a separate file 
 // in order to customize it or share it between multiple templates, and specify the template's base 
 // class via the @inherits directive.
-public abstract class LogInBase
+public abstract class PeopleBase
 {
 
 		// This field is OPTIONAL, but used by the default implementation of Generate, Write, WriteAttribute and WriteLiteral

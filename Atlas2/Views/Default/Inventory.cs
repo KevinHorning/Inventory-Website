@@ -18,86 +18,85 @@ using System.Text;
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorTemplatePreprocessor", "2.6.0.0")]
-public partial class LogIn : LogInBase
+public partial class Inventory : InventoryBase
 {
 
 #line hidden
 
 public override void Execute()
 {
-WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
+WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\r\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
 WriteLiteral(" content=\"width=device-width\"");
 
-WriteLiteral(" />\r\n\r\n    <script");
+WriteLiteral(" />\n\r\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-WriteLiteral("></script>\r\n\r\n    <title></title>\r\n</head>\r\n<body>\r\n    <div>\r\n        <h2");
+WriteLiteral(@"></script>
 
-WriteLiteral(" id=\"MainLbl\"");
+    <title></title>
 
-WriteLiteral(">Log In Page</h2>\r\n        <label");
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+            }
 
-WriteLiteral(" id=\"Unlbl\"");
+            .topnav {
+                overflow: hidden;
+                background-color: #333;
+            }
 
-WriteLiteral(">Username: </label>\r\n        <input");
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
 
-WriteLiteral(" type=\"text\"");
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
 
-WriteLiteral(" id=\"Username\"");
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+        </style>
+</head>
+</html>
+<body>
+    <div");
 
-WriteLiteral(" style=\"width: 120px; height: 30px;\"");
+WriteLiteral(" class=\"topnav\"");
 
-WriteLiteral(" />\r\n        <br />\r\n        <label");
+WriteLiteral(">\r\n        <a");
 
-WriteLiteral(" id=\"Pwlbl\"");
+WriteLiteral(" class=\"active\"");
 
-WriteLiteral(">Password:  </label>\r\n        <input");
+WriteLiteral(" href=\"Inventory\"");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(">Inventory</a>\r\n        <a");
 
-WriteLiteral(" id=\"Password\"");
+WriteLiteral(" href=\"Equipment\"");
 
-WriteLiteral(" style=\"width: 120px; height: 30px;\"");
+WriteLiteral(">Equipment</a>\r\n        <a");
 
-WriteLiteral(" />\r\n        <br />\r\n        <button");
+WriteLiteral(" href=\"Contacts\"");
 
-WriteLiteral(" id=\"LogIn\"");
+WriteLiteral(">Contacts</a>\r\n    </div>\n    <div>\n        <h2");
 
-WriteLiteral(@">Log In</button>
+WriteLiteral(" id=\"Mainlbl\"");
 
-        <script>
-
-            $(document).ready(function() {
-
-
-                $(""#LogIn"").click(function() {
-                     var model = {
-                        Username: $(""#Username"").val(),
-                        Password: $(""#Password"").val()
-                     };
-
-                     $.post(""/api/LogIn/"", model)
-                        .done(function (data) {
-                            console.log(data);
-                            $(""#Mainlbl"").text(data);
-                            window.location.href = ""default/Inventory"";
-                        })
-                        .fail(function() {
-                            alert(""error"");
-                        });
-                });
-
-            });
-        </script>
-    </div>
-</body>
-</html>");
+WriteLiteral(">Inventory Page</h2>\n    </div>\n</body>");
 
 }
 }
@@ -105,7 +104,7 @@ WriteLiteral(@">Log In</button>
 // NOTE: this is the default generated helper class. You may choose to extract it to a separate file 
 // in order to customize it or share it between multiple templates, and specify the template's base 
 // class via the @inherits directive.
-public abstract class LogInBase
+public abstract class InventoryBase
 {
 
 		// This field is OPTIONAL, but used by the default implementation of Generate, Write, WriteAttribute and WriteLiteral
