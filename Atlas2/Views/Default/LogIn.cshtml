@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <script type="text/javascript" src="/Scripts/jquery-3.3.1.min.js"></script>
+
+    <title></title>
+</head>
+<body>
+    <div>
+        <h2 id="MainLbl">Log In Page</h2>
+        <label id="Unlbl">Username: </label>
+        <input type="text" id="Username" style="width: 120px; height: 30px;" />
+        <br />
+        <label id="Pwlbl">Password:  </label>
+        <input type="text" id="Password" style="width: 120px; height: 30px;" />
+        <br />
+        <button id="LogIn">Log In</button>
+
+        <script>
+
+            $(document).ready(function() {
+
+
+                $("#LogIn").click(function() {
+                     var model = {
+                        Username: $("#Username").val(),
+                        Password: $("#Password").val()
+                     };
+
+                     $.post("/api/LogIn/", model)
+                        .done(function (data) {
+                            console.log(data);
+                            $("#Mainlbl").text(data);
+                            window.location.href = "default/Inventory";
+                        })
+                        .fail(function() {
+                            alert("error");
+                        });
+                });
+
+            });
+        </script>
+    </div>
+</body>
+</html>

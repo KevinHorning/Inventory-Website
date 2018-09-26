@@ -155,6 +155,22 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
+    <None Include="Views\Default\LogIn.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>LogIn.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Default\Inventory.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>Inventory.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Default\Equipment.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>Equipment.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Default\Contacts.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>Contacts.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -168,6 +184,23 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Default\LogIn.cs">
+      <DependentUpon>LogIn.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\LogInController.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Views\Default\Inventory.cs">
+      <DependentUpon>Inventory.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Views\Default\Equipment.cs">
+      <DependentUpon>Equipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Default\Contacts.cs">
+      <DependentUpon>Contacts.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EquipmentController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -235,6 +268,11 @@
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

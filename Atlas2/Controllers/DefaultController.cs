@@ -9,5 +9,25 @@ namespace Atlas2.Controllers
         {
             return View();
         }
+
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+
+        public ActionResult Inventory() 
+        {
+            return View();
+        }
+
+        public ActionResult Equipment()
+        {
+            return View();
+        }
+
+        public ActionResult Contacts()
+        {
+            return View();
+        }
     }
 }

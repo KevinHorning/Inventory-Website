@@ -6,7 +6,7 @@ using System.Web.Http;
 
 namespace Atlas2.Controllers
 {
-    [RoutePrefix("api/authentication")]
+    [RoutePrefix("api/Authentication")]
     public class AuthenticationController : ApiController
     {
         [HttpGet]
