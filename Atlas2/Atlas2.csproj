@@ -159,6 +159,10 @@
       <Generator>RazorTemplatePreprocessor</Generator>
       <LastGenOutput>LogIn.cs</LastGenOutput>
     </None>
+    <None Include="Views\Default\Template.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>Template.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -177,6 +181,9 @@
     </Compile>
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Views\Default\Template.cs">
+      <DependentUpon>Template.cshtml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

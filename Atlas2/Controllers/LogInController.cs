@@ -27,9 +27,9 @@ namespace Atlas2.Controllers
         public HttpResponseMessage LogInRequest(Account model)
         {
             if (model.Username.Equals("Fake@Example") && model.Password.Equals("Password"))
-                return Request.CreateResponse(HttpStatusCode.OK, "Log In Successful.");
+                return Request.CreateResponse(HttpStatusCode.OK, model.Username + "Log In Successful.");
             else return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful");
-                }
+        }
 
     }
 }

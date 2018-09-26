@@ -25,38 +25,27 @@ public partial class LogIn : LogInBase
 
 public override void Execute()
 {
-
-#line 1 "LogIn.cshtml"
-  
-    Layout = null;
-
-
-#line default
-#line hidden
-WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
+WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
 WriteLiteral(" content=\"width=device-width\"");
 
-WriteLiteral(" />\r\n    <script");
+WriteLiteral(" />\r\n\r\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute ("src", " src=\"", "\""
+WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-#line 8 "LogIn.cshtml"
- , Tuple.Create<string,object,bool> ("", Url.Content("~/Scripts/jquery-3.3.1.min.js")
+WriteLiteral("></script>\r\n\r\n    <title></title>\r\n</head>\r\n<body>\r\n    <div>\r\n        <label");
 
-#line default
-#line hidden
-, false)
-);
-WriteLiteral("></script>\r\n    <title></title>\r\n</head>\r\n<body>\r\n    <div>\r\n        <label");
+WriteLiteral(" id=\"MainLbl\"");
 
-WriteLiteral(" id=\"MainLabel\"");
+WriteLiteral(">Log In Page</label>\r\n        <br />\r\n        <label");
 
-WriteLiteral(">Log In Page</label>\r\n        <input");
+WriteLiteral(" id=\"Unlbl\"");
+
+WriteLiteral(">Username: </label>\r\n        <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -64,7 +53,11 @@ WriteLiteral(" id=\"Username\"");
 
 WriteLiteral(" style=\"width: 120px; height: 30px;\"");
 
-WriteLiteral(" />\r\n        <br />\r\n        <input");
+WriteLiteral(" />\r\n        <br />\r\n        <label");
+
+WriteLiteral(" id=\"Pwlbl\"");
+
+WriteLiteral(">Password:  </label>\r\n        <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -72,8 +65,37 @@ WriteLiteral(" id=\"Password\"");
 
 WriteLiteral(" style=\"width: 120px; height: 30px;\"");
 
-WriteLiteral(" />\r\n        <br />\r\n        <button id+\"LogIn\">Log In</button>\r\n    </div>\r\n</bo" +
-"dy>\r\n</html>");
+WriteLiteral(" />\r\n        <br />\r\n        <button");
+
+WriteLiteral(" id=\"LogIn\"");
+
+WriteLiteral(@">Log In</button>
+        <script>
+
+            $(document).ready(function() {
+            
+
+                $(""#LogIn"").click(function() {
+                     var model = {
+                        Username: $(""#Username"").val(),
+                        Password: $(""#Password"").val()
+                     };
+            
+                     $.post(""/api/LogIn/"", model)
+                        .done(function (data) {
+                            console.log(data);
+                            $(""#Mainlbl"").text(data);
+                        })
+                        .fail(function() {
+                            alert(""error"");
+                        });
+                });
+
+            });
+        </script>
+    </div>
+</body>
+</html>");
 
 }
 }
