@@ -31,8 +31,8 @@ public class Test1
 
     public static Query insertQuery()
     {
-        var username = new KeyValuePair<String, Object>("userName", "John Smith");
-        var password = new KeyValuePair<String, Object>("hashString", "84345354");
+        var username = new KeyValuePair<String, Object>("userName", "JS3");
+        var password = new KeyValuePair<String, Object>("hashString", "6B86B273FF34FCE19D6B804EFF5A3F5747ADA4EAA22F1D49C01E52DDB7875B4B");
         var values = new[] { username, password };
         Query query = QueryBuilder.BuildInsertQuery("users", values);
         return query;

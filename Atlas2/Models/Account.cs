@@ -1,4 +1,5 @@
-﻿namespace Atlas2.Models
+﻿using System;
+namespace Atlas2.Models
 {
     public class Account
     {
