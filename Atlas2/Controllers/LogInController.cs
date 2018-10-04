@@ -25,7 +25,7 @@ namespace Atlas2.Controllers
         {
             String hashed = GenerateSHA256String(model.Password); 
 
-            if(CTG.Database.Communication.Login.Authenticate(model.Username, hashed) == true)
+            if(CTG.Database.Communication.Login.Authenticate(model.Username, model.Password) == true)
                 return Request.CreateResponse(HttpStatusCode.OK, model.Username + "Log In Successful.");
             else
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful");
@@ -34,7 +34,7 @@ namespace Atlas2.Controllers
         public static string GenerateSHA256String(string inputString)
         {
             SHA256 sha256Hash = SHA256.Create();
-            byte[] data = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes("Hiii i"));
+            byte[] data = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes("inputString"));
 
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < data.Length; i++)
