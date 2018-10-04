@@ -1,5 +1,5 @@
-﻿using System;
-using CTG.Database.MySQL;
+﻿using CTG.Database.MySQL;
+using System;
 
 namespace CTG.Database
 {

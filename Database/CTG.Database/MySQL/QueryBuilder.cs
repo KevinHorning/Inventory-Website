@@ -1,8 +1,8 @@
-﻿using System;
+﻿using CTG.Database.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using CTG.Database.Models;
 
 namespace CTG.Database.MySQL
 {

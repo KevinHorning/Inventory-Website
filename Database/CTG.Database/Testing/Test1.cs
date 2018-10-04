@@ -1,17 +1,12 @@
+using CTG.Database.MySQL;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.IO;
 using System.Threading.Tasks;
-using CTG.Database.Models;
-using CTG.Database.MySQL;
-using MySql.Data.MySqlClient;
 
 public class Test1
 {
     public static void Main()
     {
-        //Console.WriteLine(Login.Authenticate("hgdsong", "yyyninf"));
         test().Wait();
         Console.ReadKey();
     }
@@ -23,12 +18,12 @@ public class Test1
 
         Query insQuery = insertQuery();
         manager.ExecuteNonQueryAsync(manager.GetConnection(), insQuery.QueryString, insQuery.Parameters).Wait();
-		//manager.ExecuteNonQueryAsync(manager.GetConnection(), "DELETE FROM users").Wait();
-		using (var rdr = await manager.ExecuteReaderAsync(manager.GetConnection(), "SELECT * from users"))
+
+		using (var reader = await manager.ExecuteReaderAsync(manager.GetConnection(), "SELECT * from users"))
 		{
-			while (rdr.Read())
+			while (reader.Read())
 			{
-				Console.WriteLine(rdr[0] + " " + rdr[1] + " " + rdr[2]);
+				Console.WriteLine(reader[0] + " " + reader[1] + " " + reader[2]);
 			}
 		}
 		Console.WriteLine("Done.");
@@ -36,8 +31,10 @@ public class Test1
 
     public static Query insertQuery()
     {
-        KeyValuePair<String, Object>[] values = { new KeyValuePair<String, Object>("userName", "John Smith"), new KeyValuePair<String, Object>("hashString", "84345354") };
-        Query Q = QueryBuilder.BuildInsertQuery("users", values);
-        return Q;
+        var username = new KeyValuePair<String, Object>("userName", "John Smith");
+        var password = new KeyValuePair<String, Object>("hashString", "84345354");
+        var values = new[] { username, password };
+        Query query = QueryBuilder.BuildInsertQuery("users", values);
+        return query;
     }
 }
