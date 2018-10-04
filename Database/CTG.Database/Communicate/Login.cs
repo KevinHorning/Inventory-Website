@@ -19,15 +19,12 @@ namespace CTG.Database.Communication
             MySqlDatabaseManager manager = new MySqlDatabaseManager("server=localhost;database=atlas;uid=kevin;password=kevin");
             manager.GetConnection();
 
-            Query Q = QueryBuilder.BuildQuery("users", new[] { "userName", "hashString" });
-            using (var rdr = await manager.ExecuteReaderAsync(manager.GetConnection(), Q.QueryString))
+            Query query = QueryBuilder.BuildQuery("users", new[] { "userName", "hashString" });
+            using (var reader = await manager.ExecuteReaderAsync(manager.GetConnection(), query.QueryString))
             {
-                while (rdr.Read())
+                while (reader.Read())
                 {
-                    if ((string)rdr[0] == userName && (string)rdr[1] == hashPass)
-                    {
-                        exists = true;
-                    }
+                    exists = ((string)reader[0] == userName && (string)reader[1] == hashPass);
                 }
             }
             manager.GetConnection().Close();
