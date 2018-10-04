@@ -1,11 +1,7 @@
+using CTG.Database.MySQL;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.IO;
 using System.Threading.Tasks;
-using CTG.Database.Models;
-using CTG.Database.MySQL;
-using MySql.Data.MySqlClient;
 
 public class Test1
 {

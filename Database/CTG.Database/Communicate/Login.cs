@@ -1,32 +1,29 @@
-using System;
-using System.Threading.Tasks;
 using CTG.Database.MySQL;
+using System.Threading.Tasks;
 
 public class Login
 {
-    static Boolean exists = false;
-    public static Boolean Authenticate(string userName, string hashPass)
+    public bool Authenticate(string userName, string hashPass)
     {
-        Synchronize(userName, hashPass).Wait();
-        return exists; 
+        return Synchronize(userName, hashPass).Result; 
     }
 
-    public static async Task Synchronize(string userName, string hashPass)
+    public static async Task<bool> Synchronize(string userName, string hashPass)
     {
+        var exists = false;
         MySqlDatabaseManager manager = new MySqlDatabaseManager("server=localhost;database=atlas;uid=kevin;password=kevin");
         manager.GetConnection();
 
         Query Q = QueryBuilder.BuildQuery("users", new[] {"userName", "hashString"});
-        using (var rdr = await manager.ExecuteReaderAsync(manager.GetConnection(), Q.QueryString))
+        using (var reader = await manager.ExecuteReaderAsync(manager.GetConnection(), Q.QueryString))
         {
-            while (rdr.Read())
+            while (reader.Read())
             {
-                if ((string)rdr[0] == userName && (string)rdr[1] == hashPass)
-                {
+                if (((string)reader[0]).Equals(userName) && ((string)reader[1]).Equals(hashPass))
                     exists = true;
-                }
             }
         }
         manager.GetConnection().Close();
+        return exists;
     }
 }

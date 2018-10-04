@@ -1,7 +1,7 @@
-﻿using System.Data.Common;
-using System.Threading.Tasks;
-using CTG.Database.Models;
+﻿using CTG.Database.Models;
 using MySql.Data.MySqlClient;
+using System.Data.Common;
+using System.Threading.Tasks;
 
 namespace CTG.Database
 {
