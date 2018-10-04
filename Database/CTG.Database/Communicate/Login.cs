@@ -7,27 +7,30 @@ namespace CTG.Database.Communication
 
     public class Login
     {
-        public static bool Authenticate(string userName, string hashPass)
+        static Boolean exists = false;
+        public static Boolean Authenticate(string userName, string hashPass)
         {
-            return Synchronize(userName, hashPass).Result;
+            Synchronize(userName, hashPass).Wait();
+            return exists;
         }
 
-        public static async Task<bool> Synchronize(string userName, string hashPass)
+        public static async Task Synchronize(string userName, string hashPass)
         {
             MySqlDatabaseManager manager = new MySqlDatabaseManager("server=localhost;database=atlas;uid=kevin;password=kevin");
             manager.GetConnection();
 
-            var exists = false;
-            var query = QueryBuilder.BuildQuery("users", new[] { "userName", "hashString" });
-            using (var reader = await manager.ExecuteReaderAsync(manager.GetConnection(), query.QueryString))
+            Query Q = QueryBuilder.BuildQuery("users", new[] { "userName", "hashString" });
+            using (var rdr = await manager.ExecuteReaderAsync(manager.GetConnection(), Q.QueryString))
             {
-                while (reader.Read())
+                while (rdr.Read())
                 {
-                    exists = (((string)reader[0]).Equals(userName) && ((string)reader[1]).Equals(hashPass));
+                    if ((string)rdr[0] == userName && (string)rdr[1] == hashPass)
+                    {
+                        exists = true;
+                    }
                 }
             }
             manager.GetConnection().Close();
-            return exists;
         }
     }
 }
