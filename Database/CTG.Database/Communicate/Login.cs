@@ -24,7 +24,7 @@ namespace CTG.Database.Communication
             {
                 while (reader.Read())
                 {
-                    exists = ((string)reader[0] == userName && (string)reader[1] == hashPass);
+                    exists = (((string)reader[0]).Equals(userName) && ((string)reader[1]).Equals(hashPass));
                 }
             }
             manager.GetConnection().Close();
