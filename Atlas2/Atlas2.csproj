@@ -229,12 +229,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Atlas.Core\Atlas2.Core.csproj">
       <Project>{1bef7d41-0167-4db5-9119-3889c0020363}</Project>
       <Name>Atlas2.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Database\CTG.Database\CTG.Database.csproj">
+      <Project>{cce14461-2f52-4524-97f7-e7c5a3716ad4}</Project>
+      <Name>CTG.Database</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
