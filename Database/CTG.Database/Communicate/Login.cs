@@ -2,31 +2,35 @@ using System;
 using System.Threading.Tasks;
 using CTG.Database.MySQL;
 
-public class Login
+namespace CTG.Database.Communication
 {
-    static Boolean exists = false;
-    public static Boolean Authenticate(string userName, string hashPass)
-    {
-        Synchronize(userName, hashPass).Wait();
-        return exists; 
-    }
 
-    public static async Task Synchronize(string userName, string hashPass)
+    public class Login
     {
-        MySqlDatabaseManager manager = new MySqlDatabaseManager("server=localhost;database=atlas;uid=kevin;password=kevin");
-        manager.GetConnection();
-
-        Query Q = QueryBuilder.BuildQuery("users", new[] {"userName", "hashString"});
-        using (var rdr = await manager.ExecuteReaderAsync(manager.GetConnection(), Q.QueryString))
+        static Boolean exists = false;
+        public static Boolean Authenticate(string userName, string hashPass)
         {
-            while (rdr.Read())
+            Synchronize(userName, hashPass).Wait();
+            return exists;
+        }
+
+        public static async Task Synchronize(string userName, string hashPass)
+        {
+            MySqlDatabaseManager manager = new MySqlDatabaseManager("server=localhost;database=atlas;uid=kevin;password=kevin");
+            manager.GetConnection();
+
+            Query Q = QueryBuilder.BuildQuery("users", new[] { "userName", "hashString" });
+            using (var rdr = await manager.ExecuteReaderAsync(manager.GetConnection(), Q.QueryString))
             {
-                if ((string)rdr[0] == userName && (string)rdr[1] == hashPass)
+                while (rdr.Read())
                 {
-                    exists = true;
+                    if ((string)rdr[0] == userName && (string)rdr[1] == hashPass)
+                    {
+                        exists = true;
+                    }
                 }
             }
+            manager.GetConnection().Close();
         }
-        manager.GetConnection().Close();
     }
 }
