@@ -203,6 +203,9 @@
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Part.cs" />
+    <Compile Include="Models\TableResponse.cs" />
+    <Compile Include="Models\Equipment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,5 +1,4 @@
-﻿using System;
-namespace Atlas2.Models
+﻿namespace Atlas2.Models
 {
     public class Contact
     {

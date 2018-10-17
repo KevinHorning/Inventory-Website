@@ -1,23 +1,15 @@
 ﻿using Atlas2.Models;
-using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.UI;
-using System.Diagnostics.Contracts;
 
 namespace Atlas2.Controllers
 {
-    public class TableResponse<T>
-    {
-        public string[] Headers { get; set; }
-        public T[] Data { get; set; }
-    }
 
     [RoutePrefix("api/Contacts")]
     public class ContactsController : ApiController
     {
+
         [HttpGet]
         [Route("table")]
         public HttpResponseMessage TableInfo()
