@@ -1,28 +1,31 @@
 ﻿function GenerateTable() {
-            var contacts = $.get("/api/Contacts/table");
-
-            var table = document.createElement("TABLE")
+        $.get( "/api/Contacts/table/", function(data) {
+            var tableInfo = eval(data);
+            var table = document.createElement("table");
             table.border = "1";
 
             var row = table.insertRow(-1);
 
-            for (var i = 0; i < contacts.Properties.length; i++) {
-                var cell = document.createElement("td");
-                cell.innerHTML = contacts.Properties[i];
+            //Fills headers
+            for (var i = 0; i < tableInfo.Properties.Length; i++) {
+                var cell = document.createElement("th");
+                cell.innerHTML = tableInfo.Properties[i];
+                console.log(tableInfo.Properties[i]);
                 row.appendChild(cell);
             }
-            
-            for (var i = 0; i < contacts.Properties.length; i++) {
+
+            //Fills table with elements
+            for (var i = 0; i < tableInfo.Elements.Length/tableInfo.Properties.Length; i++) {
                 row = table.insertRow(-1);
-                for (var j = 0; j < contacts.Elements.length/contacts.Properties.length; j++) {
+                for (var j = 0; j < tableInfo.Properties.Length; j++) {
                     var cell = row.insertCell(-1);
-                    cell.innerHTML = contacts.Elements[i*(contacts.Elements.length/contacts.Properties.length) + j];
+                    cell.innerHTML = tableInfo.Elements[i*(tableInfo.Properties.ength) + j];
+                    console.log(tableInfo.Elements[i*(tableInfo.Properties.ength) + j]);
                 }
             }
-
-
-            var dvTable = document.getElementById("dvTable");
-            dvTable.innerHTML = "";
-            dvTable.appendChild(table);
+            
+            var divTable = document.getElementById("divTable");
+            divTable.innerHTML = "";
+            divTable.appendChild(table);
+        });
 }
-GenerateTable();

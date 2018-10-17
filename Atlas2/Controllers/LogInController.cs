@@ -25,7 +25,7 @@ namespace Atlas2.Controllers
         {
             String hashed = GenerateSHA256String(model.Password); 
 
-            if(CTG.Database.Communication.Login.Authenticate(model.Username, model.Password) == true)
+            if(CTG.Database.Communication.Login.Authenticate(model.Username, GenerateSHA256String(model.Password)) == true)
                 return Request.CreateResponse(HttpStatusCode.OK, model.Username + "Log In Successful.");
             else
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful");

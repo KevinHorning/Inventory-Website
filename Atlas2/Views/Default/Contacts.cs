@@ -25,17 +25,23 @@ public partial class Contacts : ContactsBase
 
 public override void Execute()
 {
-WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
+WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
 WriteLiteral(" content=\"width=device-width\"");
 
-WriteLiteral(" />\r\n\r\n    <script");
+WriteLiteral(" />\n\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
+
+WriteLiteral("></script>\n\n    <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
 
 WriteLiteral(@"></script>
 
@@ -46,57 +52,64 @@ WriteLiteral(@"></script>
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
         }
-
+        
         .topnav {
             overflow: hidden;
             background-color: #333;
         }
 
-        .topnav a {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
 
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
 
-        .topnav a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
+                .topnav a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
     </style>
 </head>
-</html>
 <body>
     <div");
 
 WriteLiteral(" class=\"topnav\"");
 
-WriteLiteral(">\r\n        <a");
+WriteLiteral(">\n        <a");
 
 WriteLiteral(" href=\"Inventory\"");
 
-WriteLiteral(">Inventory</a>\r\n        <a");
+WriteLiteral(">Inventory</a>\n        <a");
 
 WriteLiteral(" href=\"Equipment\"");
 
-WriteLiteral(">Equipment</a>\r\n        <a");
+WriteLiteral(">Equipment</a>\n        <a");
 
 WriteLiteral(" class=\"active\"");
 
 WriteLiteral(" href=\"Contacts\"");
 
-WriteLiteral(">Contacts</a>\r\n    </div>\r\n    <div>\r\n        <h2");
+WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Contacts Page</h2>\r\n    </div>\r\n</body>");
+WriteLiteral(">Contacts Page</h2>\n        <div");
+
+WriteLiteral(" id=\"divTable\"");
+
+WriteLiteral(">\n        </div>\n        <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(">\n            GenerateTable();\n        </script>\n    </div>\n</body>\n</html>");
 
 }
 }

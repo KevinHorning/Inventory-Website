@@ -25,32 +25,33 @@ public partial class Inventory : InventoryBase
 
 public override void Execute()
 {
-WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\r\n    <meta");
+WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
 WriteLiteral(" content=\"width=device-width\"");
 
-WriteLiteral(" />\n\r\n    <script");
+WriteLiteral(" />\n\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-WriteLiteral(@"></script>
+WriteLiteral(@">
+    </script>
 
     <title></title>
 
-        <style>
-            body {
-                margin: 0;
-                font-family: Arial, Helvetica, sans-serif;
-            }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-            .topnav {
-                overflow: hidden;
-                background-color: #333;
-            }
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
 
             .topnav a {
                 float: left;
@@ -61,42 +62,41 @@ WriteLiteral(@"></script>
                 font-size: 17px;
             }
 
-            .topnav a:hover {
-                background-color: #ddd;
-                color: black;
-            }
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
 
-            .topnav a.active {
-                background-color: #4CAF50;
-                color: white;
-            }
-        </style>
+                .topnav a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+    </style>
 </head>
-</html>
 <body>
     <div");
 
 WriteLiteral(" class=\"topnav\"");
 
-WriteLiteral(">\r\n        <a");
+WriteLiteral(">\n        <a");
 
 WriteLiteral(" class=\"active\"");
 
 WriteLiteral(" href=\"Inventory\"");
 
-WriteLiteral(">Inventory</a>\r\n        <a");
+WriteLiteral(">Inventory</a>\n        <a");
 
 WriteLiteral(" href=\"Equipment\"");
 
-WriteLiteral(">Equipment</a>\r\n        <a");
+WriteLiteral(">Equipment</a>\n        <a");
 
 WriteLiteral(" href=\"Contacts\"");
 
-WriteLiteral(">Contacts</a>\r\n    </div>\n    <div>\n        <h2");
+WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Inventory Page</h2>\n    </div>\n</body>");
+WriteLiteral(">Inventory Page</h2>\n    </div>\n</body>\n</html>\n");
 
 }
 }

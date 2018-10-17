@@ -25,27 +25,27 @@ public partial class LogIn : LogInBase
 
 public override void Execute()
 {
-WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
+WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
 WriteLiteral(" content=\"width=device-width\"");
 
-WriteLiteral(" />\r\n\r\n    <script");
+WriteLiteral(" />\n\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-WriteLiteral("></script>\r\n\r\n    <title></title>\r\n</head>\r\n<body>\r\n    <div>\r\n        <h2");
+WriteLiteral("></script>\n\n    <title></title>\n</head>\n<body>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"MainLbl\"");
 
-WriteLiteral(">Log In Page</h2>\r\n        <label");
+WriteLiteral(">Log In Page</h2>\n        <label");
 
 WriteLiteral(" id=\"Unlbl\"");
 
-WriteLiteral(">Username: </label>\r\n        <input");
+WriteLiteral(">Username: </label>\n        <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -53,11 +53,11 @@ WriteLiteral(" id=\"Username\"");
 
 WriteLiteral(" style=\"width: 120px; height: 30px;\"");
 
-WriteLiteral(" />\r\n        <br />\r\n        <label");
+WriteLiteral(" />\n        <br />\n        <label");
 
 WriteLiteral(" id=\"Pwlbl\"");
 
-WriteLiteral(">Password:  </label>\r\n        <input");
+WriteLiteral(">Password:  </label>\n        <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -65,16 +65,22 @@ WriteLiteral(" id=\"Password\"");
 
 WriteLiteral(" style=\"width: 120px; height: 30px;\"");
 
-WriteLiteral(" />\r\n        <br />\r\n        <button");
+WriteLiteral(" />\n        <br />\n        <button");
 
 WriteLiteral(" id=\"LogIn\"");
 
-WriteLiteral(@">Log In</button>
+WriteLiteral(">Log In</button>\n        <button");
+
+WriteLiteral(" id=\"Register\"");
+
+WriteLiteral(@">Register</button>
 
         <script>
 
             $(document).ready(function() {
-
+            //function test(){
+              //  alert('hello');
+            //}
 
                 $(""#LogIn"").click(function() {
                      var model = {
@@ -93,7 +99,8 @@ WriteLiteral(@">Log In</button>
                         });
                 });
 
-            });
+            //test();
+            
         </script>
     </div>
 </body>

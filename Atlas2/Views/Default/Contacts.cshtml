@@ -5,6 +5,8 @@
 
     <script type="text/javascript" src="/Scripts/jquery-3.3.1.min.js"></script>
 
+    <script type="text/javascript" src="/Scripts/GenerateTable.js"></script>
+
     <title></title>
 
     <style>
@@ -12,7 +14,7 @@
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
         }
-
+        
         .topnav {
             overflow: hidden;
             background-color: #333;
@@ -46,6 +48,11 @@
     </div>
     <div>
         <h2 id="Mainlbl">Contacts Page</h2>
+        <div id="divTable">
+        </div>
+        <script type="text/javascript">
+            GenerateTable();
+        </script>
     </div>
 </body>
 </html>

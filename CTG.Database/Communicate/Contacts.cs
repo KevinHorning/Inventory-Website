@@ -5,9 +5,7 @@ namespace CTG.Database.Communication
     {
         public Dictionary<string, object> tableArray()
         {
-            var a =
-            a.push
-            return a;
+
         }
     }
 }

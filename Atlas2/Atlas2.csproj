@@ -171,6 +171,7 @@
       <Generator>RazorTemplatePreprocessor</Generator>
       <LastGenOutput>Contacts.cs</LastGenOutput>
     </None>
+    <Content Include="Scripts\GenerateTable.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -201,6 +202,7 @@
     </Compile>
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Models\TableInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
