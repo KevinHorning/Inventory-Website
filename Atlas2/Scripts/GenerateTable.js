@@ -1,26 +1,25 @@
 ﻿function GenerateTable() {
         $.get( "/api/Contacts/table/", function(data) {
-            var tableInfo = eval(data);
-            var table = document.createElement("table");
+            
+            var table = document.createElement("TABLE");
             table.border = "1";
 
             var row = table.insertRow(-1);
-
-            //Fills headers
-            for (var i = 0; i < tableInfo.Properties.Length; i++) {
+            
+            for (var header = 0; header < data.Headers.length; header++) {
                 var cell = document.createElement("th");
-                cell.innerHTML = tableInfo.Properties[i];
-                console.log(tableInfo.Properties[i]);
+                cell.innerHTML = data.Headers[header];
                 row.appendChild(cell);
             }
 
-            //Fills table with elements
-            for (var i = 0; i < tableInfo.Elements.Length/tableInfo.Properties.Length; i++) {
-                row = table.insertRow(-1);
-                for (var j = 0; j < tableInfo.Properties.Length; j++) {
-                    var cell = row.insertCell(-1);
-                    cell.innerHTML = tableInfo.Elements[i*(tableInfo.Properties.ength) + j];
-                    console.log(tableInfo.Elements[i*(tableInfo.Properties.ength) + j]);
+            for (var i = 0; i < data.Data.length; i++) {
+                var current = data.Data[i];
+                var row = table.insertRow(-1);
+
+                for (var header = 0; header < data.Headers.length; header++) {
+                    var cell = document.createElement("td");
+                    cell.innerHTML = current[data.Headers[header]];
+                    row.appendChild(cell);
                 }
             }
             

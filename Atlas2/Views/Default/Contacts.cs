@@ -105,7 +105,7 @@ WriteLiteral(">Contacts Page</h2>\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
-WriteLiteral(">\n        </div>\n        <script");
+WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 

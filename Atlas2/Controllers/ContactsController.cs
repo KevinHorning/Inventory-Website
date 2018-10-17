@@ -9,47 +9,64 @@ using System.Diagnostics.Contracts;
 
 namespace Atlas2.Controllers
 {
+    public class TableResponse<T>
+    {
+        public string[] Headers { get; set; }
+        public T[] Data { get; set; }
+    }
+
     [RoutePrefix("api/Contacts")]
     public class ContactsController : ApiController
     {
         [HttpGet]
         [Route("table")]
-        public HttpResponseMessage GetTableArray() {
-            Contract.Ensures(Contract.Result<HttpResponseMessage>() != null);
-
-            if (false){
-                //bad request
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
-            string[] Properties = new string[5];
-            string[] Elements = new string[15];
-
-            Properties[0] = "ID";
-            Properties[1] = "Name";
-            Properties[2] = "Phone";
-            Properties[3] = "Email";
-            Properties[4] = "Address";
-
-            Elements[0] = "1";
-            Elements[1] = "Sarah";
-            Elements[2] = "555";
-            Elements[3] = "Sarah@gmail.com";
-            Elements[4] = "1000 House Street";
-            Elements[5] = "2";
-            Elements[6] = "Chuck";
-            Elements[7] = "404";
-            Elements[8] = "Chuck@gmail.com";
-            Elements[9] = "2000 Apartment Way";
-            Elements[10] = "3";
-            Elements[11] = "Lisa";
-            Elements[12] = "919";
-            Elements[13] = "Lis@gmail.com";
-            Elements[14] = "3000 Building Lane";
-
-            var a = new TableInfo(Properties, Elements);
-
-            return Request.CreateResponse(a);
-        }
+        public HttpResponseMessage TableInfo()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK,
+                new TableResponse<Contact>
+                {
+                    Headers = new[]
+                    {
+                        "Name",
+                        "Address",
+                        "Email",
+                        "Phone"
+                    },
+                    Data = new[]
+                    {
+                        new Contact
+                        {
+                            Address = "test address 1",
+                            Email = "test@email1.com",
+                            Id = 1,
+                            Name = "Test Name",
+                            Phone = "777-777-7777"
+                        },new Contact
+                        {
+                            Address = "test address 2",
+                            Email = "test@email12.com",
+                            Id = 2,
+                            Name = "Test Name 2",
+                            Phone = "777-777-7772"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 3",
+                            Email = "test@email3.com",
+                            Id = 3,
+                            Name = "Test Name 3",
+                            Phone = "777-777-7773"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        }
+                    }
+                });
+          }
     }
 }

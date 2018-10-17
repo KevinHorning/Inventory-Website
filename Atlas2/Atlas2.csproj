@@ -202,7 +202,7 @@
     </Compile>
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
-    <Compile Include="Models\TableInfo.cs" />
+    <Compile Include="Models\Contact.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
