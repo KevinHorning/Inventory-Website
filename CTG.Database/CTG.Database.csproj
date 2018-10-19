@@ -1,16 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.9</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.9</AssemblyVersion>
     <ApplicationIcon />
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="CTG.Database.nuspec" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.12" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.18.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.5.1" />
   </ItemGroup>
 
 </Project>

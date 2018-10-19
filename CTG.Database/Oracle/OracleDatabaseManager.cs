@@ -2,32 +2,32 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CTG.Database.Models;
-using MySql.Data.MySqlClient;
+using Oracle.ManagedDataAccess.Client;
 using IDatabaseManager = CTG.Database.Models.IDatabaseManager;
 
-namespace CTG.Database.MySQL
+namespace CTG.Database.Oracle
 {
-    internal class MySqlDatabaseManager : IDatabaseManager
+    public class OracleDatabaseManager : IDatabaseManager
     {
         private readonly string _connectionString;
 
-        public MySqlDatabaseManager(string connectionString)
+        public OracleDatabaseManager(string connectionString)
         {
             _connectionString = connectionString;
         }
 
         public IConnectionWrapper GetConnection()
         {
-            var connection = new MySqlConnection(_connectionString);
+            var connection = new OracleConnection(_connectionString);
             connection.Open();
-            return new MySqlConnectionWrapper(connection);
+            return new OracleConnectionWrapper(connection);
         }
 
         public async Task<int> ExecuteScalarAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null)
         {
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
-            
-            var command = GetCommand(mysqlConnection.GetConnection(), query, parameters);
+            var connectionWrapper = (OracleConnectionWrapper)connection;
+
+            var command = GetCommand(connectionWrapper.GetConnection(), query, parameters);
             var result = await command.ExecuteScalarAsync().ConfigureAwait(false);
             if (result != DBNull.Value)
                 return int.Parse(result.ToString());
@@ -37,7 +37,7 @@ namespace CTG.Database.MySQL
         public async Task<int> ExecuteScalarAsync(string query, SqlParameter[] parameters = null)
         {
             var connection = GetConnection();
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
+            var connectionWrapper = (OracleConnectionWrapper)connection;
 
             try
             {
@@ -45,15 +45,15 @@ namespace CTG.Database.MySQL
             }
             finally
             {
-                mysqlConnection.GetConnection().Close();
+                connectionWrapper.GetConnection().Close();
             }
         }
 
         public async Task<object[][]> ExecuteTableAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null)
         {
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
+            var connectionWrapper = (OracleConnectionWrapper)connection;
 
-            var command = GetCommand(mysqlConnection.GetConnection(), query, parameters);
+            var command = GetCommand(connectionWrapper.GetConnection(), query, parameters);
             var reader = await command.ExecuteReaderAsync().ConfigureAwait(false);
             var schemaTable = reader.GetSchemaTable();
 
@@ -79,7 +79,7 @@ namespace CTG.Database.MySQL
 
         public async Task ExecuteNonQueryAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null)
         {
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
+            var mysqlConnection = (OracleConnectionWrapper)connection;
 
             var command = GetCommand(mysqlConnection.GetConnection(), query, parameters);
             await command.ExecuteNonQueryAsync().ConfigureAwait(false);
@@ -88,7 +88,7 @@ namespace CTG.Database.MySQL
         public async Task ExecuteNonQueryAsync(string query, SqlParameter[] parameters = null)
         {
             var connection = GetConnection();
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
+            var mysqlConnection = (OracleConnectionWrapper)connection;
 
             try
             {
@@ -102,9 +102,9 @@ namespace CTG.Database.MySQL
 
         #region helpers
 
-        private MySqlCommand GetCommand(MySqlConnection connection, string query, SqlParameter[] parameters = null)
+        private OracleCommand GetCommand(OracleConnection connection, string query, SqlParameter[] parameters = null)
         {
-            var command = new MySqlCommand(query, connection);
+            var command = new OracleCommand(query, connection);
             command.CommandTimeout = 15 * 60;
             command.Prepare();
 

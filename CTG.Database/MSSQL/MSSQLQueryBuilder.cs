@@ -1,20 +1,14 @@
-﻿using CTG.Database.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using CTG.Database.Models;
 
-namespace CTG.Database.MySQL
+namespace CTG.Database.MSSQL
 {
-    public class Query
+    public class MSSQLQueryBuilder : IQueryBuilder
     {
-        public string QueryString { get; set; }
-        public SqlParameter[] Parameters { get; set; }
-    }
-
-    public class QueryBuilder
-    {
-        public static Query BuildQuery(string table, string[] columns, Filter[] filters = null, KeyValuePair<string, bool>[] sorting = null)
+        public Query BuildQuery(string table, string[] columns, Filter[] filters = null, KeyValuePair<string, bool>[] sorting = null)
         {
             var result = new Query();
 
@@ -37,7 +31,7 @@ namespace CTG.Database.MySQL
             return result;
         }
 
-        public static Query BuildInsertQuery(string table, KeyValuePair<string, object>[] values)
+        public Query BuildInsertQuery(string table, KeyValuePair<string, object>[] values, bool returnId = false)
         {
             var result = new Query();
 
@@ -69,11 +63,16 @@ namespace CTG.Database.MySQL
             queryString = queryString.Substring(0, queryString.Length - 1);//strip off trailing comma
             queryString += ")";
 
+            if (returnId)
+            {
+                queryString += ";SELECT LAST_INSERT_ID();";
+            }
+
             result.Parameters = paramList.ToArray();
             result.QueryString = queryString;
             return result;
         }
-        
+
         public Query BuildUpdateQuery(string table, KeyValuePair<string, object>[] values, Filter[] filters, bool includeVoidedRows = false)
         {
             var result = new Query();
@@ -139,7 +138,7 @@ namespace CTG.Database.MySQL
             return result;
         }
 
-        private static DbType GetDatabaseType(object value)
+        private DbType GetDatabaseType(object value)
         {
             if (value is bool)
             {
@@ -174,7 +173,7 @@ namespace CTG.Database.MySQL
             return DbType.Binary;
         }
 
-        private static string BuildWhereClause(Filter[] filters, Query result, string queryString, List<SqlParameter> paramList)
+        private string BuildWhereClause(Filter[] filters, Query result, string queryString, List<SqlParameter> paramList)
         {
             if (filters == null || filters.Length == 0)
             {
@@ -210,7 +209,7 @@ namespace CTG.Database.MySQL
                     {
                         Name = parameterName,
                         Value = filterValue,
-                        Type = GetDatabaseType(filterValue)
+                        Type = GetDatabaseType(filter.Value)
                     });
                 }
             }
@@ -219,20 +218,6 @@ namespace CTG.Database.MySQL
             result.Parameters = paramList.ToArray();
 
             return queryString;
-        }
-
-        public class Filter
-        {
-            public string Column { get; set; }
-            public string Operator { get; set; }
-            public object Value { get; set; }
-
-            public Filter(string column, string operatorString, object value)
-            {
-                Column = column;
-                Operator = operatorString;
-                Value = value;
-            }
         }
     }
 }

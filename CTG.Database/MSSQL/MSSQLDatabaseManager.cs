@@ -1,32 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
-using CTG.Database.Models;
-using MySql.Data.MySqlClient;
+using SqlParameter = CTG.Database.Models.SqlParameter;
 using IDatabaseManager = CTG.Database.Models.IDatabaseManager;
 
-namespace CTG.Database.MySQL
+namespace CTG.Database.MSSQL
 {
-    internal class MySqlDatabaseManager : IDatabaseManager
+    public class MSSQLDatabaseManager : IDatabaseManager
     {
         private readonly string _connectionString;
 
-        public MySqlDatabaseManager(string connectionString)
+        public MSSQLDatabaseManager(string connectionString)
         {
             _connectionString = connectionString;
         }
 
         public IConnectionWrapper GetConnection()
         {
-            var connection = new MySqlConnection(_connectionString);
+            var connection = new SqlConnection(_connectionString);
             connection.Open();
-            return new MySqlConnectionWrapper(connection);
+            return new MSSQLConnectionWrapper(connection);
         }
 
         public async Task<int> ExecuteScalarAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null)
         {
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
-            
+            var mysqlConnection = (MSSQLConnectionWrapper)connection;
+
             var command = GetCommand(mysqlConnection.GetConnection(), query, parameters);
             var result = await command.ExecuteScalarAsync().ConfigureAwait(false);
             if (result != DBNull.Value)
@@ -37,7 +37,7 @@ namespace CTG.Database.MySQL
         public async Task<int> ExecuteScalarAsync(string query, SqlParameter[] parameters = null)
         {
             var connection = GetConnection();
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
+            var mysqlConnection = (MSSQLConnectionWrapper)connection;
 
             try
             {
@@ -51,9 +51,9 @@ namespace CTG.Database.MySQL
 
         public async Task<object[][]> ExecuteTableAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null)
         {
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
+            var mssqlConnectionWrapper = (MSSQLConnectionWrapper)connection;
 
-            var command = GetCommand(mysqlConnection.GetConnection(), query, parameters);
+            var command = GetCommand(mssqlConnectionWrapper.GetConnection(), query, parameters);
             var reader = await command.ExecuteReaderAsync().ConfigureAwait(false);
             var schemaTable = reader.GetSchemaTable();
 
@@ -79,7 +79,7 @@ namespace CTG.Database.MySQL
 
         public async Task ExecuteNonQueryAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null)
         {
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
+            var mysqlConnection = (MSSQLConnectionWrapper)connection;
 
             var command = GetCommand(mysqlConnection.GetConnection(), query, parameters);
             await command.ExecuteNonQueryAsync().ConfigureAwait(false);
@@ -88,7 +88,7 @@ namespace CTG.Database.MySQL
         public async Task ExecuteNonQueryAsync(string query, SqlParameter[] parameters = null)
         {
             var connection = GetConnection();
-            var mysqlConnection = (MySqlConnectionWrapper)connection;
+            var mysqlConnection = (MSSQLConnectionWrapper)connection;
 
             try
             {
@@ -102,9 +102,9 @@ namespace CTG.Database.MySQL
 
         #region helpers
 
-        private MySqlCommand GetCommand(MySqlConnection connection, string query, SqlParameter[] parameters = null)
+        private SqlCommand GetCommand(SqlConnection connection, string query, SqlParameter[] parameters = null)
         {
-            var command = new MySqlCommand(query, connection);
+            var command = new SqlCommand(query, connection);
             command.CommandTimeout = 15 * 60;
             command.Prepare();
 

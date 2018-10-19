@@ -235,10 +235,6 @@
       <Project>{1bef7d41-0167-4db5-9119-3889c0020363}</Project>
       <Name>Atlas2.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CTG.Database\CTG.Database.csproj">
-      <Project>{29297bb4-9ab5-4883-b910-bf23bcbd4448}</Project>
-      <Name>CTG.Database</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
