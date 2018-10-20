@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas2.Core", "Atlas.Core\A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas2", "Atlas2\Atlas2.csproj", "{F1CC8990-4736-4E2F-876A-82837FD1E9E7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTG.Database", "C:\git\CTG.Database\CTG.Database\CTG.Database.csproj", "{1CACCBD3-77E3-4FA9-83BB-E06506F9F48A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{D90B5572-27F5-446D-A0A2-72A01DF37E21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "C:\git\CTG.Database\CTG.Database.Test\Backend.csproj", "{D90B5572-27F5-446D-A0A2-72A01DF37E21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTG.Database", "CTG.Database\CTG.Database.csproj", "{3B28A1A1-8B2F-428C-B07B-3CC783163659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{F1CC8990-4736-4E2F-876A-82837FD1E9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1CC8990-4736-4E2F-876A-82837FD1E9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1CC8990-4736-4E2F-876A-82837FD1E9E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CACCBD3-77E3-4FA9-83BB-E06506F9F48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CACCBD3-77E3-4FA9-83BB-E06506F9F48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CACCBD3-77E3-4FA9-83BB-E06506F9F48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CACCBD3-77E3-4FA9-83BB-E06506F9F48A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D90B5572-27F5-446D-A0A2-72A01DF37E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D90B5572-27F5-446D-A0A2-72A01DF37E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D90B5572-27F5-446D-A0A2-72A01DF37E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D90B5572-27F5-446D-A0A2-72A01DF37E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B28A1A1-8B2F-428C-B07B-3CC783163659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B28A1A1-8B2F-428C-B07B-3CC783163659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B28A1A1-8B2F-428C-B07B-3CC783163659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B28A1A1-8B2F-428C-B07B-3CC783163659}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

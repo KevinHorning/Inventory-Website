@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Http;
+using Backend.Login;
 
 namespace Atlas2.Controllers
 {
@@ -25,10 +26,10 @@ namespace Atlas2.Controllers
         {
             String hashed = GenerateSHA256String(model.Password); 
 
-            if(CTG.Database.Communication.Login.Authenticate(model.Username, model.Password) == true)
+            if(Login.Authenticate(model.Username, model.Password).Item1 == true)
                 return Request.CreateResponse(HttpStatusCode.OK, model.Username + "Log In Successful.");
             else
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful. " + Login.Authenticate(model.Username, model.Password).Item2);      
         }
 
         public static string GenerateSHA256String(string inputString)

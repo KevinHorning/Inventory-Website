@@ -17,7 +17,6 @@ namespace Backend.Testing
                     Password = "Kevin#321",
                     InitialCatalog = "atlas"
                 };
-
                 var manager = DatabaseFactory.Create(DatabaseFactory.ManagerType.MSSQL, cb.ConnectionString);
                 manager.GetConnection();
                 Console.WriteLine("Connection Successful");

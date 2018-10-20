@@ -15,6 +15,7 @@ namespace Backend.Login
         static Boolean comboExists;
         static String message = "";
 
+        //TODO: add admin version 
         public static Tuple<Boolean, String> Authenticate(string userName, string hashPass)
         {
             Synchronize(userName, hashPass).Wait();
@@ -30,7 +31,6 @@ namespace Backend.Login
                 Password = "Kevin#321",
                 InitialCatalog = "atlas"
             };
-
             var manager = DatabaseFactory.Create(DatabaseFactory.ManagerType.MSSQL, cb.ConnectionString);
             manager.GetConnection();
 

@@ -235,6 +235,10 @@
       <Project>{1bef7d41-0167-4db5-9119-3889c0020363}</Project>
       <Name>Atlas2.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Backend\Backend.csproj">
+      <Project>{d90b5572-27f5-446d-a0a2-72a01df37e21}</Project>
+      <Name>Backend</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -22,7 +22,6 @@ namespace CTG.Database.Communicate
                 Password = "Kevin#321",
                 InitialCatalog = "atlas"
             };
-
             var manager = DatabaseFactory.Create(DatabaseFactory.ManagerType.MSSQL, cb.ConnectionString);
             manager.GetConnection();
 
@@ -32,7 +31,7 @@ namespace CTG.Database.Communicate
             MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
             Query query = QBuilder.BuildInsertQuery("users", values);
             manager.ExecuteNonQueryAsync(manager.GetConnection(), query.QueryString, query.Parameters).Wait();
-            manager.getConnection.close();
+            manager.GetConnection().Close();
         }
 
         public static Boolean notDuplicate(string username)
@@ -44,7 +43,6 @@ namespace CTG.Database.Communicate
                 Password = "Kevin#321",
                 InitialCatalog = "atlas"
             };
-
             var manager = DatabaseFactory.Create(DatabaseFactory.ManagerType.MSSQL, cb.ConnectionString);
             manager.GetConnection();
 
@@ -52,10 +50,13 @@ namespace CTG.Database.Communicate
             for (int i = 0; i < userNames.Count; i++)
             {
                 if (username.Equals(userNames[i]))
+                {
                     userNameExixts = true;
+                    break;
+                }
             }
 
-            manager.getConnection.close();
+            manager.GetConnection().Close();
             return userNameExixts;
         }
 
