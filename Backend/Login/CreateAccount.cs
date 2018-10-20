@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using CTG.Database.Models;
+using CTG.Database.MSSQL;
 
 namespace CTG.Database.Communicate
 {
     class CreateAccount
-    {  
+    {
         static Boolean userNameExixts = false;
         static ArrayList userNames = new ArrayList();
 
@@ -27,13 +29,23 @@ namespace CTG.Database.Communicate
             var UN = new KeyValuePair<string, object>("userName", username);
             var HS = new KeyValuePair<String, Object>("hashString", password);
             var values = new[] { UN, HS };
-            Query query = QueryBuilder.BuildInsertQuery("users", values);
+            MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
+            Query query = QBuilder.BuildInsertQuery("users", values);
             manager.ExecuteNonQueryAsync(manager.GetConnection(), query.QueryString, query.Parameters).Wait();
+            manager.getConnection.close();
         }
 
         public static Boolean notDuplicate(string username)
         {
-            MySqlDatabaseManager manager = new MySqlDatabaseManager("server=localhost;database=atlas;uid=kevin;password=kevin");
+            var cb = new SqlConnectionStringBuilder
+            {
+                DataSource = "atlas-dev-server.database.windows.net",
+                UserID = "kevinH",
+                Password = "Kevin#321",
+                InitialCatalog = "atlas"
+            };
+
+            var manager = DatabaseFactory.Create(DatabaseFactory.ManagerType.MSSQL, cb.ConnectionString);
             manager.GetConnection();
 
             getUserNames(manager).Wait();
@@ -43,17 +55,16 @@ namespace CTG.Database.Communicate
                     userNameExixts = true;
             }
 
+            manager.getConnection.close();
             return userNameExixts;
         }
 
-        public static async Task getUserNames(MySqlDatabaseManager manager)
+        public static async Task getUserNames(IDatabaseManager manager)
         {
-            using (var reader = await manager.ExecuteReaderAsync(manager.GetConnection(), "SELECT * from users"))
+            var table = await manager.ExecuteTableAsync(manager.GetConnection(), "SELECT * from users");
+            for (int i = 0; i < table.Length; i++)
             {
-                while (reader.Read())
-                {
-                    userNames.Add(reader[0]);
-                }
+                userNames.Add(table[i][0]);
             }
         }
     }
