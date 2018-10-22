@@ -1,6 +1,7 @@
-﻿using CTG.Database.Models;
-using System;
+﻿using System;
 using System.Data.SqlClient;
+using CTG.Database.Models;
+using Backend.Login;
 
 namespace Backend.Testing
 {
@@ -20,12 +21,12 @@ namespace Backend.Testing
                 var manager = DatabaseFactory.Create(DatabaseFactory.ManagerType.MSSQL, cb.ConnectionString);
                 manager.GetConnection();
                 Console.WriteLine("Connection Successful");
-                Console.Read();
             }
             catch (Exception ex)
             {
                 Console.Error.Write(ex.Message);
             }
+
             Console.ReadKey();
         }
     }

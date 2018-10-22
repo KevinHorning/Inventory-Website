@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using CTG.Database;
 using CTG.Database.Models;
 using CTG.Database.MSSQL;
 
-namespace CTG.Database.Communicate
+namespace Backend.Login
 {
     class CreateAccount
     {

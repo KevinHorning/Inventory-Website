@@ -24,18 +24,18 @@ namespace Atlas2.Controllers
         [Route("")]
         public HttpResponseMessage LogInRequest(Account model)
         {
-            String hashed = GenerateSHA256String(model.Password); 
+            String hashed = GenerateSHA256String(model.Password);
 
-            if(Login.Authenticate(model.Username, model.Password).Item1 == true)
+            if (Login.Authenticate(model.Username, hashed).Item1 == true)
                 return Request.CreateResponse(HttpStatusCode.OK, model.Username + "Log In Successful.");
             else
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful. " + Login.Authenticate(model.Username, model.Password).Item2);      
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful. " + Login.Authenticate(model.Username, hashed).Item2);
         }
 
         public static string GenerateSHA256String(string inputString)
         {
             SHA256 sha256Hash = SHA256.Create();
-            byte[] data = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes("inputString"));
+            byte[] data = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(inputString));
 
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < data.Length; i++)
