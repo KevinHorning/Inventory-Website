@@ -16,11 +16,15 @@ namespace Backend.Testing
                 Console.Error.Write(ex.Message);
             }
 
+            //Parts.AddPart.addPart("Screw Kit", "16841384", 7, 0).Wait();
+
+            
             object[] headers = Shared.TableData.GetTableData("parts").Item2;
             for (int i = 0; i < headers.Length; i++)
             {
                 Console.WriteLine(headers[i]);
             }
+            
 
             Console.ReadKey();
         }
