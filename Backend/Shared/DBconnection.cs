@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace Backend.Shared
 {
-    class Connection
+    class DBconnection
     {      
         public static IDatabaseManager GetManager()
         {

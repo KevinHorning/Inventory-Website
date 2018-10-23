@@ -16,7 +16,7 @@ namespace Backend.Login
         //TODO: character restrictions
         public static void EnterInfo(string userName, string hashedString)
         {
-            var DatabaseManager = Shared.Connection.GetManager();
+            var DatabaseManager = Shared.DBconnection.GetManager();
 
             var UN = new KeyValuePair<string, object>("userName", userName);
             var HS = new KeyValuePair<String, Object>("hashString", hashedString);
@@ -29,7 +29,7 @@ namespace Backend.Login
 
         public static Boolean NotDuplicate(string userName)
         {
-            var DatabaseManager = Shared.Connection.GetManager();
+            var DatabaseManager = Shared.DBconnection.GetManager();
 
             getUserNames(DatabaseManager).Wait();
             for (int i = 0; i < userNames.Count; i++)

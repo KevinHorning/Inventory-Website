@@ -22,7 +22,7 @@ namespace Backend.Login
 
         public static async Task Synchronize(string userName, string hashPass)
         {
-            var DatabaseManager = Shared.Connection.GetManager();
+            var DatabaseManager = Shared.DBconnection.GetManager();
 
             MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
             Query query = QBuilder.BuildQuery("users", new[] { "userName", "hashString" });
