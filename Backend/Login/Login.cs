@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using CTG.Database;
-using CTG.Database.Models;
 using CTG.Database.MSSQL;
-using System.IO;
 
 namespace Backend.Login
 {
 
     public class Login
     {
-        static Boolean usernameExists;
-        static Boolean hashPassExists;
-        static Boolean comboExists;
-        static String message = "";
+        private static Boolean usernameExists;
+        private static Boolean hashPassExists;
+        private static Boolean comboExists;
+        private static String message = "";
 
         //TODO: add admin version 
         public static Tuple<Boolean, String> Authenticate(string userName, string hashPass)
@@ -25,19 +22,11 @@ namespace Backend.Login
 
         public static async Task Synchronize(string userName, string hashPass)
         {
-            var cb = new SqlConnectionStringBuilder
-            {
-                DataSource = "atlas-dev-server.database.windows.net",
-                UserID = "kevinH",
-                Password = "Kevin#321",
-                InitialCatalog = "atlas"
-            };
-            var manager = DatabaseFactory.Create(DatabaseFactory.ManagerType.MSSQL, cb.ConnectionString);
-            manager.GetConnection();
+            var DatabaseManager = Shared.Connection.GetManager();
 
             MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
             Query query = QBuilder.BuildQuery("users", new[] { "userName", "hashString" });
-            object[][] table = await manager.ExecuteTableAsync(manager.GetConnection(), query.QueryString).ConfigureAwait(false);
+            object[][] table = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), query.QueryString).ConfigureAwait(false);
 
             if (table.Length == 0)
                 message = "No users in database.";
@@ -64,37 +53,7 @@ namespace Backend.Login
             else
                 message = "Username and password not found";
 
-            manager.GetConnection().Close();
-        }
-
-        static async Task<int> HandleFileAsync()
-        {
-            string file = @"D:\Programs\SteamLibrary\steamapps\common\PUBG_Test";
-            Console.WriteLine("HandleFile enter");
-            int count = 0;
-
-            // Read in the specified file.
-            // ... Use async StreamReader method.
-            using (StreamReader reader = new StreamReader(file))
-            {
-                string v = await reader.ReadToEndAsync();
-
-                // ... Process the file data somehow.
-                count += v.Length;
-
-                // ... A slow-running computation.
-                //     Dummy code.
-                for (int i = 0; i < 10000; i++)
-                {
-                    int x = v.GetHashCode();
-                    if (x == 0)
-                    {
-                        count--;
-                    }
-                }
-            }
-            Console.WriteLine("HandleFile exit");
-            return count;
+            DatabaseManager.GetConnection().Close();
         }
     }
 }

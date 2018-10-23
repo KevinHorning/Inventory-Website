@@ -27,6 +27,12 @@ namespace Backend.Testing
                 Console.Error.Write(ex.Message);
             }
 
+            object[] headers = Parts.PartsTable.GetPartsTableData().Item2;
+            for (int i = 0; i < headers.Length; i++)
+            {
+                Console.WriteLine(headers[i]);
+            } 
+
             Console.ReadKey();
         }
     }
