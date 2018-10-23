@@ -25,19 +25,25 @@ public partial class LogIn : LogInBase
 
 public override void Execute()
 {
-WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\n    <meta");
+WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\r\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
 WriteLiteral(" content=\"width=device-width\"");
 
-WriteLiteral(" />\n\n    <script");
+WriteLiteral(" />\r\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-WriteLiteral("></script>\n\n    <title></title>\n</head>\n<body>\n    <div>\n        <h2");
+WriteLiteral("></script>\r\n    <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
+
+WriteLiteral("></script>\r\n    <title></title>\r\n</head>\n<body>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"MainLbl\"");
 

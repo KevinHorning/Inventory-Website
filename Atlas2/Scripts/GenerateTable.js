@@ -16,9 +16,9 @@
                 var current = data.Data[i];
                 var row = table.insertRow(-1);
 
-                for (var header = 0; header < data.Headers.length; header++) {
+                for (var j = 0; j < data.Headers.length; j++) {
                     var cell = document.createElement("td");
-                    cell.innerHTML = current[data.Headers[header]];
+                    cell.innerHTML = current[data.Headers[j]];
                     row.appendChild(cell);
                 }
             }

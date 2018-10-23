@@ -14,6 +14,7 @@ namespace Atlas2.Controllers
         [Route("table")]
         public HttpResponseMessage TableInfo()
         {
+            //todo Change current return statment to return Request.CreateResponse(HttpStatusCode.OK, SqlMethod());
             return Request.CreateResponse(HttpStatusCode.OK,
                 new TableResponse<Contact>
                 {
@@ -48,6 +49,102 @@ namespace Atlas2.Controllers
                             Id = 3,
                             Name = "Test Name 3",
                             Phone = "777-777-7773"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
+                        },
+                        new Contact
+                        {
+                            Address = "test address 4",
+                            Email = "test@email4.com",
+                            Id = 4,
+                            Name = "Test Name 4",
+                            Phone = "777-777-7774"
                         },
                         new Contact
                         {
