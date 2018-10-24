@@ -13,4 +13,12 @@
     <PackageReference Include="MySql.Data" Version="8.0.12" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Communicate\Template.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Communicate\Template.cs" />
+    <Compile Remove="Communicate\EmptyClass.cs" />
+    <Compile Remove="Communicate\Contacts.cs" />
+  </ItemGroup>
 </Project>

@@ -29,5 +29,10 @@ namespace Atlas2.Controllers
         {
             return View();
         }
+
+        public ActionResult Table()
+        {
+            return View();
+        }
     }
 }

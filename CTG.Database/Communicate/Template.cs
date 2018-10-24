@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Atlas2.Views.Default
+namespace CTG.Database.Communicate
 {
 using System;
 using System.Collections.Generic;
@@ -18,93 +18,20 @@ using System.Text;
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorTemplatePreprocessor", "2.6.0.0")]
-public partial class Equipment : EquipmentBase
+public partial class Template : TemplateBase
 {
 
 #line hidden
 
 public override void Execute()
 {
-WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\n    <meta");
-
-WriteLiteral(" name=\"viewport\"");
-
-WriteLiteral(" content=\"width=device-width\"");
-
-WriteLiteral(" />\n\n    <script");
-
-WriteLiteral(" type=\"text/javascript\"");
-
-WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
-
-WriteLiteral(@"></script>
-
-    <title></title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-            .topnav a {
-                 float: left;
-                 color: #f2f2f2;
-                 text-align: center;
-                 padding: 14px 16px;
-                 text-decoration: none;
-                 font-size: 17px;
-                
-            }
-
-                .topnav a:hover {
-                     background-color: #ddd;
-                     color: black;            
-                }
-
-                .topnav a.active {
-                    background-color: #4CAF50;
-                    color: white;
-                }
-    </style>
-</head>
-<body>
-    <div");
-
-WriteLiteral(" class=\"topnav\"");
-
-WriteLiteral(">\n        <a");
-
-WriteLiteral(" href=\"Inventory\"");
-
-WriteLiteral(">Inventory</a>\n        <a");
-
-WriteLiteral(" class=\"active\"");
-
-WriteLiteral(" href=\"Equipment\"");
-
-WriteLiteral(">Equipment</a>\n        <a");
-
-WriteLiteral(" href=\"Contacts\"");
-
-WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
-
-WriteLiteral(" id=\"Mainlbl\"");
-
-WriteLiteral(">Equipment Page</h2>\n    </div>\n</body>\n</html>");
-
 }
 }
 
 // NOTE: this is the default generated helper class. You may choose to extract it to a separate file 
 // in order to customize it or share it between multiple templates, and specify the template's base 
 // class via the @inherits directive.
-public abstract class EquipmentBase
+public abstract class TemplateBase
 {
 
 		// This field is OPTIONAL, but used by the default implementation of Generate, Write, WriteAttribute and WriteLiteral
