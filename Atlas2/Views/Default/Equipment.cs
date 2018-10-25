@@ -37,6 +37,12 @@ WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
+WriteLiteral("></script>\n\n    <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
+
 WriteLiteral(@"></script>
 
     <title></title>
@@ -47,29 +53,57 @@ WriteLiteral(@"></script>
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        h2 {
+            padding-left: 15px;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+            table th {
+                background-color: #F7F7F7;
+                color: #333;
+                font-weight: bold;
+                text-align: left;
+            }
+
+            table th, table td {
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+
+
         .topnav {
             overflow: hidden;
-            background-color: #333;
+            background-color: #25275A;
         }
 
             .topnav a {
-                 float: left;
-                 color: #f2f2f2;
-                 text-align: center;
-                 padding: 14px 16px;
-                 text-decoration: none;
-                 font-size: 17px;
-                
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
             }
 
                 .topnav a:hover {
-                     background-color: #ddd;
-                     color: black;            
+                    background-color: #B0EEFA;
+                    color: black;
                 }
 
                 .topnav a.active {
-                    background-color: #4CAF50;
-                    color: white;
+                    background-color: #7ED8F9;
+                    color: #343E46;
                 }
     </style>
 </head>
@@ -96,7 +130,93 @@ WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Equipment Page</h2>\n    </div>\n</body>\n</html>");
+WriteLiteral(">Equipment Page</h2>\n        <label");
+
+WriteLiteral(" id=\"Srchlbl\"");
+
+WriteLiteral(" style=\"padding-left: 15px\"");
+
+WriteLiteral(">Keyword: </label>\n        <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"SearchBox\"");
+
+WriteLiteral(@" style=""
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url(Downloads/searchicon.png);
+            background-position: 10px 10px; 
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px; }""");
+
+WriteLiteral(" placeholder=\"Search...\"");
+
+WriteLiteral("/><br />\n        <label");
+
+WriteLiteral(" id=\"Categorylbl\"");
+
+WriteLiteral(" style=\"padding-left: 15px\"");
+
+WriteLiteral(">Category: </label>\n        <select");
+
+WriteLiteral(" id=\"Category\"");
+
+WriteLiteral(">\n            <option");
+
+WriteLiteral(" value=\"All\"");
+
+WriteLiteral(">All</option>\n            <option");
+
+WriteLiteral(" value=\"Id\"");
+
+WriteLiteral(">Id</option>\n            <option");
+
+WriteLiteral(" value=\"SKU\"");
+
+WriteLiteral(">SKU</option>\n            <option");
+
+WriteLiteral(" value=\"Serial\"");
+
+WriteLiteral(">Serial Number</option>\n            <option");
+
+WriteLiteral(" value=\"Location\"");
+
+WriteLiteral(">Location</option>\n        </select>\n        <button");
+
+WriteLiteral(" id=\"SearchButton\"");
+
+WriteLiteral(">Search</button>\n        <div");
+
+WriteLiteral(" id=\"divTable\"");
+
+WriteLiteral("></div>\n        <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(@">
+            GenerateTable(""/api/Equipment/table/"");
+            $(""#SearchButton"").click(function() {
+                var model = {
+                    Username: $(""#SearchBox"").val(),
+                    Password: $(""#Category"").val()
+                };
+                $.post(""/api/Equipment/SearchRequest"", model)
+                    .done(function (data) {
+                        GenerateTable(""/api/Equipment/SearchInfo/"");
+                    })
+                    .fail(function() {
+                        alert(""error"");
+                    });
+            });     
+        </script>
+    </div>
+</body>
+</html>");
 
 }
 }

@@ -1,5 +1,5 @@
-﻿function GenerateTable() {
-        $.get( "/api/Contacts/table/", function(data) {
+﻿function GenerateTable(url) {
+        $.get(url, function(data) {
             
             var table = document.createElement("TABLE");
             table.border = "1";

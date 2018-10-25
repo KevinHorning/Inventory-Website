@@ -1,25 +1,24 @@
-﻿using Atlas2.Models;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Atlas2.Models;
 
 namespace Atlas2.Controllers
 {
-
     [RoutePrefix("api/Contacts")]
     public class ContactsController : ApiController
     {
-
         [HttpGet]
         [Route("table")]
         public HttpResponseMessage TableInfo()
         {
-            //todo Change current return statment to return Request.CreateResponse(HttpStatusCode.OK, SqlMethod());
+            //return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.TableData.GetTableData("contact"));
             return Request.CreateResponse(HttpStatusCode.OK,
                 new TableResponse<Contact>
                 {
-                    Headers = new[]
-                    {
+                Headers = new[] 
+                {
+                        "Id",
                         "Name",
                         "Address",
                         "Email",
@@ -34,7 +33,8 @@ namespace Atlas2.Controllers
                             Id = 1,
                             Name = "Test Name",
                             Phone = "777-777-7777"
-                        },new Contact
+                        },
+                        new Contact
                         {
                             Address = "test address 2",
                             Email = "test@email12.com",
@@ -57,105 +57,9 @@ namespace Atlas2.Controllers
                             Id = 4,
                             Name = "Test Name 4",
                             Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
-                        },
-                        new Contact
-                        {
-                            Address = "test address 4",
-                            Email = "test@email4.com",
-                            Id = 4,
-                            Name = "Test Name 4",
-                            Phone = "777-777-7774"
                         }
                     }
                 });
-          }
+            }
     }
 }

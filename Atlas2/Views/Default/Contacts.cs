@@ -74,6 +74,7 @@ WriteLiteral(@"></script>
                 padding: 15px;
                 text-align: left;
                 border-bottom: 1px solid #ddd;
+                text-overflow: ellipsis;
             }
 
             tr:hover {
@@ -130,7 +131,67 @@ WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Contacts Page</h2>\n        <div");
+WriteLiteral(">Contacts Page</h2>\n        <label");
+
+WriteLiteral(" id=\"Srchlbl\"");
+
+WriteLiteral(" style=\"padding-left: 15px\"");
+
+WriteLiteral(">Keyword: </label>\n        <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"SearchBox\"");
+
+WriteLiteral(@" style=""
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url(Downloads/searchicon.png);
+            background-position: 10px 10px; 
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px; }""");
+
+WriteLiteral(" placeholder=\"Search...\"");
+
+WriteLiteral("/><br />\n        <label");
+
+WriteLiteral(" id=\"Categorylbl\"");
+
+WriteLiteral(" style=\"padding-left: 15px\"");
+
+WriteLiteral(">Category: </label>\n        <select");
+
+WriteLiteral(" id=\"Category\"");
+
+WriteLiteral(">\r\n            <option");
+
+WriteLiteral(" value=\"All\"");
+
+WriteLiteral(">All</option>\r\n            <option");
+
+WriteLiteral(" value=\"Id\"");
+
+WriteLiteral(">Id</option>\n            <option");
+
+WriteLiteral(" value=\"Name\"");
+
+WriteLiteral(">Name</option>\r\n            <option");
+
+WriteLiteral(" value=\"Phone\"");
+
+WriteLiteral(">Phone</option>\r\n            <option");
+
+WriteLiteral(" value=\"Email\"");
+
+WriteLiteral(">Email</option>\r\n        </select>\n        <button");
+
+WriteLiteral(" id=\"SearchButton\"");
+
+WriteLiteral(">Search</button>\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
@@ -138,7 +199,25 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(">\n            GenerateTable();\n        </script>\n    </div>\n</body>\n</html>");
+WriteLiteral(@">
+            GenerateTable(""/api/Contacts/table/"");
+            $(""#SearchButton"").click(function() {
+                var model = {
+                    Username: $(""#SearchBox"").val(),
+                    Password: $(""#Category"").val()
+                };
+                $.post(""/api/Contact/SearchRequest"", model)
+                    .done(function (data) {
+                        GenerateTable(""/api/Contact/SearchInfo/"");
+                    })
+                    .fail(function() {
+                        alert(""error"");
+                    });
+            });     
+        </script>
+    </div>
+</body>
+</html>");
 
 }
 }

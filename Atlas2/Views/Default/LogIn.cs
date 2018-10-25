@@ -25,25 +25,52 @@ public partial class LogIn : LogInBase
 
 public override void Execute()
 {
-WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\r\n    <meta");
+WriteLiteral("<!DOCTYPE html>\n<html>\n<head>\n    <meta");
 
 WriteLiteral(" name=\"viewport\"");
 
 WriteLiteral(" content=\"width=device-width\"");
 
-WriteLiteral(" />\r\n    <script");
+WriteLiteral(" />\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-WriteLiteral("></script>\r\n    <script");
+WriteLiteral("></script>\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
 
-WriteLiteral("></script>\r\n    <title></title>\r\n</head>\n<body>\n    <div>\n        <h2");
+WriteLiteral(@"></script>
+    <title></title>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+        }
+    </style>
+</head>
+<body>
+    <div");
+
+WriteLiteral(" class=\"center\"");
+
+WriteLiteral(">\n        <h2");
 
 WriteLiteral(" id=\"MainLbl\"");
 
@@ -57,9 +84,7 @@ WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" id=\"Username\"");
 
-WriteLiteral(" style=\"width: 120px; height: 30px;\"");
-
-WriteLiteral(" />\n        <br />\n        <label");
+WriteLiteral("/>\n        <br />\n        <label");
 
 WriteLiteral(" id=\"Pwlbl\"");
 
@@ -69,9 +94,7 @@ WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" id=\"Password\"");
 
-WriteLiteral(" style=\"width: 120px; height: 30px;\"");
-
-WriteLiteral(" />\n        <br />\n        <button");
+WriteLiteral("/>\n        <br />\n        <button");
 
 WriteLiteral(" id=\"LogIn\"");
 
@@ -104,6 +127,7 @@ WriteLiteral(@">Register</button>
                             alert(""error"");
                         });
                 });
+            });
 
             //test();
             

@@ -5,15 +5,34 @@
     <script type="text/javascript" src="/Scripts/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/Scripts/GenerateTable.js"></script>
     <title></title>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+        }
+    </style>
 </head>
 <body>
-    <div>
+    <div class="center">
         <h2 id="MainLbl">Log In Page</h2>
         <label id="Unlbl">Username: </label>
-        <input type="text" id="Username" style="width: 120px; height: 30px;" />
+        <input type="text" id="Username"/>
         <br />
         <label id="Pwlbl">Password:  </label>
-        <input type="text" id="Password" style="width: 120px; height: 30px;" />
+        <input type="text" id="Password"/>
         <br />
         <button id="LogIn">Log In</button>
         <button id="Register">Register</button>
@@ -41,6 +60,7 @@
                             alert("error");
                         });
                 });
+            });
 
             //test();
             
