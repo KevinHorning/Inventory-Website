@@ -103,12 +103,12 @@
             GenerateTable("/api/Inventory/table/");
             $("#SearchButton").click(function() {
                 var model = {
-                    Username: $("#SearchBox").val(),
-                    Password: $("#Category").val()
+                    Search: $("#SearchBox").val(),
+                    Category: $("#Category").val()
                 };
-                $.post("/api/Inventory/SearchRequest", model)
+                $.post("/api/Inventory/searchRequest", model)
                     .done(function (data) {
-                        GenerateTable("/api/Invetory/SearchInfo/");
+                        GenerateTable();
                     })
                     .fail(function() {
                         alert("error");

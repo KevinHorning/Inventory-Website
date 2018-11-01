@@ -12,9 +12,13 @@
                 row.appendChild(cell);
             }
 
+            var tableBody = document.createElement("tbody");
+            tableBody.setAttribute("id", "TableBody");
+            table.appendChild(tableBody);
+
             for (var i = 0; i < data.Data.length; i++) {
                 var current = data.Data[i];
-                var row = table.insertRow(-1);
+                var row = tableBody.insertRow(-1);
 
                 for (var j = 0; j < data.Headers.length; j++) {
                     var cell = document.createElement("td");

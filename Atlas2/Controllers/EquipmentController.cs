@@ -13,5 +13,12 @@ namespace Atlas2.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.TableData.getTableData("equipment"));
         }
+
+        //[HttpPost]
+        //[Route("searchRequest")]
+        //public HttpRequestMessage SearchInfo(SearchFilter model)
+        //{
+        //    return Request.CreateResponseResponse(HttpStatusCode.OK, DatabaseTableResultMethod("equipment", model));
+        //}
     }
 }

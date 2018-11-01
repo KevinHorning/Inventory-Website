@@ -61,5 +61,12 @@ namespace Atlas2.Controllers
                     }
                 });
             }
+
+        //[HttpPost]
+        //[Route("searchRequest")]
+        //public HttpRequestMessage SearchInfo(Searchfilter model)
+        //{
+        //    return Request.CreateResponseResponse(HttpStatusCode.OK, DatabaseTableResultMethod("contact", model));
+        //}
     }
 }
