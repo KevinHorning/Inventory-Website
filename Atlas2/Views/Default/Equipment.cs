@@ -43,72 +43,32 @@ WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
 
-WriteLiteral(@"></script>
+WriteLiteral("></script>\n\n    <title></title>\n\n    <script");
 
-    <title></title>
+WriteLiteral(" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"");
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        h2 {
-            padding-left: 15px;
-        }
-
-        table {
-            border: 1px solid #ccc;
-            border-collapse: collapse;
-            width: 80%;
-        }
-
-            table th {
-                background-color: #F7F7F7;
-                color: #333;
-                font-weight: bold;
-                text-align: left;
-            }
-
-            table th, table td {
-                padding: 15px;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-            }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-
-
-        .topnav {
-            overflow: hidden;
-            background-color: #25275A;
-        }
-
-            .topnav a {
-                float: left;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
-            }
-
-                .topnav a:hover {
-                    background-color: #B0EEFA;
-                    color: black;
-                }
-
-                .topnav a.active {
-                    background-color: #7ED8F9;
-                    color: #343E46;
-                }
-    </style>
-</head>
-<body>
-    <div");
+WriteLiteral("></script>\n    <script>\n        $(document).ready(function(){\n            $(\"#Sea" +
+"rchBox\").on(\"keyup\", function() {\n                var value = $(this).val().toLo" +
+"werCase();\n                $(\"#TableBody tr\").filter(function() {\n              " +
+"      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\n         " +
+"       });\n            });\n        });\n    </script>\n\n    <style>\n        body {" +
+"\n            margin: 0;\n            font-family: Arial, Helvetica, sans-serif;\n " +
+"       }\n\n        h2 {\n            padding-left: 15px;\n        }\n\n        table " +
+"{\n            border: 1px solid #ccc;\n            border-collapse: collapse;\n   " +
+"         width: 80%;\n        }\n\n            table th {\n                backgroun" +
+"d-color: #F7F7F7;\n                color: #333;\n                font-weight: bold" +
+";\n                text-align: left;\n            }\n\n            table th, table t" +
+"d {\n                padding: 15px;\n                text-align: left;\n           " +
+"     border-bottom: 1px solid #ddd;\n            }\n\n        tr:hover {\n          " +
+"  background-color: #f5f5f5;\n        }\n\n\n\n        .topnav {\n            overflow" +
+": hidden;\n            background-color: #25275A;\n        }\n\n            .topnav " +
+"a {\n                float: left;\n                color: #f2f2f2;\n               " +
+" text-align: center;\n                padding: 14px 16px;\n                text-de" +
+"coration: none;\n                font-size: 17px;\n            }\n\n                " +
+".topnav a:hover {\n                    background-color: #B0EEFA;\n               " +
+"     color: black;\n                }\n\n                .topnav a.active {\n       " +
+"             background-color: #7ED8F9;\n                    color: #343E46;\n    " +
+"            }\n    </style>\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
