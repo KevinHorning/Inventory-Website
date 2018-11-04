@@ -43,33 +43,53 @@ WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
 
-WriteLiteral("></script>\n\n    <title></title>\n\n    <script");
+WriteLiteral("></script>\n\n    <title></title>\n    \n    <script");
 
 WriteLiteral(" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"");
 
-WriteLiteral("></script>\n    <script>\n        $(document).ready(function(){\n            $(\"#Sea" +
-"rchBox\").on(\"keyup\", function() {\n                var value = $(this).val().toLo" +
-"werCase();\n                $(\"#TableBody tr\").filter(function() {\n              " +
-"      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\n         " +
-"       });\n            });\n        });\n    </script>\n\n    <style>\n        body {" +
-"\n            margin: 0;\n            font-family: Arial, Helvetica, sans-serif;\n " +
-"       }\n\n        h2 {\n            padding-left: 15px;\n        }\n\n        table " +
-"{\n            border: 1px solid #ccc;\n            border-collapse: collapse;\n   " +
-"         width: 80%;\n        }\n\n            table th {\n                backgroun" +
-"d-color: #F7F7F7;\n                color: #333;\n                font-weight: bold" +
-";\n                text-align: left;\n            }\n\n            table th, table t" +
-"d {\n                padding: 15px;\n                text-align: left;\n           " +
-"     border-bottom: 1px solid #ddd;\n                text-overflow: ellipsis;\n   " +
-"         }\n\n            tr:hover {\n                background-color: #f5f5f5;\n  " +
-"          }\n\n\n\n        .topnav {\n            overflow: hidden;\n            backg" +
-"round-color: #25275A;\n        }\n\n            .topnav a {\n                float: " +
-"left;\n                color: #f2f2f2;\n                text-align: center;\n      " +
-"          padding: 14px 16px;\n                text-decoration: none;\n           " +
-"     font-size: 17px;\n            }\n\n                .topnav a:hover {\n         " +
-"           background-color: #B0EEFA;\n                    color: black;\n        " +
-"        }\n\n                .topnav a.active {\n                    background-col" +
-"or: #7ED8F9;\n                    color: #343E46;\n                }\n    </style>\n" +
-"</head>\n<body>\n    <div");
+WriteLiteral("></script>\n    \n    <script>\n        $(document).ready(function(){\n            $(" +
+"\"#SearchBox\").on(\"keyup\", function() {\n                var value = $(this).val()" +
+".toLowerCase();\n                $(\"#TableBody tr\").filter(function() {\n         " +
+"           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\n    " +
+"            });\n            });\n        });\n    </script>\n\n    <style>\n        b" +
+"ody {\n            margin: 0;\n            font-family: Arial, Helvetica, sans-ser" +
+"if;\n        }\n\n        h2 {\n            padding-left: 15px;\n        }\n\n        t" +
+"able {\n            border: 1px solid #ccc;\n            border-collapse: collapse" +
+";\n            width: 80%;\n        }\n\n            table th {\n                back" +
+"ground-color: #F7F7F7;\n                color: #333;\n                font-weight:" +
+" bold;\n                text-align: left;\n            }\n\n            table th, ta" +
+"ble td {\n                padding: 15px;\n                text-align: left;\n      " +
+"          border-bottom: 1px solid #ddd;\n                text-overflow: ellipsis" +
+";\n            }\n\n            tr:hover {\n                background-color: #f5f5f" +
+"5;\n            }\n\n        .topnav {\n            overflow: hidden;\n            ba" +
+"ckground-color: #25275A;\n        }\n\n            .topnav a {\n                floa" +
+"t: left;\n                color: #f2f2f2;\n                text-align: center;\n   " +
+"             padding: 14px 16px;\n                text-decoration: none;\n        " +
+"        font-size: 17px;\n            }\n\n                .topnav a:hover {\n      " +
+"              background-color: #B0EEFA;\n                    color: black;\n     " +
+"           }\n\n                .topnav a.active {\n                    background-" +
+"color: #7ED8F9;\n                    color: #343E46;\n                }\r\n        \r" +
+"\n        .modal {\r\n            display: none; /* Hidden by default */\r\n         " +
+"   position: fixed; /* Stay in place */\r\n            z-index: 1; /* Sit on top *" +
+"/\r\n            padding-top: 100px; /* Location of the box */\r\n            left: " +
+"0;\r\n            top: 0;\r\n            width: 100%; /* Full width */\r\n            " +
+"height: 100%; /* Full height */\r\n            overflow: auto; /* Enable scroll if" +
+" needed */\r\n            background-color: rgb(0,0,0); /* Fallback color */\r\n    " +
+"        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n        }\r\n  " +
+"      \r\n        .modal-content {\r\n            background-color: #fefefe;\r\n      " +
+"      margin: auto;\r\n            padding: 20px;\r\n            border: 1px solid #" +
+"888;\r\n            width: 80%;\r\n        }\r\n\r\n        .modal input[type=text], sel" +
+"ect, textarea {\r\n            width: 100%; /* Full width */\r\n            padding:" +
+" 12px; /* Some padding */\r\n            border: 1px solid #ccc; /* Gray border */" +
+"\r\n            border-radius: 4px; /* Rounded borders */\r\n            box-sizing:" +
+" border-box; /* Make sure that padding and width stays in place */\r\n            " +
+"margin-top: 6px; /* Add a top margin */\r\n            margin-bottom: 16px; /* Bot" +
+"tom margin */\r\n            resize: vertical /* Allow the user to vertically resi" +
+"ze the textarea (not horizontally) */\r\n        }\n        \r\n        .close {\r\n   " +
+"         color: #aaaaaa;\r\n            float: right;\r\n            font-size: 28px" +
+";\r\n            font-weight: bold;\r\n        }\r\n\r\n        .close:hover,\r\n        ." +
+"close:focus {\r\n            color: #000;\r\n            text-decoration: none;\r\n   " +
+"         cursor: pointer;\r\n        }\n    </style>\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -87,7 +107,46 @@ WriteLiteral(" class=\"active\"");
 
 WriteLiteral(" href=\"Contacts\"");
 
-WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
+WriteLiteral(">Contacts</a>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"myModal\"");
+
+WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\r\n            <p>Edit Contact</p>\r\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\r\n                <label>Name</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\n            " +
+"<div");
+
+WriteLiteral(" id=\"popupContent\"");
+
+WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
@@ -127,6 +186,8 @@ WriteLiteral(">Category: </label>\n        <select");
 
 WriteLiteral(" id=\"Category\"");
 
+WriteLiteral(" style=\"width: 100px\"");
+
 WriteLiteral(">\n            <option");
 
 WriteLiteral(" value=\"All\"");
@@ -151,7 +212,11 @@ WriteLiteral(">Email</option>\n        </select>\n        <button");
 
 WriteLiteral(" id=\"SearchButton\"");
 
-WriteLiteral(">Search</button>\n        <div");
+WriteLiteral(">Search</button>\n        <button");
+
+WriteLiteral(" id=\"tempButton\"");
+
+WriteLiteral(">Pop Up</button>\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
@@ -159,8 +224,7 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(@">
-            GenerateTable(""/api/Contacts/table/"");
+WriteLiteral(@">GenerateTable(""/api/Contacts/table/"");
             $(""#SearchButton"").click(function() {
                 var model = {
                     Username: $(""#SearchBox"").val(),
@@ -173,7 +237,29 @@ WriteLiteral(@">
                     .fail(function() {
                         alert(""error"");
                     });
-            });     
+            });
+
+            $(""#TableBody tr"").click(function() {
+                alert(""hello"");
+            });
+
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById(""tempButton"");
+            var span = document.getElementsByClassName(""close"")[0];
+
+            btn.onclick = function() {
+                modal.style.display = ""block"";
+            }
+
+            span.onclick = function() {
+                modal.style.display = ""none"";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = ""none"";
+                }
+            }
         </script>
     </div>
 </body>
