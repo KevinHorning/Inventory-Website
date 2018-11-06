@@ -8,7 +8,7 @@ namespace Backend.Shared
     public class TableData
     {
         public String[] Headers { get; set; }
-        public Object[] Data { get; set; }
+        public Part[] Data { get; set; }
 
         public TableData(String tableName)
         {
@@ -36,19 +36,21 @@ namespace Backend.Shared
             Query query2 = new Query { QueryString = "SELECT * FROM " + tableName };
             var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), query2.QueryString).ConfigureAwait(false);
                   
-            Backend.Parts.Part[] data = new Part[dataTable.Length];
+            Part[] data = new Part[dataTable.Length];
             for (int i = 0; i < data.Length; i++)
             {
-                data[i] = new Backend.Parts.Part
+                data[i] = new Part
                 {
-                    partID = dataTable[i][0],
-                    name = dataTable[i][1],
-                    serialNumber = dataTable[i][2],
-                    count = dataTable[i][3],
-                    partType = dataTable[i][4]
+                    partID = (int)dataTable[i][0],
+                    name = (string)dataTable[i][1],
+                    serialNumber = (string)dataTable[i][2],
+                    count = (int)dataTable[i][3],
+                    partType = (int)dataTable[i][4]
                 };
             }
             Data = data;
+
+            DatabaseManager.GetConnection().Close();
         }
     }
 }

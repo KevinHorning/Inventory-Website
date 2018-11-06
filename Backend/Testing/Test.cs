@@ -1,5 +1,6 @@
 ﻿using System;
 using Backend.Shared;
+using Backend.Parts;
 
 namespace Backend.Testing
 {
@@ -17,15 +18,23 @@ namespace Backend.Testing
                 Console.Error.Write(ex.Message);
             }
 
-            //Parts.AddPart.addPart("Screw Kit", "16841384", 7, 0).Wait();
+            Deletion.Delete("parts", 2);
 
-            TableData data = new TableData("parts");
-            //object[] headers = Shared.TableData.TableData("parts").Item2;
+            //Parts.AddPart.addPart("7mm bolt", "8948667", 52, 0).Wait();
+
+            /*
+            TableData data = TableData.getTableData("parts");
             for (int i = 0; i < data.Headers.Length; i++)
             {
-                Console.WriteLine(data.Headers[i]);
+                Console.Write(data.Headers[i] + " ");
             }
-            
+            Console.WriteLine();
+            for (int i = 0; i < data.Data.Length; i++)
+            {
+                Console.WriteLine(data.Data[i].partID + " " + data.Data[i].name + " " + data.Data[i].serialNumber + " " + data.Data[i].count + " " + data.Data[i].partType);
+            }
+            */
+
 
             Console.ReadKey();
         }
