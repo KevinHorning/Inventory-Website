@@ -68,7 +68,28 @@ WriteLiteral("></script>\n    <script>\n        $(document).ready(function(){\n 
 ".topnav a:hover {\n                    background-color: #B0EEFA;\n               " +
 "     color: black;\n                }\n\n                .topnav a.active {\n       " +
 "             background-color: #7ED8F9;\n                    color: #343E46;\n    " +
-"            }\n    </style>\n</head>\n<body>\n    <div");
+"            }\n\r\n        .modal {\r\n            display: none; /* Hidden by defaul" +
+"t */\r\n            position: fixed; /* Stay in place */\r\n            z-index: 1; " +
+"/* Sit on top */\r\n            padding-top: 100px; /* Location of the box */\r\n   " +
+"         left: 0;\r\n            top: 0;\r\n            width: 100%; /* Full width *" +
+"/\r\n            height: 100%; /* Full height */\r\n            overflow: auto; /* E" +
+"nable scroll if needed */\r\n            background-color: rgb(0,0,0); /* Fallback" +
+" color */\r\n            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */" +
+"\r\n        }\r\n\r\n        .modal-content {\r\n            background-color: #fefefe;\r" +
+"\n            margin: auto;\r\n            padding: 20px;\r\n            border: 1px " +
+"solid #888;\r\n            width: 80%;\r\n        }\r\n\r\n        .modal input[type=tex" +
+"t], select, textarea {\r\n            width: 100%; /* Full width */\r\n            p" +
+"adding: 12px; /* Some padding */\r\n            border: 1px solid #ccc; /* Gray bo" +
+"rder */\r\n            border-radius: 4px; /* Rounded borders */\r\n            box-" +
+"sizing: border-box; /* Make sure that padding and width stays in place */\r\n     " +
+"       margin-top: 6px; /* Add a top margin */\r\n            margin-bottom: 16px;" +
+" /* Bottom margin */\r\n            resize: vertical /* Allow the user to vertical" +
+"ly resize the textarea (not horizontally) */\r\n        }\r\n\r\n        .close {\r\n   " +
+"         color: #aaaaaa;\r\n            float: right;\r\n            font-size: 28px" +
+";\r\n            font-weight: bold;\r\n        }\r\n\r\n            .close:hover,\r\n     " +
+"       .close:focus {\r\n                color: #000;\r\n                text-decora" +
+"tion: none;\r\n                cursor: pointer;\r\n            }\n    </style>\n</head" +
+">\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -126,6 +147,8 @@ WriteLiteral(">Category: </label>\n        <select");
 
 WriteLiteral(" id=\"Category\"");
 
+WriteLiteral(" style=\"width: 100px\"");
+
 WriteLiteral(">\n            <option");
 
 WriteLiteral(" value=\"All\"");
@@ -150,7 +173,11 @@ WriteLiteral(">Serial Number</option>\n        </select>\n        <button");
 
 WriteLiteral(" id=\"SearchButton\"");
 
-WriteLiteral(">Search</button>\n        <div");
+WriteLiteral(">Search</button>\n        <button");
+
+WriteLiteral(" id=\"tempButton\"");
+
+WriteLiteral(">Pop Up</button>\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
@@ -158,8 +185,7 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(@">
-            GenerateTable(""/api/Inventory/table/"");
+WriteLiteral(@">GenerateTable(""/api/Inventory/table/"");
             $(""#SearchButton"").click(function() {
                 var model = {
                     Search: $(""#SearchBox"").val(),
@@ -172,7 +198,25 @@ WriteLiteral(@">
                     .fail(function() {
                         alert(""error"");
                     });
-            });     
+            });
+
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById(""tempButton"");
+            var span = document.getElementsByClassName(""close"")[0];
+
+            btn.onclick = function() {
+                modal.style.display = ""block"";
+            }
+
+            span.onclick = function() {
+                modal.style.display = ""none"";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = ""none"";
+                }
+            }
         </script>
     </div>
 </body>

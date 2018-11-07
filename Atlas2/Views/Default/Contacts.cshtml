@@ -178,7 +178,8 @@
         <button id="SearchButton">Search</button>
         <button id="tempButton">Pop Up</button>
         <div id="divTable"></div>
-        <script type="text/javascript">GenerateTable("/api/Contacts/table/");
+        <script type="text/javascript">
+            GenerateTable("/api/Contacts/table/");
             $("#SearchButton").click(function() {
                 var model = {
                     Username: $("#SearchBox").val(),

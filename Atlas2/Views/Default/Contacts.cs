@@ -224,7 +224,8 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(@">GenerateTable(""/api/Contacts/table/"");
+WriteLiteral(@">
+            GenerateTable(""/api/Contacts/table/"");
             $(""#SearchButton"").click(function() {
                 var model = {
                     Username: $(""#SearchBox"").val(),

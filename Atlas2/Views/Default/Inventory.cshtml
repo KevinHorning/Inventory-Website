@@ -79,6 +79,53 @@
                     background-color: #7ED8F9;
                     color: #343E46;
                 }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .modal input[type=text], select, textarea {
+            width: 100%; /* Full width */
+            padding: 12px; /* Some padding */
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 4px; /* Rounded borders */
+            box-sizing: border-box; /* Make sure that padding and width stays in place */
+            margin-top: 6px; /* Add a top margin */
+            margin-bottom: 16px; /* Bottom margin */
+            resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
     </style>
 </head>
 <body>
@@ -102,7 +149,7 @@
             background-repeat: no-repeat;
             padding: 12px 20px 12px 40px; }" placeholder="Search..."/><br />
         <label id="Categorylbl" style="padding-left: 15px">Category: </label>
-        <select id="Category">
+        <select id="Category" style="width: 100px">
             <option value="All">All</option>
             <option value="Id">Id</option>
             <option value="Name">Name</option>
@@ -110,9 +157,9 @@
             <option value="Serial">Serial Number</option>
         </select>
         <button id="SearchButton">Search</button>
+        <button id="tempButton">Pop Up</button>
         <div id="divTable"></div>
-        <script type="text/javascript">
-            GenerateTable("/api/Inventory/table/");
+        <script type="text/javascript">GenerateTable("/api/Inventory/table/");
             $("#SearchButton").click(function() {
                 var model = {
                     Search: $("#SearchBox").val(),
@@ -125,7 +172,25 @@
                     .fail(function() {
                         alert("error");
                     });
-            });     
+            });
+
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById("tempButton");
+            var span = document.getElementsByClassName("close")[0];
+
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         </script>
     </div>
 </body>
