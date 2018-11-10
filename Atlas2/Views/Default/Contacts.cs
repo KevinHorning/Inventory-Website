@@ -47,49 +47,45 @@ WriteLiteral("></script>\n\n    <title></title>\n    \n    <script");
 
 WriteLiteral(" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"");
 
-WriteLiteral("></script>\n    \n    <script>\n        $(document).ready(function(){\n            $(" +
-"\"#SearchBox\").on(\"keyup\", function() {\n                var value = $(this).val()" +
-".toLowerCase();\n                $(\"#TableBody tr\").filter(function() {\n         " +
-"           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\n    " +
-"            });\n            });\n        });\n    </script>\n\n    <style>\n        b" +
-"ody {\n            margin: 0;\n            font-family: Arial, Helvetica, sans-ser" +
-"if;\n        }\n\n        h2 {\n            padding-left: 15px;\n        }\n\n        t" +
-"able {\n            border: 1px solid #ccc;\n            border-collapse: collapse" +
-";\n            width: 80%;\n        }\n\n            table th {\n                back" +
-"ground-color: #F7F7F7;\n                color: #333;\n                font-weight:" +
-" bold;\n                text-align: left;\n            }\n\n            table th, ta" +
-"ble td {\n                padding: 15px;\n                text-align: left;\n      " +
-"          border-bottom: 1px solid #ddd;\n                text-overflow: ellipsis" +
-";\n            }\n\n            tr:hover {\n                background-color: #f5f5f" +
-"5;\n            }\n\n        .topnav {\n            overflow: hidden;\n            ba" +
-"ckground-color: #25275A;\n        }\n\n            .topnav a {\n                floa" +
-"t: left;\n                color: #f2f2f2;\n                text-align: center;\n   " +
-"             padding: 14px 16px;\n                text-decoration: none;\n        " +
-"        font-size: 17px;\n            }\n\n                .topnav a:hover {\n      " +
-"              background-color: #B0EEFA;\n                    color: black;\n     " +
-"           }\n\n                .topnav a.active {\n                    background-" +
-"color: #7ED8F9;\n                    color: #343E46;\n                }\r\n        \r" +
-"\n        .modal {\r\n            display: none; /* Hidden by default */\r\n         " +
-"   position: fixed; /* Stay in place */\r\n            z-index: 1; /* Sit on top *" +
-"/\r\n            padding-top: 100px; /* Location of the box */\r\n            left: " +
-"0;\r\n            top: 0;\r\n            width: 100%; /* Full width */\r\n            " +
-"height: 100%; /* Full height */\r\n            overflow: auto; /* Enable scroll if" +
-" needed */\r\n            background-color: rgb(0,0,0); /* Fallback color */\r\n    " +
-"        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\r\n        }\r\n  " +
-"      \r\n        .modal-content {\r\n            background-color: #fefefe;\r\n      " +
-"      margin: auto;\r\n            padding: 20px;\r\n            border: 1px solid #" +
-"888;\r\n            width: 80%;\r\n        }\r\n\r\n        .modal input[type=text], sel" +
-"ect, textarea {\r\n            width: 100%; /* Full width */\r\n            padding:" +
-" 12px; /* Some padding */\r\n            border: 1px solid #ccc; /* Gray border */" +
-"\r\n            border-radius: 4px; /* Rounded borders */\r\n            box-sizing:" +
-" border-box; /* Make sure that padding and width stays in place */\r\n            " +
-"margin-top: 6px; /* Add a top margin */\r\n            margin-bottom: 16px; /* Bot" +
-"tom margin */\r\n            resize: vertical /* Allow the user to vertically resi" +
-"ze the textarea (not horizontally) */\r\n        }\n        \r\n        .close {\r\n   " +
-"         color: #aaaaaa;\r\n            float: right;\r\n            font-size: 28px" +
-";\r\n            font-weight: bold;\r\n        }\r\n\r\n        .close:hover,\r\n        ." +
-"close:focus {\r\n            color: #000;\r\n            text-decoration: none;\r\n   " +
-"         cursor: pointer;\r\n        }\n    </style>\n</head>\n<body>\n    <div");
+WriteLiteral("></script>\n\n    <style>\n        body {\n            margin: 0;\n            font-fa" +
+"mily: Arial, Helvetica, sans-serif;\n        }\n\n        h2 {\n            padding-" +
+"left: 15px;\n        }\n\n        table {\n            border: 1px solid #ccc;\n     " +
+"       border-collapse: collapse;\n            width: 80%;\n        }\n\n           " +
+" table th {\n                background-color: #F7F7F7;\n                color: #3" +
+"33;\n                font-weight: bold;\n                text-align: left;\n       " +
+"     }\n\n            table th, table td {\n                padding: 15px;\n        " +
+"        text-align: left;\n                border-bottom: 1px solid #ddd;\n       " +
+"         text-overflow: ellipsis;\n            }\n\n            tr:hover {\n        " +
+"        background-color: #f5f5f5;\n            }\n\n        .topnav {\n            " +
+"overflow: hidden;\n            background-color: #25275A;\n        }\n\n            " +
+".topnav a {\n                float: left;\n                color: #f2f2f2;\n       " +
+"         text-align: center;\n                padding: 14px 16px;\n               " +
+" text-decoration: none;\n                font-size: 17px;\n            }\n\n        " +
+"        .topnav a:hover {\n                    background-color: #B0EEFA;\n       " +
+"             color: black;\n                }\n\n                .topnav a.active {" +
+"\n                    background-color: #7ED8F9;\n                    color: #343E" +
+"46;\n                }\r\n        \r\n        .modal {\r\n            display: none; /*" +
+" Hidden by default */\r\n            position: fixed; /* Stay in place */\r\n       " +
+"     z-index: 1; /* Sit on top */\r\n            padding-top: 100px; /* Location o" +
+"f the box */\r\n            left: 0;\r\n            top: 0;\r\n            width: 100%" +
+"; /* Full width */\r\n            height: 100%; /* Full height */\r\n            ove" +
+"rflow: auto; /* Enable scroll if needed */\r\n            background-color: rgb(0," +
+"0,0); /* Fallback color */\r\n            background-color: rgba(0,0,0,0.4); /* Bl" +
+"ack w/ opacity */\r\n        }\r\n        \r\n        .modal-content {\r\n            ba" +
+"ckground-color: #fefefe;\r\n            margin: auto;\r\n            padding: 20px;\r" +
+"\n            border: 1px solid #888;\r\n            width: 80%;\r\n        }\r\n\r\n    " +
+"    .modal input[type=text], select, textarea {\r\n            width: 100%; /* Ful" +
+"l width */\r\n            padding: 12px; /* Some padding */\r\n            border: 1" +
+"px solid #ccc; /* Gray border */\r\n            border-radius: 4px; /* Rounded bor" +
+"ders */\r\n            box-sizing: border-box; /* Make sure that padding and width" +
+" stays in place */\r\n            margin-top: 6px; /* Add a top margin */\r\n       " +
+"     margin-bottom: 16px; /* Bottom margin */\r\n            resize: vertical /* A" +
+"llow the user to vertically resize the textarea (not horizontally) */\r\n        }" +
+"\n        \r\n        .close {\r\n            color: #aaaaaa;\r\n            float: rig" +
+"ht;\r\n            font-size: 28px;\r\n            font-weight: bold;\r\n        }\r\n\r\n" +
+"        .close:hover,\r\n        .close:focus {\r\n            color: #000;\r\n       " +
+"     text-decoration: none;\r\n            cursor: pointer;\r\n        }\n    </style" +
+">\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -224,47 +220,28 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(@">
-            GenerateTable(""/api/Contacts/table/"");
-            $(""#SearchButton"").click(function() {
-                var model = {
-                    Username: $(""#SearchBox"").val(),
-                    Password: $(""#Category"").val()
-                };
-                $.post(""/api/Contact/SearchRequest"", model)
-                    .done(function (data) {
-                        GenerateTable(""/api/Contact/SearchInfo/"");
-                    })
-                    .fail(function() {
-                        alert(""error"");
-                    });
-            });
-
-            $(""#TableBody tr"").click(function() {
-                alert(""hello"");
-            });
-
-            var modal = document.getElementById('myModal');
-            var btn = document.getElementById(""tempButton"");
-            var span = document.getElementsByClassName(""close"")[0];
-
-            btn.onclick = function() {
-                modal.style.display = ""block"";
-            }
-
-            span.onclick = function() {
-                modal.style.display = ""none"";
-            }
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = ""none"";
-                }
-            }
-        </script>
-    </div>
-</body>
-</html>");
+WriteLiteral(">\r\n            GenerateTable(\"/api/Contacts/table/\");\r\n            $(document).re" +
+"ady(function(){\r\n                $(\"#SearchBox\").on(\"keyup\", function() {\r\n     " +
+"               var value = $(this).val().toLowerCase();\r\n                    $(\"" +
+"#TableBody tr\").filter(function() {\r\n                        $(this).toggle($(th" +
+"is).text().toLowerCase().indexOf(value) > -1)\r\n                    });\r\n        " +
+"        });\r\n            });\r\n\n            $(\"#SearchButton\").click(function() {" +
+"\r\n                var model = {\r\n                    Username: $(\"#SearchBox\").v" +
+"al(),\r\n                    Password: $(\"#Category\").val()\r\n                };\r\n " +
+"               $.post(\"/api/Contact/SearchRequest\", model)\r\n                    " +
+".done(function (data) {\r\n                        GenerateTable(\"/api/Contact/Sea" +
+"rchInfo/\");\r\n                    })\r\n                    .fail(function() {\r\n   " +
+"                     alert(\"error\");\r\n                    });\r\n            });\r\n" +
+"\r\n            $(\'#TableBody tr td\').on(\'click\',function(){\r\n                aler" +
+"t(\"hello\");\r\n            });\r\n\r\n            var modal = document.getElementById(" +
+"\'myModal\');\r\n            var btn = document.getElementById(\"tempButton\");\r\n     " +
+"       var span = document.getElementsByClassName(\"close\")[0];\r\n\r\n            bt" +
+"n.onclick = function() {\r\n                modal.style.display = \"block\";\r\n      " +
+"      }\r\n\r\n            span.onclick = function() {\r\n                modal.style." +
+"display = \"none\";\r\n            }\r\n\r\n            window.onclick = function(event)" +
+" {\r\n                if (event.target == modal) {\r\n                    modal.styl" +
+"e.display = \"none\";\r\n                }\r\n            }\r\n        </script>\n    </d" +
+"iv>\n</body>\n</html>");
 
 }
 }

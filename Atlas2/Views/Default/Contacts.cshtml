@@ -10,17 +10,6 @@
     <title></title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-    <script>
-        $(document).ready(function(){
-            $("#SearchBox").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#TableBody tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 
     <style>
         body {
@@ -180,6 +169,15 @@
         <div id="divTable"></div>
         <script type="text/javascript">
             GenerateTable("/api/Contacts/table/");
+            $(document).ready(function(){
+                $("#SearchBox").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#TableBody tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+
             $("#SearchButton").click(function() {
                 var model = {
                     Username: $("#SearchBox").val(),
@@ -194,7 +192,7 @@
                     });
             });
 
-            $("#TableBody tr").click(function() {
+            $('#TableBody tr td').on('click',function(){
                 alert("hello");
             });
 
