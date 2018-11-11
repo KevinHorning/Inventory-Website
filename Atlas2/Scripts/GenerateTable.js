@@ -19,6 +19,7 @@
             for (var i = 0; i < data.Data.length; i++) {
                 var current = data.Data[i];
                 var row = tableBody.insertRow(-1);
+                row.setAttribute("onclick", "alert('hello')");
 
                 for (var j = 0; j < data.Headers.length; j++) {
                     var cell = document.createElement("td");

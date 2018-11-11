@@ -134,6 +134,82 @@
         <a href="Equipment">Equipment</a>
         <a href="Contacts">Contacts</a>
     </div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Edit Contact</p>
+            <div class="container">
+                <label>Location</label>
+                <input type="text" /><br />
+                <label>Address</label>
+                <input type="text" /><br />
+                <label>Email</label>
+                <input type="text" /><br />
+                <label>Phone Number</label>
+                <input type="text" /><br />
+                <button>Edit</button>
+            </div>
+            <div id="popupContent"></div>
+        </div>
+    </div>
+    <div id="partModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Parts Modal</p>
+            <div class="container">
+                <label>Location</label>
+                <input type="text" /><br />
+                <label>Address</label>
+                <input type="text" /><br />
+                <label>Email</label>
+                <input type="text" /><br />
+                <label>Phone Number</label>
+                <input type="text" /><br />
+                <button>Edit</button>
+            </div>
+            <div id="popupContent"></div>
+        </div>
+    </div>
+    <div id="assemblyModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Assembly Modal</p>
+            <div class="container">
+                <label>Location</label>
+                <input type="text" /><br />
+                <label>Address</label>
+                <input type="text" /><br />
+                <label>Email</label>
+                <input type="text" /><br />
+                <label>Phone Number</label>
+                <input type="text" /><br />
+                <button>Edit</button>
+            </div>
+            <div id="popupContent"></div>
+        </div>
+    </div>
+    <div id="systemModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>System Modal</p>
+            <div class="container">
+                <label>Location</label>
+                <input type="text" /><br />
+                <label>Address</label>
+                <input type="text" /><br />
+                <label>Email</label>
+                <input type="text" /><br />
+                <label>Phone Number</label>
+                <input type="text" /><br />
+                <button>Edit</button>
+            </div>
+            <div id="popupContent"></div>
+        </div>
+    </div>
     <div>
         <h2 id="Mainlbl">Inventory Page</h2>
         <label id="Srchlbl" style="padding-left: 15px">Keyword: </label>
@@ -158,8 +234,14 @@
         </select>
         <button id="SearchButton">Search</button>
         <button id="tempButton">Pop Up</button>
+        <select id="ModalType" style="width: 100px">
+            <option value="Parts">Parts</option>
+            <option value="Assemblies">Assemblies</option>
+            <option value="Systems">Systems</option>
+        </select>
         <div id="divTable"></div>
-        <script type="text/javascript">GenerateTable("/api/Inventory/table/");
+        <script type="text/javascript">
+            GenerateTable("/api/Inventory/table/");
             $("#SearchButton").click(function() {
                 var model = {
                     Search: $("#SearchBox").val(),
@@ -179,6 +261,17 @@
             var span = document.getElementsByClassName("close")[0];
 
             btn.onclick = function() {
+                if ($("#ModalType").val() == "Parts") {
+                    modal = document.getElementById('partModal');
+                }
+
+                if ($("#ModalType").val() == "Assemblies") {
+                    modal = document.getElementById('assemblyModal');
+                }
+
+                if ($("#ModalType").val() == "Systems") {
+                    modal = document.getElementById('systemModal');
+                }
                 modal.style.display = "block";
             }
 

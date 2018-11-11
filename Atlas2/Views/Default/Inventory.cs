@@ -107,7 +107,163 @@ WriteLiteral(">Equipment</a>\n        <a");
 
 WriteLiteral(" href=\"Contacts\"");
 
-WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
+WriteLiteral(">Contacts</a>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"myModal\"");
+
+WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\r\n            <p>Edit Contact</p>\r\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\r\n                <label>Location</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\r\n           " +
+" <div");
+
+WriteLiteral(" id=\"popupContent\"");
+
+WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div");
+
+WriteLiteral(" id=\"partModal\"");
+
+WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\r\n            <p>Parts Modal</p>\r\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\r\n                <label>Location</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\r\n           " +
+" <div");
+
+WriteLiteral(" id=\"popupContent\"");
+
+WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div");
+
+WriteLiteral(" id=\"assemblyModal\"");
+
+WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\r\n            <p>Assembly Modal</p>\r\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\r\n                <label>Location</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\r\n           " +
+" <div");
+
+WriteLiteral(" id=\"popupContent\"");
+
+WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div");
+
+WriteLiteral(" id=\"systemModal\"");
+
+WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\r\n            <p>System Modal</p>\r\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\r\n                <label>Location</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\r\n           " +
+" <div");
+
+WriteLiteral(" id=\"popupContent\"");
+
+WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
@@ -177,7 +333,25 @@ WriteLiteral(">Search</button>\n        <button");
 
 WriteLiteral(" id=\"tempButton\"");
 
-WriteLiteral(">Pop Up</button>\n        <div");
+WriteLiteral(">Pop Up</button>\n        <select");
+
+WriteLiteral(" id=\"ModalType\"");
+
+WriteLiteral(" style=\"width: 100px\"");
+
+WriteLiteral(">\r\n            <option");
+
+WriteLiteral(" value=\"Parts\"");
+
+WriteLiteral(">Parts</option>\r\n            <option");
+
+WriteLiteral(" value=\"Assemblies\"");
+
+WriteLiteral(">Assemblies</option>\r\n            <option");
+
+WriteLiteral(" value=\"Systems\"");
+
+WriteLiteral(">Systems</option>\r\n        </select>\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
@@ -185,43 +359,27 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(@">GenerateTable(""/api/Inventory/table/"");
-            $(""#SearchButton"").click(function() {
-                var model = {
-                    Search: $(""#SearchBox"").val(),
-                    Category: $(""#Category"").val()
-                };
-                $.post(""/api/Inventory/searchRequest"", model)
-                    .done(function (data) {
-                        GenerateTable();
-                    })
-                    .fail(function() {
-                        alert(""error"");
-                    });
-            });
-
-            var modal = document.getElementById('myModal');
-            var btn = document.getElementById(""tempButton"");
-            var span = document.getElementsByClassName(""close"")[0];
-
-            btn.onclick = function() {
-                modal.style.display = ""block"";
-            }
-
-            span.onclick = function() {
-                modal.style.display = ""none"";
-            }
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = ""none"";
-                }
-            }
-        </script>
-    </div>
-</body>
-</html>
-");
+WriteLiteral(">\r\n            GenerateTable(\"/api/Inventory/table/\");\r\n            $(\"#SearchBut" +
+"ton\").click(function() {\r\n                var model = {\r\n                    Sea" +
+"rch: $(\"#SearchBox\").val(),\r\n                    Category: $(\"#Category\").val()\r" +
+"\n                };\r\n                $.post(\"/api/Inventory/searchRequest\", mode" +
+"l)\r\n                    .done(function (data) {\r\n                        Generat" +
+"eTable();\r\n                    })\r\n                    .fail(function() {\r\n     " +
+"                   alert(\"error\");\r\n                    });\r\n            });\r\n\r\n" +
+"            var modal = document.getElementById(\'myModal\');\r\n            var btn" +
+" = document.getElementById(\"tempButton\");\r\n            var span = document.getEl" +
+"ementsByClassName(\"close\")[0];\r\n\r\n            btn.onclick = function() {\r\n      " +
+"          if ($(\"#ModalType\").val() == \"Parts\") {\r\n                    modal = d" +
+"ocument.getElementById(\'partModal\');\r\n                }\r\n\r\n                if ($" +
+"(\"#ModalType\").val() == \"Assemblies\") {\r\n                    modal = document.ge" +
+"tElementById(\'assemblyModal\');\r\n                }\r\n\r\n                if ($(\"#Mod" +
+"alType\").val() == \"Systems\") {\r\n                    modal = document.getElementB" +
+"yId(\'systemModal\');\r\n                }\r\n                modal.style.display = \"b" +
+"lock\";\r\n            }\r\n\r\n            span.onclick = function() {\r\n              " +
+"  modal.style.display = \"none\";\r\n            }\r\n\r\n            window.onclick = f" +
+"unction(event) {\r\n                if (event.target == modal) {\r\n                " +
+"    modal.style.display = \"none\";\r\n                }\r\n            }\r\n        </s" +
+"cript>\n    </div>\n</body>\n</html>\n");
 
 }
 }

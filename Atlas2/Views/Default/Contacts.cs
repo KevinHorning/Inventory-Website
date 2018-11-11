@@ -232,16 +232,14 @@ WriteLiteral(">\r\n            GenerateTable(\"/api/Contacts/table/\");\r\n     
 ".done(function (data) {\r\n                        GenerateTable(\"/api/Contact/Sea" +
 "rchInfo/\");\r\n                    })\r\n                    .fail(function() {\r\n   " +
 "                     alert(\"error\");\r\n                    });\r\n            });\r\n" +
-"\r\n            $(\'#TableBody tr td\').on(\'click\',function(){\r\n                aler" +
-"t(\"hello\");\r\n            });\r\n\r\n            var modal = document.getElementById(" +
-"\'myModal\');\r\n            var btn = document.getElementById(\"tempButton\");\r\n     " +
-"       var span = document.getElementsByClassName(\"close\")[0];\r\n\r\n            bt" +
-"n.onclick = function() {\r\n                modal.style.display = \"block\";\r\n      " +
-"      }\r\n\r\n            span.onclick = function() {\r\n                modal.style." +
-"display = \"none\";\r\n            }\r\n\r\n            window.onclick = function(event)" +
-" {\r\n                if (event.target == modal) {\r\n                    modal.styl" +
-"e.display = \"none\";\r\n                }\r\n            }\r\n        </script>\n    </d" +
-"iv>\n</body>\n</html>");
+"\r\n            var modal = document.getElementById(\'myModal\');\r\n            var b" +
+"tn = document.getElementById(\"tempButton\");\r\n            var span = document.get" +
+"ElementsByClassName(\"close\")[0];\r\n\r\n            btn.onclick = function() {\r\n    " +
+"            modal.style.display = \"block\";\r\n            }\r\n\r\n            span.on" +
+"click = function() {\r\n                modal.style.display = \"none\";\r\n           " +
+" }\r\n\r\n            window.onclick = function(event) {\r\n                if (event." +
+"target == modal) {\r\n                    modal.style.display = \"none\";\r\n         " +
+"       }\r\n            }\r\n        </script>\n    </div>\n</body>\n</html>");
 
 }
 }
