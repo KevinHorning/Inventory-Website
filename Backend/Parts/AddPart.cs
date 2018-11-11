@@ -12,16 +12,22 @@ namespace Backend.Parts
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
 
-            var namePair = new KeyValuePair<string, object>("name", name);
-            var serialNumberPair = new KeyValuePair<String, object>("serialNumber", serialNumber);
-            var countPair = new KeyValuePair<String, object>("count", count);
-            var partTypePair = new KeyValuePair<String, object>("partType", partType);
-            var values = new[] { namePair, serialNumberPair, countPair, partTypePair };
+            try 
+            {
+                var namePair = new KeyValuePair<string, object>("name", name);
+                var serialNumberPair = new KeyValuePair<String, object>("serialNumber", serialNumber);
+                var countPair = new KeyValuePair<String, object>("count", count);
+                var partTypePair = new KeyValuePair<String, object>("partType", partType);
+                var values = new[] { namePair, serialNumberPair, countPair, partTypePair };
 
-            MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
-            Query query = QBuilder.BuildInsertQuery("parts", values);
-            DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), query.QueryString, query.Parameters).Wait();
-            DatabaseManager.GetConnection().Close();
+                MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
+                Query query = QBuilder.BuildInsertQuery("parts", values);
+                DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), query.QueryString, query.Parameters).Wait();
+            }
+            finally
+            {
+                DatabaseManager.GetConnection().Close();
+            }
         }
     }
 }

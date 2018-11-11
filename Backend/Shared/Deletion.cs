@@ -15,7 +15,7 @@ namespace Backend.Shared
         {
             Boolean isException = false;
             var DatabaseManager = Shared.DBconnection.GetManager();
-            
+
             Query sizeQuery = new Query { QueryString = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'" };
             var tableNames = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), sizeQuery.QueryString).ConfigureAwait(false);
 
@@ -49,8 +49,8 @@ namespace Backend.Shared
                     string tableIDattribute = table.Substring(0, table.Length - 1);
                     Query deleteQuery = new Query { QueryString = "DELETE FROM " + table + " WHERE " + tableIDattribute + " = " + ID};
                     DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), deleteQuery.QueryString, deleteQuery.Parameters).Wait();
-                    DatabaseManager.GetConnection().Close();
                 }
+                DatabaseManager.GetConnection().Close();
             }
         }
 

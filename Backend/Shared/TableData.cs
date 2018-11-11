@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using Backend.Parts;
+using System.Data.SqlClient;
 
 namespace Backend.Shared
 {
@@ -23,34 +24,38 @@ namespace Backend.Shared
         public async Task Synchronize(String tableName)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
-
-            Query query = new Query { QueryString = "SELECT COLUMN_NAME FROM atlas.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tableName + "'" };
-            var headerTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), query.QueryString).ConfigureAwait(false);
-
-            Headers = new string[headerTable.Length];
-            for (int i = 0; i < headerTable.Length; i++)
+            try
             {
-                Headers[i] = (string)headerTable[i][0];
-            }
+                Query query = new Query { QueryString = "SELECT COLUMN_NAME FROM atlas.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tableName + "'" };
+                var headerTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), query.QueryString).ConfigureAwait(false);
 
-            Query query2 = new Query { QueryString = "SELECT * FROM " + tableName };
-            var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), query2.QueryString).ConfigureAwait(false);
-                  
-            Part[] data = new Part[dataTable.Length];
-            for (int i = 0; i < data.Length; i++)
-            {
-                data[i] = new Part
+                Headers = new string[headerTable.Length];
+                for (int i = 0; i < headerTable.Length; i++)
                 {
-                    partID = (int)dataTable[i][0],
-                    name = (string)dataTable[i][1],
-                    serialNumber = (string)dataTable[i][2],
-                    count = (int)dataTable[i][3],
-                    partType = (int)dataTable[i][4]
-                };
-            }
-            Data = data;
+                    Headers[i] = (string)headerTable[i][0];
+                }
 
-            DatabaseManager.GetConnection().Close();
+                Query query2 = new Query { QueryString = "SELECT * FROM " + tableName };
+                var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), query2.QueryString).ConfigureAwait(false);
+
+                Part[] data = new Part[dataTable.Length];
+                for (int i = 0; i < data.Length; i++)
+                {
+                    data[i] = new Part
+                    {
+                        partID = (int)dataTable[i][0],
+                        name = (string)dataTable[i][1],
+                        serialNumber = (string)dataTable[i][2],
+                        count = (int)dataTable[i][3],
+                        partType = (int)dataTable[i][4]
+                    };
+                }
+                Data = data;
+            }
+            finally
+            {
+                DatabaseManager.GetConnection().Close();
+            }
         }
     }
 }
