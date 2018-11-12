@@ -10,9 +10,9 @@ namespace Atlas2.Controllers
     {
         [HttpGet]
         [Route("table")]
-        public HttpResponseMessage TableInfo()
+        public HttpResponseMessage TableInfo(string search)
         {
-            //return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.TableData.GetTableData("contact"));
+            //return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.TableData.GetTableData(search));
             return Request.CreateResponse(HttpStatusCode.OK,
                 new TableResponse<Contact>
                 {

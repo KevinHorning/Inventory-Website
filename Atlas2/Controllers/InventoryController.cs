@@ -10,11 +10,11 @@ namespace Atlas2.Controllers
     {
         [HttpGet]
         [Route("table")]
-        public HttpResponseMessage TableInfo() 
+        public HttpResponseMessage TableInfo(string search) 
         {
-            return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.TableData.getTableData("parts"));
+            return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.TableData.getTableData(search));
         }
-        
+
         //[HttpPost]
         //[Route("searchRequest")]
         //public HttpRequestMessage SearchInfo(SearchFilter model)

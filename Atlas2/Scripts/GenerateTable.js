@@ -1,5 +1,5 @@
-﻿function GenerateTable(url) {
-        $.get(url, function(data) {
+﻿function GenerateTable(url, search) {
+        $.get(url, { search }, function(data) {
             
             var table = document.createElement("TABLE");
             table.border = "1";
@@ -19,7 +19,7 @@
             for (var i = 0; i < data.Data.length; i++) {
                 var current = data.Data[i];
                 var row = tableBody.insertRow(-1);
-                row.setAttribute("onclick", "alert('hello')");
+                row.setAttribute("onclick", "openModal(this.cells)");
 
                 for (var j = 0; j < data.Headers.length; j++) {
                     var cell = document.createElement("td");

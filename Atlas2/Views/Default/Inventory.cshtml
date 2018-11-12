@@ -241,7 +241,7 @@
         </select>
         <div id="divTable"></div>
         <script type="text/javascript">
-            GenerateTable("/api/Inventory/table/");
+            GenerateTable("/api/Inventory/table/", "part");
             $("#SearchButton").click(function() {
                 var model = {
                     Search: $("#SearchBox").val(),

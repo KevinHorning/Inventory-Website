@@ -125,7 +125,7 @@ WriteLiteral(">\r\n                <label>Name</label>\r\n                <input
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+WriteLiteral("/><br />\r\n                <label>Address</label>\r\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -220,26 +220,28 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(">\r\n            GenerateTable(\"/api/Contacts/table/\");\r\n            $(document).re" +
-"ady(function(){\r\n                $(\"#SearchBox\").on(\"keyup\", function() {\r\n     " +
-"               var value = $(this).val().toLowerCase();\r\n                    $(\"" +
-"#TableBody tr\").filter(function() {\r\n                        $(this).toggle($(th" +
-"is).text().toLowerCase().indexOf(value) > -1)\r\n                    });\r\n        " +
-"        });\r\n            });\r\n\n            $(\"#SearchButton\").click(function() {" +
-"\r\n                var model = {\r\n                    Username: $(\"#SearchBox\").v" +
-"al(),\r\n                    Password: $(\"#Category\").val()\r\n                };\r\n " +
-"               $.post(\"/api/Contact/SearchRequest\", model)\r\n                    " +
-".done(function (data) {\r\n                        GenerateTable(\"/api/Contact/Sea" +
-"rchInfo/\");\r\n                    })\r\n                    .fail(function() {\r\n   " +
-"                     alert(\"error\");\r\n                    });\r\n            });\r\n" +
-"\r\n            var modal = document.getElementById(\'myModal\');\r\n            var b" +
-"tn = document.getElementById(\"tempButton\");\r\n            var span = document.get" +
-"ElementsByClassName(\"close\")[0];\r\n\r\n            btn.onclick = function() {\r\n    " +
-"            modal.style.display = \"block\";\r\n            }\r\n\r\n            span.on" +
-"click = function() {\r\n                modal.style.display = \"none\";\r\n           " +
-" }\r\n\r\n            window.onclick = function(event) {\r\n                if (event." +
-"target == modal) {\r\n                    modal.style.display = \"none\";\r\n         " +
-"       }\r\n            }\r\n        </script>\n    </div>\n</body>\n</html>");
+WriteLiteral(">\r\n            GenerateTable(\"/api/Contacts/table/\", \"contact\");\r\n            $(d" +
+"ocument).ready(function(){\r\n                $(\"#SearchBox\").on(\"keyup\", function" +
+"() {\r\n                    var value = $(this).val().toLowerCase();\r\n            " +
+"        $(\"#TableBody tr\").filter(function() {\r\n                        $(this)." +
+"toggle($(this).text().toLowerCase().indexOf(value) > -1)\r\n                    })" +
+";\r\n                });\r\n            });\r\n\r\n            $(\"#SearchButton\").click(" +
+"function() {\r\n                var model = {\r\n                    Username: $(\"#S" +
+"earchBox\").val(),\r\n                    Password: $(\"#Category\").val()\r\n         " +
+"       };\r\n                $.post(\"/api/Contact/SearchRequest\", model)\r\n        " +
+"            .done(function (data) {\r\n                        GenerateTable(\"/api" +
+"/Contact/SearchInfo/\");\r\n                    })\r\n                    .fail(funct" +
+"ion() {\r\n                        alert(\"error\");\r\n                    });\r\n     " +
+"       });\r\n\r\n            var modal = document.getElementById(\'myModal\');\r\n     " +
+"       var btn = document.getElementById(\"tempButton\");\r\n            var span = " +
+"document.getElementsByClassName(\"close\")[0];\r\n\r\n            function openModal(r" +
+"ow) {\n                var cell = row[1].innerText;\n                alert(cell);\r" +
+"\n                modal.style.display = \"block\";\r\n            }\r\n\r\n            sp" +
+"an.onclick = function() {\r\n                modal.style.display = \"none\";\r\n      " +
+"      }\r\n\r\n            window.onclick = function(event) {\r\n                if (e" +
+"vent.target == modal) {\r\n                    modal.style.display = \"none\";\r\n    " +
+"            }\n            }\r\n           \r\n        </script>\n    </div>\n</body>\n<" +
+"/html>");
 
 }
 }

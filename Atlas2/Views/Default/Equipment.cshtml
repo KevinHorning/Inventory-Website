@@ -179,7 +179,7 @@
         <button id="tempButton">Pop Up</button>
         <div id="divTable"></div>
         <script type="text/javascript">
-            GenerateTable("/api/Equipment/table/");
+            GenerateTable("/api/Equipment/table/", "equipment");
             $("#SearchButton").click(function() {
                 var model = {
                     Username: $("#SearchBox").val(),

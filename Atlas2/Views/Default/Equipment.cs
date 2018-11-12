@@ -225,7 +225,7 @@ WriteLiteral("></div>\n        <script");
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(@">
-            GenerateTable(""/api/Equipment/table/"");
+            GenerateTable(""/api/Equipment/table/"", ""equipment"");
             $(""#SearchButton"").click(function() {
                 var model = {
                     Username: $(""#SearchBox"").val(),

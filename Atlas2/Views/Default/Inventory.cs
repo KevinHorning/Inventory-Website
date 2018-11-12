@@ -359,27 +359,27 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(">\r\n            GenerateTable(\"/api/Inventory/table/\");\r\n            $(\"#SearchBut" +
-"ton\").click(function() {\r\n                var model = {\r\n                    Sea" +
-"rch: $(\"#SearchBox\").val(),\r\n                    Category: $(\"#Category\").val()\r" +
-"\n                };\r\n                $.post(\"/api/Inventory/searchRequest\", mode" +
-"l)\r\n                    .done(function (data) {\r\n                        Generat" +
-"eTable();\r\n                    })\r\n                    .fail(function() {\r\n     " +
-"                   alert(\"error\");\r\n                    });\r\n            });\r\n\r\n" +
-"            var modal = document.getElementById(\'myModal\');\r\n            var btn" +
-" = document.getElementById(\"tempButton\");\r\n            var span = document.getEl" +
-"ementsByClassName(\"close\")[0];\r\n\r\n            btn.onclick = function() {\r\n      " +
-"          if ($(\"#ModalType\").val() == \"Parts\") {\r\n                    modal = d" +
-"ocument.getElementById(\'partModal\');\r\n                }\r\n\r\n                if ($" +
-"(\"#ModalType\").val() == \"Assemblies\") {\r\n                    modal = document.ge" +
-"tElementById(\'assemblyModal\');\r\n                }\r\n\r\n                if ($(\"#Mod" +
-"alType\").val() == \"Systems\") {\r\n                    modal = document.getElementB" +
-"yId(\'systemModal\');\r\n                }\r\n                modal.style.display = \"b" +
-"lock\";\r\n            }\r\n\r\n            span.onclick = function() {\r\n              " +
-"  modal.style.display = \"none\";\r\n            }\r\n\r\n            window.onclick = f" +
-"unction(event) {\r\n                if (event.target == modal) {\r\n                " +
-"    modal.style.display = \"none\";\r\n                }\r\n            }\r\n        </s" +
-"cript>\n    </div>\n</body>\n</html>\n");
+WriteLiteral(">\r\n            GenerateTable(\"/api/Inventory/table/\", \"part\");\r\n            $(\"#S" +
+"earchButton\").click(function() {\r\n                var model = {\r\n               " +
+"     Search: $(\"#SearchBox\").val(),\r\n                    Category: $(\"#Category\"" +
+").val()\r\n                };\r\n                $.post(\"/api/Inventory/searchReques" +
+"t\", model)\r\n                    .done(function (data) {\r\n                       " +
+" GenerateTable();\r\n                    })\r\n                    .fail(function() " +
+"{\r\n                        alert(\"error\");\r\n                    });\r\n           " +
+" });\r\n\r\n            var modal = document.getElementById(\'myModal\');\r\n           " +
+" var btn = document.getElementById(\"tempButton\");\r\n            var span = docume" +
+"nt.getElementsByClassName(\"close\")[0];\r\n\r\n            btn.onclick = function() {" +
+"\r\n                if ($(\"#ModalType\").val() == \"Parts\") {\r\n                    m" +
+"odal = document.getElementById(\'partModal\');\r\n                }\r\n\r\n             " +
+"   if ($(\"#ModalType\").val() == \"Assemblies\") {\r\n                    modal = doc" +
+"ument.getElementById(\'assemblyModal\');\r\n                }\r\n\r\n                if " +
+"($(\"#ModalType\").val() == \"Systems\") {\r\n                    modal = document.get" +
+"ElementById(\'systemModal\');\r\n                }\r\n                modal.style.disp" +
+"lay = \"block\";\r\n            }\r\n\r\n            span.onclick = function() {\r\n      " +
+"          modal.style.display = \"none\";\r\n            }\r\n\r\n            window.onc" +
+"lick = function(event) {\r\n                if (event.target == modal) {\r\n        " +
+"            modal.style.display = \"none\";\r\n                }\r\n            }\r\n   " +
+"     </script>\n    </div>\n</body>\n</html>\n");
 
 }
 }
