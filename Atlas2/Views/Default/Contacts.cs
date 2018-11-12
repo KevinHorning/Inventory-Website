@@ -125,20 +125,28 @@ WriteLiteral(">\r\n                <label>Name</label>\r\n                <input
 
 WriteLiteral(" type=\"text\"");
 
+WriteLiteral(" id=\"nameBox\"");
+
 WriteLiteral("/><br />\r\n                <label>Address</label>\r\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+WriteLiteral(" id=\"addressBox\"");
+
+WriteLiteral("/><br />\r\n                <label>Email</label>\r\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+WriteLiteral(" id=\"emailBox\"");
+
+WriteLiteral("/><br />\r\n                <label>Phone Number</label>\r\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\n            " +
-"<div");
+WriteLiteral(" id=\"phoneBox\"");
+
+WriteLiteral("/><br />\r\n                <button>Edit</button>\r\n            </div>\n            <" +
+"div");
 
 WriteLiteral(" id=\"popupContent\"");
 
@@ -235,13 +243,18 @@ WriteLiteral(">\r\n            GenerateTable(\"/api/Contacts/table/\", \"contact
 "       });\r\n\r\n            var modal = document.getElementById(\'myModal\');\r\n     " +
 "       var btn = document.getElementById(\"tempButton\");\r\n            var span = " +
 "document.getElementsByClassName(\"close\")[0];\r\n\r\n            function openModal(r" +
-"ow) {\n                var cell = row[1].innerText;\n                alert(cell);\r" +
-"\n                modal.style.display = \"block\";\r\n            }\r\n\r\n            sp" +
-"an.onclick = function() {\r\n                modal.style.display = \"none\";\r\n      " +
-"      }\r\n\r\n            window.onclick = function(event) {\r\n                if (e" +
-"vent.target == modal) {\r\n                    modal.style.display = \"none\";\r\n    " +
-"            }\n            }\r\n           \r\n        </script>\n    </div>\n</body>\n<" +
-"/html>");
+"ow) {\n                var name = document.getElementById(\'nameBox\');\n           " +
+"     name.setAttribute(\"placeholder\", row[1].innerText);\n                var add" +
+"ress = document.getElementById(\'addressBox\');\n                address.setAttribu" +
+"te(\"placeholder\", row[2].innerText);\n                var email = document.getEle" +
+"mentById(\'emailBox\');\n                email.setAttribute(\"placeholder\", row[3].i" +
+"nnerText);\n                var phone = document.getElementById(\'phoneBox\');\n    " +
+"            phone.setAttribute(\"placeholder\", row[4].innerText);\r\n              " +
+"  modal.style.display = \"block\";\r\n            }\r\n\r\n            span.onclick = fu" +
+"nction() {\r\n                modal.style.display = \"none\";\r\n            }\r\n\r\n    " +
+"        window.onclick = function(event) {\r\n                if (event.target == " +
+"modal) {\r\n                    modal.style.display = \"none\";\r\n                }\n " +
+"           }\r\n           \r\n        </script>\n    </div>\n</body>\n</html>");
 
 }
 }
