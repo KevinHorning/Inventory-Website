@@ -1,6 +1,9 @@
 ﻿using System;
 using Backend.Shared;
 using Backend.Parts;
+using System.Threading.Tasks;
+using CTG.Database;
+using CTG.Database.Models;
 
 namespace Backend.Testing
 {
@@ -13,7 +16,8 @@ namespace Backend.Testing
             {
                 Console.WriteLine("Connection Successful");
 
-                Deletion.Delete("parts", 2);
+                AddPart.addPart("7mm Bolt", "6294", "4312189374", 51);
+                //Deletion.Delete("parts", 4);
 
                 //Parts.AddPart.addPart("7mm bolt", "8948667", 52, 0).Wait();
 
