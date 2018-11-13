@@ -149,7 +149,7 @@
             <span class="close">&times;</span>
             <p>Parts Modal</p>
             <div class="container">
-                <label>Location</label>
+                <label>Part Name</label>
                 <input type="text" /><br />
                 <label>Address</label>
                 <input type="text" /><br />
@@ -211,10 +211,12 @@
             font-size: 16px;
             background-color: white;
             background-image: url(Downloads/searchicon.png);
-            background-position: 10px 10px; 
+            background-position: 10px 10px;
             background-repeat: no-repeat;
-            padding: 12px 20px 12px 40px; }" placeholder="Search..."/><br />
+            padding: 12px 20px 12px 40px; }" placeholder="Search..." /><br />
         <div id="divTable"></div>
+        <label id="Categorylbl" style="padding-left: 15px">Category: </label>         <select id="Category" style="width: 100px">             <option value="Part">Part</option>             <option value="Assembly">Assembly</option>             <option value="System">System</option>         </select>
+        <button id="openModalButton">Modal</button>
         <script type="text/javascript">
             GenerateTable("/api/Inventory/table/", "part", "divTable");
 
@@ -225,37 +227,28 @@
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });
-            });
 
-
-            $("#SearchButton").click(function() {
-                var model = {
-                    Search: $("#SearchBox").val(),
-                    Category: $("#Category").val()
-                };
-                $.post("/api/Inventory/searchRequest", model)
-                    .done(function (data) {
-                        GenerateTable();
-                    })
-                    .fail(function() {
-                        alert("error");
-                    });
+                $("#openModalButton").click(function() {
+                    openModal();
+                });
             });
 
             var modal = document.getElementById('myModal');
             var btn = document.getElementById("tempButton");
             var span = document.getElementsByClassName("close")[0];
+            var modalType = document.getElementById("Category");
 
             function openModal(row) {
-                if(row[row.length - 1].innerText == "Part") {
+                if(modalType.value == "Part") {
                     modal = document.getElementById('partModal');
                 }
-                if(row[row.length - 1].innerText == "Assembly") {
+                if(modalType.value == "Assembly") {
                     modal = document.getElementById('assemblyModal');
                 }
-                if(row[row.length - 1].innerText == "System") {
+                if(modalType.value == "System") {
                     modal = document.getElementById('systemModal');
                 }
+                modal.style.display = "block";
             }
 
             span.onclick = function() {

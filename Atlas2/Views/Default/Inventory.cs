@@ -159,7 +159,7 @@ WriteLiteral(">&times;</span>\r\n            <p>Parts Modal</p>\r\n            <
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>Location</label>\r\n                <input");
+WriteLiteral(">\r\n                <label>Part Name</label>\r\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -258,17 +258,17 @@ WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            
 
 WriteLiteral(" id=\"popupContent\"");
 
-WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div>\n        <h2");
+WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div>\r\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Inventory Page</h2>\n        <label");
+WriteLiteral(">Inventory Page</h2>\r\n        <label");
 
 WriteLiteral(" id=\"Srchlbl\"");
 
 WriteLiteral(" style=\"padding-left: 15px\"");
 
-WriteLiteral(">Keyword: </label>\n        <input");
+WriteLiteral(">Keyword: </label>\r\n        <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -282,17 +282,45 @@ WriteLiteral(@" style=""
             font-size: 16px;
             background-color: white;
             background-image: url(Downloads/searchicon.png);
-            background-position: 10px 10px; 
+            background-position: 10px 10px;
             background-repeat: no-repeat;
             padding: 12px 20px 12px 40px; }""");
 
 WriteLiteral(" placeholder=\"Search...\"");
 
-WriteLiteral("/><br />\n        <div");
+WriteLiteral(" /><br />\r\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
-WriteLiteral("></div>\n        <script");
+WriteLiteral("></div>\r\n        <label");
+
+WriteLiteral(" id=\"Categorylbl\"");
+
+WriteLiteral(" style=\"padding-left: 15px\"");
+
+WriteLiteral(">Category: </label>\u2028        <select");
+
+WriteLiteral(" id=\"Category\"");
+
+WriteLiteral(" style=\"width: 100px\"");
+
+WriteLiteral(">\u2028            <option");
+
+WriteLiteral(" value=\"Part\"");
+
+WriteLiteral(">Part</option>\u2028            <option");
+
+WriteLiteral(" value=\"Assembly\"");
+
+WriteLiteral(">Assembly</option>\u2028            <option");
+
+WriteLiteral(" value=\"System\"");
+
+WriteLiteral(">System</option>\u2028        </select>\n        <button");
+
+WriteLiteral(" id=\"openModalButton\"");
+
+WriteLiteral(">Modal</button>\r\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
@@ -301,27 +329,22 @@ WriteLiteral(">\r\n            GenerateTable(\"/api/Inventory/table/\", \"part\"
 "p\", function() {\r\n                    var value = $(this).val().toLowerCase();\r\n" +
 "                    $(\"#TableBody tr\").filter(function() {\r\n                    " +
 "    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\r\n          " +
-"          });\r\n                });\r\n            });\r\n\r\n\r\n            $(\"#SearchB" +
-"utton\").click(function() {\r\n                var model = {\r\n                    S" +
-"earch: $(\"#SearchBox\").val(),\r\n                    Category: $(\"#Category\").val(" +
-")\r\n                };\r\n                $.post(\"/api/Inventory/searchRequest\", mo" +
-"del)\r\n                    .done(function (data) {\r\n                        Gener" +
-"ateTable();\r\n                    })\r\n                    .fail(function() {\r\n   " +
-"                     alert(\"error\");\r\n                    });\r\n            });\r\n" +
-"\r\n            var modal = document.getElementById(\'myModal\');\r\n            var b" +
-"tn = document.getElementById(\"tempButton\");\r\n            var span = document.get" +
-"ElementsByClassName(\"close\")[0];\r\n\r\n            function openModal(row) {\r\n     " +
-"           if(row[row.length - 1].innerText == \"Part\") {\r\n                    mo" +
-"dal = document.getElementById(\'partModal\');\r\n                }\r\n                " +
-"if(row[row.length - 1].innerText == \"Assembly\") {\r\n                    modal = d" +
-"ocument.getElementById(\'assemblyModal\');\r\n                }\r\n                if(" +
-"row[row.length - 1].innerText == \"System\") {\r\n                    modal = docume" +
-"nt.getElementById(\'systemModal\');\r\n                }\r\n            }\r\n\r\n         " +
-"   span.onclick = function() {\r\n                modal.style.display = \"none\";\r\n " +
-"           }\r\n\r\n            window.onclick = function(event) {\r\n                " +
-"if (event.target == modal) {\r\n                    modal.style.display = \"none\";\r" +
-"\n                }\r\n            }\r\n        </script>\n    </div>\n</body>\n</html>\n" +
-"");
+"          });\r\n                });\n\n                $(\"#openModalButton\").click(" +
+"function() {\n                    openModal();\n                });\r\n            }" +
+");\r\n\r\n            var modal = document.getElementById(\'myModal\');\r\n            v" +
+"ar btn = document.getElementById(\"tempButton\");\r\n            var span = document" +
+".getElementsByClassName(\"close\")[0];\n            var modalType = document.getEle" +
+"mentById(\"Category\");\r\n\r\n            function openModal(row) {\r\n                " +
+"if(modalType.value == \"Part\") {\r\n                    modal = document.getElement" +
+"ById(\'partModal\');\r\n                }\r\n                if(modalType.value == \"As" +
+"sembly\") {\r\n                    modal = document.getElementById(\'assemblyModal\')" +
+";\r\n                }\r\n                if(modalType.value == \"System\") {\r\n       " +
+"             modal = document.getElementById(\'systemModal\');\r\n                }\r" +
+"\n                modal.style.display = \"block\";\r\n            }\r\n\r\n            sp" +
+"an.onclick = function() {\r\n                modal.style.display = \"none\";\r\n      " +
+"      }\r\n\r\n            window.onclick = function(event) {\r\n                if (e" +
+"vent.target == modal) {\r\n                    modal.style.display = \"none\";\r\n    " +
+"            }\r\n            }\r\n        </script>\r\n    </div>\n</body>\n</html>\n");
 
 }
 }
