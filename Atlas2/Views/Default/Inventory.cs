@@ -104,11 +104,13 @@ WriteLiteral(" href=\"Contacts\"");
 
 WriteLiteral(">Contacts</a>\n    </div>\n    <div");
 
-WriteLiteral(" id=\"myModal\"");
+WriteLiteral(" id=\"editModal\"");
 
 WriteLiteral(" class=\"modal\"");
 
-WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+WriteLiteral(" style=\"z-index:2000\"");
+
+WriteLiteral(">\n        <div");
 
 WriteLiteral(" class=\"modal-content\"");
 
@@ -141,11 +143,17 @@ WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            
 
 WriteLiteral(" id=\"popupContent\"");
 
-WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div");
+WriteLiteral("></div>\r\n        </div>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"myModal\"");
+
+WriteLiteral("></div>\n    <div");
 
 WriteLiteral(" id=\"partModal\"");
 
 WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(" style=\"z-index:1999\"");
 
 WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
 
@@ -159,24 +167,18 @@ WriteLiteral(">&times;</span>\r\n            <p>Parts Modal</p>\r\n            <
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>Part Name</label>\r\n                <input");
+WriteLiteral(">\r\n                <label>Part Name: </label>\n                <label");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(" id=\"partName\"");
 
-WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+WriteLiteral("></label>\n                <br /><br />\r\n                <label>SKU: </label>\n    " +
+"            <br /><br />\r\n                <label>Count: </label>\n               " +
+" <br /><br />\r\n                <button");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(" class=\"editButton\"");
 
-WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
-
-WriteLiteral(" type=\"text\"");
-
-WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
-
-WriteLiteral(" type=\"text\"");
-
-WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\r\n           " +
-" <div");
+WriteLiteral(">Open Edit Modal</button>\n                <button>Add to Assembly/System</button>" +
+"\r\n            </div>\r\n            <div");
 
 WriteLiteral(" id=\"popupContent\"");
 
@@ -185,6 +187,8 @@ WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div");
 WriteLiteral(" id=\"assemblyModal\"");
 
 WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(" style=\"z-index:1999\"");
 
 WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
 
@@ -198,24 +202,24 @@ WriteLiteral(">&times;</span>\r\n            <p>Assembly Modal</p>\r\n          
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>Location</label>\r\n                <input");
+WriteLiteral(">\r\n                <label>Assembly Name: </label>\n                <label");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(" id=\"assemblyName\"");
 
-WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+WriteLiteral("></label>\r\n                <br /><br />\r\n                <label>SKU: </label>\r\n  " +
+"              <br /><br />\r\n                <label>Count: </label>\r\n            " +
+"    <br /><br />\n                <table");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(" id=\"assemblyTable\"");
 
-WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+WriteLiteral("></table>\n                <script>\n                    ");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral("\n                </script>\n                <button");
 
-WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+WriteLiteral(" class=\"editButton\"");
 
-WriteLiteral(" type=\"text\"");
-
-WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\r\n           " +
-" <div");
+WriteLiteral(">Open Edit Modal</button>\r\n                <button>Add to System</button>\r\n      " +
+"      </div>\r\n            <div");
 
 WriteLiteral(" id=\"popupContent\"");
 
@@ -224,6 +228,8 @@ WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div");
 WriteLiteral(" id=\"systemModal\"");
 
 WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(" style=\"z-index:1999\"");
 
 WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
 
@@ -237,24 +243,24 @@ WriteLiteral(">&times;</span>\r\n            <p>System Modal</p>\r\n            
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>Location</label>\r\n                <input");
+WriteLiteral(">\r\n                <label>System Name: </label>\n                <label");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(" id=\"systemName\"");
 
-WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+WriteLiteral("></label>\r\n                <br /><br />\r\n                <label>SKU: </label>\r\n  " +
+"              <br /><br />\r\n                <label>Count: </label>\r\n            " +
+"    <br /><br />\n                <table");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(" id=\"modalTable\"");
 
-WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+WriteLiteral("></table>\n                <script>\r\n                    ");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral("\r\n                </script>\n                <button");
 
-WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+WriteLiteral(" class=\"editButton\"");
 
-WriteLiteral(" type=\"text\"");
-
-WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\r\n           " +
-" <div");
+WriteLiteral(">Open Edit Modal</button>\r\n                <button>Build New System</button>\r\n   " +
+"         </div>\r\n            <div");
 
 WriteLiteral(" id=\"popupContent\"");
 
@@ -329,22 +335,30 @@ WriteLiteral(">\r\n            GenerateTable(\"/api/Inventory/table/\", \"part\"
 "p\", function() {\r\n                    var value = $(this).val().toLowerCase();\r\n" +
 "                    $(\"#TableBody tr\").filter(function() {\r\n                    " +
 "    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\r\n          " +
-"          });\r\n                });\n\n                $(\"#openModalButton\").click(" +
-"function() {\n                    openModal();\n                });\r\n            }" +
-");\r\n\r\n            var modal = document.getElementById(\'myModal\');\r\n            v" +
-"ar btn = document.getElementById(\"tempButton\");\r\n            var span = document" +
-".getElementsByClassName(\"close\")[0];\n            var modalType = document.getEle" +
-"mentById(\"Category\");\r\n\r\n            function openModal(row) {\r\n                " +
-"if(modalType.value == \"Part\") {\r\n                    modal = document.getElement" +
-"ById(\'partModal\');\r\n                }\r\n                if(modalType.value == \"As" +
-"sembly\") {\r\n                    modal = document.getElementById(\'assemblyModal\')" +
-";\r\n                }\r\n                if(modalType.value == \"System\") {\r\n       " +
-"             modal = document.getElementById(\'systemModal\');\r\n                }\r" +
-"\n                modal.style.display = \"block\";\r\n            }\r\n\r\n            sp" +
-"an.onclick = function() {\r\n                modal.style.display = \"none\";\r\n      " +
-"      }\r\n\r\n            window.onclick = function(event) {\r\n                if (e" +
-"vent.target == modal) {\r\n                    modal.style.display = \"none\";\r\n    " +
-"            }\r\n            }\r\n        </script>\r\n    </div>\n</body>\n</html>\n");
+"          });\r\n                });\r\n\r\n                $(\"#openModalButton\").clic" +
+"k(function() {\r\n                    openModal();\r\n                });\n\n         " +
+"       $(\".editButton\").click(function() {\n                    openModal();\n    " +
+"            });\r\n            });\r\n\r\n            var modal = document.getElementB" +
+"yId(\'myModal\');\r\n            var editModal = document.getElementById(\'editModal\'" +
+");\r\n            var btn = document.getElementById(\"tempButton\");\r\n            va" +
+"r span = document.getElementsByClassName(\"close\")[0];\r\n            var modalType" +
+" = document.getElementById(\"Category\");\r\n\r\n            function openModal(row) {" +
+"\n                if(modal.style.display == \"block\") {\n                    editMo" +
+"dal.style.display = \"block\";\n                }\n                else {\r\n         " +
+"           if(modalType.value == \"Part\") {\r\n                        modal = docu" +
+"ment.getElementById(\'partModal\');\r\n                    }\r\n                    if" +
+"(modalType.value == \"Assembly\") {\r\n                        modal = document.getE" +
+"lementById(\'assemblyModal\');\r\n                    }\r\n                    if(moda" +
+"lType.value == \"System\") {\r\n                        modal = document.getElementB" +
+"yId(\'systemModal\');\r\n                    }\r\n                    modal.style.disp" +
+"lay = \"block\";\n               }\r\n            }\r\n\r\n            span.onclick = fun" +
+"ction() {\r\n                if(editModal.style.display == \"none\") {\r\n            " +
+"        modal.style.display = \"none\";\r\n                }\r\n                else e" +
+"ditModal.style.display = \"none\";\r\n            }\r\n\r\n            window.onclick = " +
+"function(event) {\r\n                if (event.target == modal) {\r\n               " +
+"     modal.style.display = \"none\";\r\n                }\n                if (event." +
+"target == editModal) {\n                    editModal.style.display = \"none\";\n   " +
+"             }\r\n            }\r\n        </script>\r\n    </div>\n</body>\n</html>\n");
 
 }
 }

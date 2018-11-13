@@ -124,8 +124,7 @@
         <a href="Equipment">Equipment</a>
         <a href="Contacts">Contacts</a>
     </div>
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
+    <div id="editModal" class="modal" style="z-index:2000">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Edit Contact</p>
@@ -143,59 +142,70 @@
             <div id="popupContent"></div>
         </div>
     </div>
-    <div id="partModal" class="modal">
+    <div id="myModal"></div>
+    <div id="partModal" class="modal" style="z-index:1999">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Parts Modal</p>
             <div class="container">
-                <label>Part Name</label>
-                <input type="text" /><br />
-                <label>Address</label>
-                <input type="text" /><br />
-                <label>Email</label>
-                <input type="text" /><br />
-                <label>Phone Number</label>
-                <input type="text" /><br />
-                <button>Edit</button>
+                <label>Part Name: </label>
+                <label id="partName"></label>
+                <br /><br />
+                <label>SKU: </label>
+                <br /><br />
+                <label>Count: </label>
+                <br /><br />
+                <button class="editButton">Open Edit Modal</button>
+                <button>Add to Assembly/System</button>
             </div>
             <div id="popupContent"></div>
         </div>
     </div>
-    <div id="assemblyModal" class="modal">
+    <div id="assemblyModal" class="modal" style="z-index:1999">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Assembly Modal</p>
             <div class="container">
-                <label>Location</label>
-                <input type="text" /><br />
-                <label>Address</label>
-                <input type="text" /><br />
-                <label>Email</label>
-                <input type="text" /><br />
-                <label>Phone Number</label>
-                <input type="text" /><br />
-                <button>Edit</button>
+                <label>Assembly Name: </label>
+                <label id="assemblyName"></label>
+                <br /><br />
+                <label>SKU: </label>
+                <br /><br />
+                <label>Count: </label>
+                <br /><br />
+                <table id="assemblyTable"></table>
+                <script>
+                    @*var name = document.getElementById("assemblyName").innerHTML():
+                    GenerateTable("api/Inventory/table", name, "assemblyTable");*@
+                </script>
+                <button class="editButton">Open Edit Modal</button>
+                <button>Add to System</button>
             </div>
             <div id="popupContent"></div>
         </div>
     </div>
-    <div id="systemModal" class="modal">
+    <div id="systemModal" class="modal" style="z-index:1999">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>System Modal</p>
             <div class="container">
-                <label>Location</label>
-                <input type="text" /><br />
-                <label>Address</label>
-                <input type="text" /><br />
-                <label>Email</label>
-                <input type="text" /><br />
-                <label>Phone Number</label>
-                <input type="text" /><br />
-                <button>Edit</button>
+                <label>System Name: </label>
+                <label id="systemName"></label>
+                <br /><br />
+                <label>SKU: </label>
+                <br /><br />
+                <label>Count: </label>
+                <br /><br />
+                <table id="modalTable"></table>
+                <script>
+                    @*var name = document.getElementById("assemblyName").innerHTML():
+                    GenerateTable("api/Inventory/table", name, "assemblyTable");*@
+                </script>
+                <button class="editButton">Open Edit Modal</button>
+                <button>Build New System</button>
             </div>
             <div id="popupContent"></div>
         </div>
@@ -231,33 +241,49 @@
                 $("#openModalButton").click(function() {
                     openModal();
                 });
+
+                $(".editButton").click(function() {
+                    openModal();
+                });
             });
 
             var modal = document.getElementById('myModal');
+            var editModal = document.getElementById('editModal');
             var btn = document.getElementById("tempButton");
             var span = document.getElementsByClassName("close")[0];
             var modalType = document.getElementById("Category");
 
             function openModal(row) {
-                if(modalType.value == "Part") {
-                    modal = document.getElementById('partModal');
+                if(modal.style.display == "block") {
+                    editModal.style.display = "block";
                 }
-                if(modalType.value == "Assembly") {
-                    modal = document.getElementById('assemblyModal');
-                }
-                if(modalType.value == "System") {
-                    modal = document.getElementById('systemModal');
-                }
-                modal.style.display = "block";
+                else {
+                    if(modalType.value == "Part") {
+                        modal = document.getElementById('partModal');
+                    }
+                    if(modalType.value == "Assembly") {
+                        modal = document.getElementById('assemblyModal');
+                    }
+                    if(modalType.value == "System") {
+                        modal = document.getElementById('systemModal');
+                    }
+                    modal.style.display = "block";
+               }
             }
 
             span.onclick = function() {
-                modal.style.display = "none";
+                if(editModal.style.display == "none") {
+                    modal.style.display = "none";
+                }
+                else editModal.style.display = "none";
             }
 
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
+                }
+                if (event.target == editModal) {
+                    editModal.style.display = "none";
                 }
             }
         </script>
