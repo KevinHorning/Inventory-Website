@@ -14,6 +14,7 @@ namespace Backend.Parts
 
             try 
             {
+                //TODO check for name and serialNumber duplication
                 var namePair = new KeyValuePair<string, object>("name", name);
                 var SKUpair = new KeyValuePair<String, object>("SKU", SKU);
                 var serialNumberPair = new KeyValuePair<String, object>("serialNumber", serialNumber);

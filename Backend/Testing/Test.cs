@@ -16,8 +16,8 @@ namespace Backend.Testing
             {
                 Console.WriteLine("Connection Successful");
 
-                AddPart.addPart("7mm Bolt", "6294", "4312189374", 51);
-                //Deletion.Delete("parts", 4);
+                //AddPart.addPart("7mm Bolt", "6294", "4312189374", 51);
+                //Deletion.Delete("parts", 7);
 
                 //Parts.AddPart.addPart("7mm bolt", "8948667", 52, 0).Wait();
 
