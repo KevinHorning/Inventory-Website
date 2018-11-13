@@ -1,4 +1,4 @@
-﻿function GenerateTable(url, search) {
+﻿function GenerateTable(url, search, tableId) {
         $.get(url, { search }, function(data) {
             
             var table = document.createElement("TABLE");
@@ -28,7 +28,7 @@
                 }
             }
             
-            var divTable = document.getElementById("divTable");
+            var divTable = document.getElementById(tableId);
             divTable.innerHTML = "";
             divTable.appendChild(table);
         });

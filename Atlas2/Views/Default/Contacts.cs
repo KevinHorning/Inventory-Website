@@ -145,8 +145,11 @@ WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" id=\"phoneBox\"");
 
-WriteLiteral("/><br />\r\n                <button>Edit</button>\r\n            </div>\n            <" +
-"div");
+WriteLiteral("/><br />\r\n                <button");
+
+WriteLiteral(" id=\"modalEditButton\"");
+
+WriteLiteral(">Edit</button>\r\n            </div>\n            <div");
 
 WriteLiteral(" id=\"popupContent\"");
 
@@ -180,47 +183,7 @@ WriteLiteral(@" style=""
 
 WriteLiteral(" placeholder=\"Search...\"");
 
-WriteLiteral("/><br />\n        <label");
-
-WriteLiteral(" id=\"Categorylbl\"");
-
-WriteLiteral(" style=\"padding-left: 15px\"");
-
-WriteLiteral(">Category: </label>\n        <select");
-
-WriteLiteral(" id=\"Category\"");
-
-WriteLiteral(" style=\"width: 100px\"");
-
-WriteLiteral(">\n            <option");
-
-WriteLiteral(" value=\"All\"");
-
-WriteLiteral(">All</option>\n            <option");
-
-WriteLiteral(" value=\"Id\"");
-
-WriteLiteral(">Id</option>\n            <option");
-
-WriteLiteral(" value=\"Name\"");
-
-WriteLiteral(">Name</option>\n            <option");
-
-WriteLiteral(" value=\"Phone\"");
-
-WriteLiteral(">Phone</option>\n            <option");
-
-WriteLiteral(" value=\"Email\"");
-
-WriteLiteral(">Email</option>\n        </select>\n        <button");
-
-WriteLiteral(" id=\"SearchButton\"");
-
-WriteLiteral(">Search</button>\n        <button");
-
-WriteLiteral(" id=\"tempButton\"");
-
-WriteLiteral(">Pop Up</button>\n        <div");
+WriteLiteral("/><br />\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
@@ -228,33 +191,51 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(">\r\n            GenerateTable(\"/api/Contacts/table/\", \"contact\");\r\n            $(d" +
-"ocument).ready(function(){\r\n                $(\"#SearchBox\").on(\"keyup\", function" +
-"() {\r\n                    var value = $(this).val().toLowerCase();\r\n            " +
-"        $(\"#TableBody tr\").filter(function() {\r\n                        $(this)." +
-"toggle($(this).text().toLowerCase().indexOf(value) > -1)\r\n                    })" +
-";\r\n                });\r\n            });\r\n\r\n            $(\"#SearchButton\").click(" +
-"function() {\r\n                var model = {\r\n                    Username: $(\"#S" +
-"earchBox\").val(),\r\n                    Password: $(\"#Category\").val()\r\n         " +
-"       };\r\n                $.post(\"/api/Contact/SearchRequest\", model)\r\n        " +
-"            .done(function (data) {\r\n                        GenerateTable(\"/api" +
-"/Contact/SearchInfo/\");\r\n                    })\r\n                    .fail(funct" +
-"ion() {\r\n                        alert(\"error\");\r\n                    });\r\n     " +
-"       });\r\n\r\n            var modal = document.getElementById(\'myModal\');\r\n     " +
-"       var btn = document.getElementById(\"tempButton\");\r\n            var span = " +
-"document.getElementsByClassName(\"close\")[0];\r\n\r\n            function openModal(r" +
-"ow) {\n                var name = document.getElementById(\'nameBox\');\n           " +
-"     name.setAttribute(\"placeholder\", row[1].innerText);\n                var add" +
-"ress = document.getElementById(\'addressBox\');\n                address.setAttribu" +
-"te(\"placeholder\", row[2].innerText);\n                var email = document.getEle" +
-"mentById(\'emailBox\');\n                email.setAttribute(\"placeholder\", row[3].i" +
-"nnerText);\n                var phone = document.getElementById(\'phoneBox\');\n    " +
-"            phone.setAttribute(\"placeholder\", row[4].innerText);\r\n              " +
-"  modal.style.display = \"block\";\r\n            }\r\n\r\n            span.onclick = fu" +
-"nction() {\r\n                modal.style.display = \"none\";\r\n            }\r\n\r\n    " +
-"        window.onclick = function(event) {\r\n                if (event.target == " +
-"modal) {\r\n                    modal.style.display = \"none\";\r\n                }\n " +
-"           }\r\n           \r\n        </script>\n    </div>\n</body>\n</html>");
+WriteLiteral(@">
+            GenerateTable(""/api/Contacts/table/"", ""contact"", ""divTable"");
+            $(document).ready(function(){
+                $(""#SearchBox"").on(""keyup"", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(""#TableBody tr"").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+
+            ");
+
+WriteLiteral(@"
+
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById(""tempButton"");
+            var span = document.getElementsByClassName(""close"")[0];
+
+            function openModal(row) {
+                var name = document.getElementById('nameBox');
+                name.setAttribute(""placeholder"", row[1].innerText);
+                var address = document.getElementById('addressBox');
+                address.setAttribute(""placeholder"", row[2].innerText);
+                var email = document.getElementById('emailBox');
+                email.setAttribute(""placeholder"", row[3].innerText);
+                var phone = document.getElementById('phoneBox');
+                phone.setAttribute(""placeholder"", row[4].innerText);
+                modal.style.display = ""block"";
+            }
+
+            span.onclick = function() {
+                modal.style.display = ""none"";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = ""none"";
+                }
+            }
+           
+        </script>
+    </div>
+</body>
+</html>");
 
 }
 }

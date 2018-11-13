@@ -47,49 +47,44 @@ WriteLiteral("></script>\n\n    <title></title>\n\n    <script");
 
 WriteLiteral(" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"");
 
-WriteLiteral("></script>\n    <script>\n        $(document).ready(function(){\n            $(\"#Sea" +
-"rchBox\").on(\"keyup\", function() {\n                var value = $(this).val().toLo" +
-"werCase();\n                $(\"#TableBody tr\").filter(function() {\n              " +
-"      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\n         " +
-"       });\n            });\n        });\n    </script>\n\n    <style>\n        body {" +
-"\n            margin: 0;\n            font-family: Arial, Helvetica, sans-serif;\n " +
-"       }\n\n        h2 {\n            padding-left: 15px;\n        }\n\n        table " +
-"{\n            border: 1px solid #ccc;\n            border-collapse: collapse;\n   " +
-"         width: 80%;\n        }\n\n            table th {\n                backgroun" +
-"d-color: #F7F7F7;\n                color: #333;\n                font-weight: bold" +
-";\n                text-align: left;\n            }\n\n            table th, table t" +
-"d {\n                padding: 15px;\n                text-align: left;\n           " +
-"     border-bottom: 1px solid #ddd;\n            }\n\n        tr:hover {\n          " +
-"  background-color: #f5f5f5;\n        }\n\n\n\n        .topnav {\n            overflow" +
-": hidden;\n            background-color: #25275A;\n        }\n\n            .topnav " +
-"a {\n                float: left;\n                color: #f2f2f2;\n               " +
-" text-align: center;\n                padding: 14px 16px;\n                text-de" +
-"coration: none;\n                font-size: 17px;\n            }\n\n                " +
-".topnav a:hover {\n                    background-color: #B0EEFA;\n               " +
-"     color: black;\n                }\n\n                .topnav a.active {\n       " +
-"             background-color: #7ED8F9;\n                    color: #343E46;\n    " +
-"            }\r\n\r\n        .modal {\r\n            display: none; /* Hidden by defau" +
-"lt */\r\n            position: fixed; /* Stay in place */\r\n            z-index: 1;" +
-" /* Sit on top */\r\n            padding-top: 100px; /* Location of the box */\r\n  " +
-"          left: 0;\r\n            top: 0;\r\n            width: 100%; /* Full width " +
-"*/\r\n            height: 100%; /* Full height */\r\n            overflow: auto; /* " +
-"Enable scroll if needed */\r\n            background-color: rgb(0,0,0); /* Fallbac" +
-"k color */\r\n            background-color: rgba(0,0,0,0.4); /* Black w/ opacity *" +
-"/\r\n        }\r\n\r\n        .modal-content {\r\n            background-color: #fefefe;" +
-"\r\n            margin: auto;\r\n            padding: 20px;\r\n            border: 1px" +
-" solid #888;\r\n            width: 80%;\r\n        }\r\n\r\n        .modal input[type=te" +
-"xt], select, textarea {\r\n            width: 100%; /* Full width */\r\n            " +
-"padding: 12px; /* Some padding */\r\n            border: 1px solid #ccc; /* Gray b" +
-"order */\r\n            border-radius: 4px; /* Rounded borders */\r\n            box" +
-"-sizing: border-box; /* Make sure that padding and width stays in place */\r\n    " +
-"        margin-top: 6px; /* Add a top margin */\r\n            margin-bottom: 16px" +
-"; /* Bottom margin */\r\n            resize: vertical /* Allow the user to vertica" +
-"lly resize the textarea (not horizontally) */\r\n        }\r\n\r\n        .close {\r\n  " +
-"          color: #aaaaaa;\r\n            float: right;\r\n            font-size: 28p" +
-"x;\r\n            font-weight: bold;\r\n        }\r\n\r\n            .close:hover,\r\n    " +
-"        .close:focus {\r\n                color: #000;\r\n                text-decor" +
-"ation: none;\r\n                cursor: pointer;\r\n            }\n    </style>\n</hea" +
-"d>\n<body>\n    <div");
+WriteLiteral("></script>\n\n    <style>\n        body {\n            margin: 0;\n            font-fa" +
+"mily: Arial, Helvetica, sans-serif;\n        }\n\n        h2 {\n            padding-" +
+"left: 15px;\n        }\n\n        table {\n            border: 1px solid #ccc;\n     " +
+"       border-collapse: collapse;\n            width: 80%;\n        }\n\n           " +
+" table th {\n                background-color: #F7F7F7;\n                color: #3" +
+"33;\n                font-weight: bold;\n                text-align: left;\n       " +
+"     }\n\n            table th, table td {\n                padding: 15px;\n        " +
+"        text-align: left;\n                border-bottom: 1px solid #ddd;\n       " +
+"     }\n\n        tr:hover {\n            background-color: #f5f5f5;\n        }\n\n\n\n " +
+"       .topnav {\n            overflow: hidden;\n            background-color: #25" +
+"275A;\n        }\n\n            .topnav a {\n                float: left;\n          " +
+"      color: #f2f2f2;\n                text-align: center;\n                paddin" +
+"g: 14px 16px;\n                text-decoration: none;\n                font-size: " +
+"17px;\n            }\n\n                .topnav a:hover {\n                    backg" +
+"round-color: #B0EEFA;\n                    color: black;\n                }\n\n     " +
+"           .topnav a.active {\n                    background-color: #7ED8F9;\n   " +
+"                 color: #343E46;\n                }\r\n\r\n        .modal {\r\n        " +
+"    display: none; /* Hidden by default */\r\n            position: fixed; /* Stay" +
+" in place */\r\n            z-index: 1; /* Sit on top */\r\n            padding-top:" +
+" 100px; /* Location of the box */\r\n            left: 0;\r\n            top: 0;\r\n  " +
+"          width: 100%; /* Full width */\r\n            height: 100%; /* Full heigh" +
+"t */\r\n            overflow: auto; /* Enable scroll if needed */\r\n            bac" +
+"kground-color: rgb(0,0,0); /* Fallback color */\r\n            background-color: r" +
+"gba(0,0,0,0.4); /* Black w/ opacity */\r\n        }\r\n\r\n        .modal-content {\r\n " +
+"           background-color: #fefefe;\r\n            margin: auto;\r\n            pa" +
+"dding: 20px;\r\n            border: 1px solid #888;\r\n            width: 80%;\r\n    " +
+"    }\r\n\r\n        .modal input[type=text], select, textarea {\r\n            width:" +
+" 100%; /* Full width */\r\n            padding: 12px; /* Some padding */\r\n        " +
+"    border: 1px solid #ccc; /* Gray border */\r\n            border-radius: 4px; /" +
+"* Rounded borders */\r\n            box-sizing: border-box; /* Make sure that padd" +
+"ing and width stays in place */\r\n            margin-top: 6px; /* Add a top margi" +
+"n */\r\n            margin-bottom: 16px; /* Bottom margin */\r\n            resize: " +
+"vertical /* Allow the user to vertically resize the textarea (not horizontally) " +
+"*/\r\n        }\r\n\r\n        .close {\r\n            color: #aaaaaa;\r\n            floa" +
+"t: right;\r\n            font-size: 28px;\r\n            font-weight: bold;\r\n       " +
+" }\r\n\r\n            .close:hover,\r\n            .close:focus {\r\n                col" +
+"or: #000;\r\n                text-decoration: none;\r\n                cursor: point" +
+"er;\r\n            }\n    </style>\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -176,47 +171,7 @@ WriteLiteral(@" style=""
 
 WriteLiteral(" placeholder=\"Search...\"");
 
-WriteLiteral("/><br />\n        <label");
-
-WriteLiteral(" id=\"Categorylbl\"");
-
-WriteLiteral(" style=\"padding-left: 15px\"");
-
-WriteLiteral(">Category: </label>\n        <select");
-
-WriteLiteral(" id=\"Category\"");
-
-WriteLiteral(" style=\"width: 100px\"");
-
-WriteLiteral(">\n            <option");
-
-WriteLiteral(" value=\"All\"");
-
-WriteLiteral(">All</option>\n            <option");
-
-WriteLiteral(" value=\"Id\"");
-
-WriteLiteral(">Id</option>\n            <option");
-
-WriteLiteral(" value=\"SKU\"");
-
-WriteLiteral(">SKU</option>\n            <option");
-
-WriteLiteral(" value=\"Serial\"");
-
-WriteLiteral(">Serial Number</option>\n            <option");
-
-WriteLiteral(" value=\"Location\"");
-
-WriteLiteral(">Location</option>\n        </select>\n        <button");
-
-WriteLiteral(" id=\"SearchButton\"");
-
-WriteLiteral(">Search</button>\n        <button");
-
-WriteLiteral(" id=\"tempButton\"");
-
-WriteLiteral(">Pop Up</button>\n        <div");
+WriteLiteral("/><br />\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
@@ -225,19 +180,14 @@ WriteLiteral("></div>\n        <script");
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(@">
-            GenerateTable(""/api/Equipment/table/"", ""equipment"");
-            $(""#SearchButton"").click(function() {
-                var model = {
-                    Username: $(""#SearchBox"").val(),
-                    Password: $(""#Category"").val()
-                };
-                $.post(""/api/Equipment/SearchRequest"", model)
-                    .done(function (data) {
-                        GenerateTable(""/api/Equipment/SearchInfo/"");
-                    })
-                    .fail(function() {
-                        alert(""error"");
+            GenerateTable(""/api/Equipment/table/"", ""equipment"", ""divTable"");
+            $(document).ready(function(){
+                $(""#SearchBox"").on(""keyup"", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(""#TableBody tr"").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
+                });
             });
 
             var modal = document.getElementById('myModal');

@@ -10,16 +10,6 @@
     <title></title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#SearchBox").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#TableBody tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 
     <style>
         body {
@@ -167,31 +157,16 @@
             background-position: 10px 10px; 
             background-repeat: no-repeat;
             padding: 12px 20px 12px 40px; }" placeholder="Search..."/><br />
-        <label id="Categorylbl" style="padding-left: 15px">Category: </label>
-        <select id="Category" style="width: 100px">
-            <option value="All">All</option>
-            <option value="Id">Id</option>
-            <option value="SKU">SKU</option>
-            <option value="Serial">Serial Number</option>
-            <option value="Location">Location</option>
-        </select>
-        <button id="SearchButton">Search</button>
-        <button id="tempButton">Pop Up</button>
         <div id="divTable"></div>
         <script type="text/javascript">
-            GenerateTable("/api/Equipment/table/", "equipment");
-            $("#SearchButton").click(function() {
-                var model = {
-                    Username: $("#SearchBox").val(),
-                    Password: $("#Category").val()
-                };
-                $.post("/api/Equipment/SearchRequest", model)
-                    .done(function (data) {
-                        GenerateTable("/api/Equipment/SearchInfo/");
-                    })
-                    .fail(function() {
-                        alert("error");
+            GenerateTable("/api/Equipment/table/", "equipment", "divTable");
+            $(document).ready(function(){
+                $("#SearchBox").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#TableBody tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
+                });
             });
 
             var modal = document.getElementById('myModal');

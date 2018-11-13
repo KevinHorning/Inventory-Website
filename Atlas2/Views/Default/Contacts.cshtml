@@ -137,7 +137,7 @@
                 <input type="text" id="emailBox"/><br />
                 <label>Phone Number</label>
                 <input type="text" id="phoneBox"/><br />
-                <button>Edit</button>
+                <button id="modalEditButton">Edit</button>
             </div>
             <div id="popupContent"></div>
         </div>
@@ -156,19 +156,9 @@
             background-position: 10px 10px; 
             background-repeat: no-repeat;
             padding: 12px 20px 12px 40px; }" placeholder="Search..."/><br />
-        <label id="Categorylbl" style="padding-left: 15px">Category: </label>
-        <select id="Category" style="width: 100px">
-            <option value="All">All</option>
-            <option value="Id">Id</option>
-            <option value="Name">Name</option>
-            <option value="Phone">Phone</option>
-            <option value="Email">Email</option>
-        </select>
-        <button id="SearchButton">Search</button>
-        <button id="tempButton">Pop Up</button>
         <div id="divTable"></div>
         <script type="text/javascript">
-            GenerateTable("/api/Contacts/table/", "contact");
+            GenerateTable("/api/Contacts/table/", "contact", "divTable");
             $(document).ready(function(){
                 $("#SearchBox").on("keyup", function() {
                     var value = $(this).val().toLowerCase();
@@ -178,19 +168,22 @@
                 });
             });
 
-            $("#SearchButton").click(function() {
+            @*$(#modalEditButton).click(function() {
                 var model = {
-                    Username: $("#SearchBox").val(),
-                    Password: $("#Category").val()
-                };
-                $.post("/api/Contact/SearchRequest", model)
+                    Name: $("#nameBox").val();
+                    Address: $(addressBox").val();
+                    Email: $(emailBox).val();
+                    Phone: $(phoneBox).val();
+                }
+                $.post("api/Contact/edit", model)
                     .done(function (data) {
-                        GenerateTable("/api/Contact/SearchInfo/");
+                        alert("Success!);
+                        modal.style.display = "none";
                     })
-                    .fail(function() {
+                    .fail(function () {
                         alert("error");
                     });
-            });
+            };)*@
 
             var modal = document.getElementById('myModal');
             var btn = document.getElementById("tempButton");

@@ -10,17 +10,7 @@
     <title></title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#SearchBox").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#TableBody tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-
+  
     <style>
         body {
             margin: 0;
@@ -224,24 +214,20 @@
             background-position: 10px 10px; 
             background-repeat: no-repeat;
             padding: 12px 20px 12px 40px; }" placeholder="Search..."/><br />
-        <label id="Categorylbl" style="padding-left: 15px">Category: </label>
-        <select id="Category" style="width: 100px">
-            <option value="All">All</option>
-            <option value="Id">Id</option>
-            <option value="Name">Name</option>
-            <option value="SKU">SKU</option>
-            <option value="Serial">Serial Number</option>
-        </select>
-        <button id="SearchButton">Search</button>
-        <button id="tempButton">Pop Up</button>
-        <select id="ModalType" style="width: 100px">
-            <option value="Parts">Parts</option>
-            <option value="Assemblies">Assemblies</option>
-            <option value="Systems">Systems</option>
-        </select>
         <div id="divTable"></div>
         <script type="text/javascript">
-            GenerateTable("/api/Inventory/table/", "part");
+            GenerateTable("/api/Inventory/table/", "part", "divTable");
+
+            $(document).ready(function(){
+                $("#SearchBox").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#TableBody tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+
+
             $("#SearchButton").click(function() {
                 var model = {
                     Search: $("#SearchBox").val(),
@@ -260,19 +246,16 @@
             var btn = document.getElementById("tempButton");
             var span = document.getElementsByClassName("close")[0];
 
-            btn.onclick = function() {
-                if ($("#ModalType").val() == "Parts") {
+            function openModal(row) {
+                if(row[row.length - 1].innerText == "Part") {
                     modal = document.getElementById('partModal');
                 }
-
-                if ($("#ModalType").val() == "Assemblies") {
+                if(row[row.length - 1].innerText == "Assembly") {
                     modal = document.getElementById('assemblyModal');
                 }
-
-                if ($("#ModalType").val() == "Systems") {
+                if(row[row.length - 1].innerText == "System") {
                     modal = document.getElementById('systemModal');
                 }
-                modal.style.display = "block";
             }
 
             span.onclick = function() {

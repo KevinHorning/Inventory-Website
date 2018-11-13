@@ -16,7 +16,7 @@ namespace Atlas2.Controllers
             return Request.CreateResponse(HttpStatusCode.OK,
                 new TableResponse<Contact>
                 {
-                Headers = new[] 
+                    Headers = new[]
                 {
                         "Id",
                         "Name",
@@ -60,13 +60,6 @@ namespace Atlas2.Controllers
                         }
                     }
                 });
-            }
-
-        //[HttpPost]
-        //[Route("searchRequest")]
-        //public HttpRequestMessage SearchInfo(Searchfilter model)
-        //{
-        //    return Request.CreateResponseResponse(HttpStatusCode.OK, DatabaseTableResultMethod("contact", model));
-        //}
+        }
     }
 }
