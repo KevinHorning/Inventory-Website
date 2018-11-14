@@ -1,4 +1,5 @@
-﻿using CTG.Database;
+﻿using Backend.Parts;
+using CTG.Database;
 using System;
 using System.Threading.Tasks;
 
@@ -40,7 +41,7 @@ namespace Backend.Shared
                     throw new CustomException("Table " + tableName + " does not exist.");
                 }
 
-                var tableData = TableData.getTableData("parts").Data;
+                var tableData = PartsTable.GetPartsTable().Data ;
                 Boolean IDexists = false;
                 for (int j = 0; j < tableData.Length; j++)
                 {
