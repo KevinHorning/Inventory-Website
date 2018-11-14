@@ -16,7 +16,14 @@ namespace Backend.Testing
             {
                 Console.WriteLine("Connection Successful");
 
-                //AddPart.addPart("7mm Bolt", "6294", "4312189374", 51);
+                InventoryTable table = InventoryTable.GetInventoryTable();
+                for (int i = 0; i < table.Headers.Length; i++)
+                {
+                    Console.Write(table.Headers[i] + " ");
+                }
+                Console.WriteLine();
+                Console.WriteLine(table.Data.Length);
+                //Equipment.AddEquipment.addEquipment("Dell Inspiron 7559", "Office B Storage Closet", "has radioactive robotics testing software");
                 //Deletion.Delete("parts", 7);
 
                 //Parts.AddPart.addPart("7mm bolt", "8948667", 52, 0).Wait();

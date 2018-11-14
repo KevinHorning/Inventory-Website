@@ -41,7 +41,7 @@ namespace Backend.Parts
                 {
                     data[i] = new Part
                     {
-                        partID = (int)dataTable[i][0],
+                        itemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],
                         SKU = (string)dataTable[i][2],
                         serialNumber = (string)dataTable[i][3],

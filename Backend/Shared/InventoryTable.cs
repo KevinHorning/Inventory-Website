@@ -12,20 +12,27 @@ namespace Backend.Shared
 
         public static Object[] partsData;
         public static Object[] systemsData;
-        public static Object[] combinedData;
-
-        public InventoryTable()
-        {
-            Headers = PartsTable.GetPartsTable().Headers;
-            partsData = PartsTable.GetPartsTable().Data;
-            systemsData = SystemsTable.GetSystemsTable().Data;
-
-            combinedData = partsData.Concat(systemsData).ToArray();
-        }
 
         public static InventoryTable GetInventoryTable()
         {
             return new InventoryTable();
+        }
+
+        public InventoryTable()
+        {
+            Headers = PartsTable.GetPartsTable().Headers;
+            Headers[0] = "itemID";
+
+            string[] temp = Headers;
+            Array.Resize<String>(ref temp, Headers.Length + 1);
+            Headers = temp;
+            Headers[Headers.Length - 1] = "itemType";
+
+            partsData = PartsTable.GetPartsTable().Data;
+            systemsData = SystemsTable.GetSystemsTable().Data;
+
+            Data =  partsData.Concat(systemsData).ToArray();
+
         }
     }
 }

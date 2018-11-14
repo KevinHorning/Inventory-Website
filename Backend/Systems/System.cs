@@ -2,7 +2,7 @@
 {
     class System
     {
-        public int systemID { get; set; }
+        public int itemID { get; set; }
         public string name { get; set; }
         public string SKU { get; set; }
         public string serialNumber { get; set; }

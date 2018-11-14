@@ -41,7 +41,7 @@ namespace Backend.Systems
                 {
                     data[i] = new System
                     {
-                        systemID = (int)dataTable[i][0],
+                        itemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],
                         SKU = (string)dataTable[i][2],
                         serialNumber = (string)dataTable[i][3],
@@ -54,4 +54,6 @@ namespace Backend.Systems
             {
                 DatabaseManager.GetConnection().Close();
             }
+        }
+    }
 }

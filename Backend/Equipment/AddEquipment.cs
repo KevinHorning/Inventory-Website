@@ -8,20 +8,27 @@ namespace Backend.Equipment
 {
     class AddEquipment
     {
-        public static void addPart(String name, String location)
+        public static void addEquipment(String name, String location, String notes = null)
         {
-            Synchronize(name, location).Wait();
+            Synchronize(name, location, notes).Wait();
         }
 
-        public static async Task Synchronize(String name, String location)
+        public static async Task Synchronize(String name, String location, String notes = null)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
+            KeyValuePair<String, object>[] values;
 
             try
             {
-                var namePair = new KeyValuePair<string, object>("name", name);
-                var locationPair = new KeyValuePair<string, object>("location", location);
-                var values = new[] { namePair, locationPair};
+                var namePair = new KeyValuePair<String, object>("name", name);
+                var locationPair = new KeyValuePair<String, object>("location", location);
+                if (!(notes == null))
+                {
+                    var notesPair = new KeyValuePair<String, object>("notes", notes);
+                    values = new[] { namePair, locationPair, notesPair };
+                }
+                else
+                    values = new[] { namePair, locationPair};
 
                 MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
                 Query insertQuery = QBuilder.BuildInsertQuery("equipment", values);
