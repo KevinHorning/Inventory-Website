@@ -51,6 +51,8 @@
     <Compile Include="Login\CreateAccount.cs" />
     <Compile Include="Login\Login.cs" />
     <Compile Include="Parts\AddToSystem.cs" />
+    <Compile Include="Parts\PartMiniTables\MiniPart.cs" />
+    <Compile Include="Parts\PartMiniTables\MiniPartsTable.cs" />
     <Compile Include="Parts\PartsTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\ItemSelling.cs" />
@@ -58,7 +60,8 @@
     <Compile Include="Shared\InventoryTable.cs" />
     <Compile Include="Shared\DBconnection.cs" />
     <Compile Include="Systems\AddSystem.cs" />
-    <Compile Include="Systems\SelectSystem\DuplicateSystemsTable.cs" />
+    <Compile Include="Systems\CondensedSystem\CondensedSystemsTable.cs" />
+    <Compile Include="Systems\CondensedSystem\SpecificTypeSystemsTable.cs" />
     <Compile Include="Systems\SelectSystem\SubSystemsTable.cs" />
     <Compile Include="Systems\SelectSystem\SubSystem.cs" />
     <Compile Include="Systems\System.cs" />
