@@ -160,7 +160,7 @@
                 <br /><br />
                 <table id="modalTable"></table>
                 <button class="editButton" accesskey="partEdit">Open Edit Modal</button>
-                <button class="editButton" accesskey="partAdd">Build New System</button>
+                <button class="editButton" accesskey="partAdd">Add to System</button>
                 <script>
                     @*var name = document.getElementById("assemblyName").innerHTML():
                     GenerateTable("api/Inventory/table", name, "assemblyTable");*@
@@ -177,8 +177,10 @@
             <p>Part Edit Modal</p>
             <div class="container">
                 <label>Part Name: </label>
+                <label id="partName"></label>
                 <br/>
                 <label>Count: </label>
+                <label id="partCount"></label>
                 <br/>
                 <button>Add: </button>
                 <input type="text" style="width:50px; height: 30px"/>
@@ -210,16 +212,18 @@
                 <label id="systemName"></label>
                 <br /><br />
                 <label>SKU: </label>
+                <label id="systemSku"></label>
                 <br /><br />
-                <label>Count: </label>
-                <br /><br />
-                <table id="modalTable"></table>
+                <table id="systemTable"></table>
+                <button class="editButton" accesskey="systemEdit">Open Edit Modal</button>
+                <button class="editButton" accesskey="systemBuild">Build New System</button>
                 <script>
+                    $(".editButton").click(function() {
+                        openModal(this.accessKey);
+                    });
                     @*var name = document.getElementById("assemblyName").innerHTML():
                     GenerateTable("api/Inventory/table", name, "assemblyTable");*@
                 </script>
-                <button>Open Edit Modal</button>
-                <button>Build New System</button>
             </div>
         </div>
     </div>
@@ -240,7 +244,7 @@
         </div>
     </div>
     <div>
-    <div id="systemPartModal" class="modal" style="z-index: 2000">
+    <div id="systemBuildModal" class="modal" style="z-index: 2000">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Build New System Modal</p>
@@ -290,8 +294,8 @@
                     else if(row == "systemEdit") {
                         editModal = document.getElementById('systemEditModal');
                     }
-                    else if(row == "systemAdd") {
-                        editModal = document.getElementById('systemPartModal');
+                    else if(row == "systemBuild") {
+                        editModal = document.getElementById('systemBuildModal');
                     }
                     editModal.style.display = "block";
                 }
@@ -307,6 +311,9 @@
                     }
                     if(row[row.length - 1].innerText == "system") {
                         modal = document.getElementById('systemModal');
+                        var name = document.getElementById('systemName');
+                        name.innerHTML = row[1].innerText;
+                        var sku = document.getElementById('systemSku');
                     }
                     modal.style.display = "block";
                }
