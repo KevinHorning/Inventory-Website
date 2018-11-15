@@ -157,7 +157,7 @@ WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Contacts Page</h2>\n        <label");
+WriteLiteral(">Contacts</h2>\n        <label");
 
 WriteLiteral(" id=\"Srchlbl\"");
 

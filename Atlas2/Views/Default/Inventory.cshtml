@@ -10,6 +10,8 @@
     <title></title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
     <style>
         body {
@@ -84,7 +86,7 @@
             background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
 
-        .modal-content {
+        .w3-modal-content {
             background-color: #fefefe;
             margin: auto;
             padding: 20px;
@@ -92,7 +94,7 @@
             width: 80%;
         }
 
-        .modal input[type=text], select, textarea {
+        .w3-modal input[type=text], select, textarea {
             width: 100%; /* Full width */
             padding: 12px; /* Some padding */
             border: 1px solid #ccc; /* Gray border */
@@ -101,6 +103,17 @@
             margin-top: 6px; /* Add a top margin */
             margin-bottom: 16px; /* Bottom margin */
             resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+        }
+
+        .w3-modal button {
+            background-color: #25275A;
+            border: none;
+            color: white;
+            padding: 8px 21px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
         }
 
         .close {
@@ -124,11 +137,11 @@
         <a href="Equipment">Equipment</a>
         <a href="Contacts">Contacts</a>
     </div>
-    <div id="editModal" class="modal" style="z-index:2000">
+    <div id="editModal" class="w3-modal" style="z-index:2000">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Edit Contact</p>
-            <div class="container">
+            <div class="w3-modal-content w3-animate-right">
                 <label>Location</label>
                 <input type="text" /><br />
                 <label>Address</label>
@@ -143,9 +156,9 @@
         </div>
     </div>
     <div id="myModal"></div>
-    <div id="partModal" class="modal" style="z-index:1999">
+    <div id="partModal" class="w3-modal" style="z-index:1999">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="w3-modal-content w3-animate-right">
             <span class="close">&times;</span>
             <p>Part Modal</p>
             <div class="container">
@@ -171,10 +184,9 @@
             </div>
         </div>
     </div>
-    <div id="partEditModal" class="modal" style="z-index:2000">
-        <div class="modal-content">
+    <div id="partEditModal" class="w3-modal" style="z-index:2000">
+        <div class="w3-modal-content w3-animate-right">
             <span class="close">&times;</span>
-            <p>Part Edit Modal</p>
             <div class="container">
                 <label>Part Name: </label>
                 <label class="partName"></label>
@@ -183,15 +195,15 @@
                 <label class="partCount"></label>
                 <br/>
                 <button>Add: </button>
-                <input type="text" style="width:50px; height: 30px"/>
+                <input type="text" style="width:45px; height: 40px"/>
                 <br/>
                 <button>Remove: </button>
-                <input type="text" style="width: 50px; height: 30px"/>
+                <input type="text" style="width:45px; height: 40px"/>
             </div>
         </div>
     </div>
-    <div id="partSystemModal" class="modal" style="z-index:2000">
-        <div class="modal-content">
+    <div id="partSystemModal" class="w3-modal" style="z-index:2000">
+        <div class="w3-modal-content w3-animate-right">
             <span class="close">&times;</span>
             <p>Add to System</p>
             <div class="container">
@@ -202,11 +214,10 @@
             </div>
         </div>
     </div>
-    <div id="systemModal" class="modal" style="z-index:1999">
+    <div id="systemModal" class="w3-modal" style="z-index:1999">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="w3-modal-content w3-animate-right">
             <span class="close">&times;</span>
-            <p>System Modal</p>
             <div class="container">
                 <label>System Name: </label>
                 <label class="systemName"></label>
@@ -227,10 +238,9 @@
             </div>
         </div>
     </div>
-    <div id="systemEditModal" class="modal" style="z-index: 2000">
-        <div class="modal-content">
+    <div id="systemEditModal" class="w3-modal" style="z-index: 2000">
+        <div class="w3-modal-content w3-animate-right">
             <span class="close">&times;</span>
-            <p>System Edit Modal</p>
             <div class="container">
                 <label>System Name: </label>
                 <label class="systemName"></label>
@@ -246,13 +256,13 @@
         </div>
     </div>
     <div>
-    <div id="systemBuildModal" class="modal" style="z-index: 2000">
-        <div class="modal-content">
+    <div id="systemBuildModal" class="w3-modal" style="z-index: 2000">
+        <div class="w3-modal-content w3-animate-right">
             <span class="close">&times;</span>
-            <p>Build New System Modal</p>
+            <p>Build New System</p>
         </div>
     </div>
-        <h2 id="Mainlbl">Inventory Page</h2>
+        <h2 id="Mainlbl">Inventory</h2>
         <label id="Srchlbl" style="padding-left: 15px">Keyword: </label>
         <input type="text" id="SearchBox" style="
             width: 130px;
@@ -267,7 +277,7 @@
             padding: 12px 20px 12px 40px; }" placeholder="Search..." /><br />
         <div id="divTable"></div>
         <script type="text/javascript">
-GenerateTable("/api/Inventory/table/", "part", "divTable");
+        GenerateTable("/api/Inventory/table/", "part", "divTable");
 
             $(document).ready(function(){
                 $("#SearchBox").on("keyup", function() {
