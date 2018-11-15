@@ -1,25 +1,28 @@
 ﻿using CTG.Database;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Backend.Systems.SelectSystem
 {
-    public class SubSystemsTable
+    public class DuplicateSystemsTable
     {
         public String[] Headers { get; set; }
         public Object[] Data { get; set; }
 
-        public SubSystemsTable()
+        public DuplicateSystemsTable(string SKU)
         {
-            Synchronize().Wait();
+            Synchronize(SKU).Wait();
         }
 
-        public static SubSystemsTable GetSubSystemsTable()
+        public static SubSystemsTable GetDuplicateSystemsTable(string SKU)
         {
             return new SubSystemsTable();
         }
 
-        public async Task Synchronize()
+        public async Task Synchronize(String SKU)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
@@ -27,27 +30,14 @@ namespace Backend.Systems.SelectSystem
                 Query getHeadersQuery = new Query { QueryString = "SELECT COLUMN_NAME FROM atlas.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'systems'" };
                 var headerTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getHeadersQuery.QueryString).ConfigureAwait(false);
 
-                Headers = new string[headerTable.Length - 1];
-                for (int i = 0; i < 4; i++)
+                Headers = new string[headerTable.Length];
+                for (int i = 0; i < headerTable.Length; i++)
                 {
                     Headers[i] = (string)headerTable[i][0];
                 }
 
-                Query getDataQuery = new Query { QueryString = "SELECT systemID, name, SKU, serialNumber FROM systems" };
+                Query getDataQuery = new Query { QueryString = "SELECT * FROM systems WHERE SKU = " + SKU };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
-
-                SubSystem[] data = new SubSystem[dataTable.Length];
-                for (int i = 0; i < data.Length; i++)
-                {
-                    data[i] = new SubSystem
-                    {
-                        systemID = (int)dataTable[i][0],
-                        name = (string)dataTable[i][1],
-                        SKU = (string)dataTable[i][2],
-                        serialNumber = (string)dataTable[i][3]
-                    };
-                }
-                Data = data;
             }
             finally
             {

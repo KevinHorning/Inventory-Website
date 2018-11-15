@@ -58,10 +58,10 @@
     <Compile Include="Shared\InventoryTable.cs" />
     <Compile Include="Shared\DBconnection.cs" />
     <Compile Include="Systems\AddSystem.cs" />
+    <Compile Include="Systems\SelectSystem\DuplicateSystemsTable.cs" />
     <Compile Include="Systems\SelectSystem\SubSystemsTable.cs" />
     <Compile Include="Systems\SelectSystem\SubSystem.cs" />
     <Compile Include="Systems\System.cs" />
-    <Compile Include="Systems\SystemDuplicates.cs" />
     <Compile Include="Systems\SystemsTable.cs" />
     <Compile Include="Testing\Test.cs" />
     <Compile Include="Parts\Part.cs" />
