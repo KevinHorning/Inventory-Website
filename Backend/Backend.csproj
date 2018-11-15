@@ -57,12 +57,17 @@
     <Compile Include="Shared\Deletion.cs" />
     <Compile Include="Shared\InventoryTable.cs" />
     <Compile Include="Shared\DBconnection.cs" />
-    <Compile Include="Shared\VerifyTableName.cs" />
     <Compile Include="Systems\AddSystem.cs" />
+    <Compile Include="Systems\SelectSystem\SubSystemsTable.cs" />
+    <Compile Include="Systems\SelectSystem\SubSystem.cs" />
     <Compile Include="Systems\System.cs" />
+    <Compile Include="Systems\SystemDuplicates.cs" />
     <Compile Include="Systems\SystemsTable.cs" />
     <Compile Include="Testing\Test.cs" />
     <Compile Include="Parts\Part.cs" />
+    <Compile Include="Verification\PartIDverification.cs" />
+    <Compile Include="Verification\SystemIDverification.cs" />
+    <Compile Include="Verification\TableNameVerification.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
