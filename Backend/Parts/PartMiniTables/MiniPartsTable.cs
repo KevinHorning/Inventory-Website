@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Parts.PartMiniTables
 {
-    class MiniPartsTable
+    public class MiniPartsTable
     {
         public String[] Headers { get; set; }
         public Object[] Data { get; set; }
@@ -36,7 +36,7 @@ namespace Backend.Parts.PartMiniTables
                     Headers[i] = (string)headerTable[i][0];
                 }
 
-                Query getDataQuery = new Query { QueryString = "SELECT partID, name, SKU, serialNumber, count FROM systems" };
+                Query getDataQuery = new Query { QueryString = "SELECT partID, name, SKU, serialNumber, count FROM parts" };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
 
                 MiniPart[] data = new MiniPart[dataTable.Length];
@@ -58,4 +58,4 @@ namespace Backend.Parts.PartMiniTables
                 DatabaseManager.GetConnection().Close();
             }
     }
-}
+    }}

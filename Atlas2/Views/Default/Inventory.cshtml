@@ -150,13 +150,13 @@
             <p>Part Modal</p>
             <div class="container">
                 <label>Part Name: </label>
-                <label id="partName"></label>
+                <label class="partName"></label>
                 <br /><br />
                 <label>SKU: </label>
-                <label id="partSku"></label>
+                <label class="partSku"></label>
                 <br /><br />
                 <label>Count: </label>
-                <label id="partCount"></label>
+                <label class="partCount"></label>
                 <br /><br />
                 <table id="modalTable"></table>
                 <button class="editButton" accesskey="partEdit">Open Edit Modal</button>
@@ -177,10 +177,10 @@
             <p>Part Edit Modal</p>
             <div class="container">
                 <label>Part Name: </label>
-                <label id="partName"></label>
+                <label class="partName"></label>
                 <br/>
                 <label>Count: </label>
-                <label id="partCount"></label>
+                <label class="partCount"></label>
                 <br/>
                 <button>Add: </button>
                 <input type="text" style="width:50px; height: 30px"/>
@@ -209,10 +209,10 @@
             <p>System Modal</p>
             <div class="container">
                 <label>System Name: </label>
-                <label id="systemName"></label>
+                <label class="systemName"></label>
                 <br /><br />
                 <label>SKU: </label>
-                <label id="systemSku"></label>
+                <label class="systemSku"></label>
                 <br /><br />
                 <table id="systemTable"></table>
                 <button class="editButton" accesskey="systemEdit">Open Edit Modal</button>
@@ -233,12 +233,14 @@
             <p>System Edit Modal</p>
             <div class="container">
                 <label>System Name: </label>
+                <label class="systemName"></label>
                 <br />
                 <label>SKU: </label>
+                <label class="systemSku"></label>
                 <br />
                 <div id="systemEditTable"></div>
                 <script>
-                    GenerateTable("api/Inventory/table", "systemEdit", "systemEditTable");
+                    GenerateTable("/api/Inventory/table/", "systemEdit", "systemEditTable");
                 </script>
             </div>
         </div>
@@ -265,7 +267,7 @@
             padding: 12px 20px 12px 40px; }" placeholder="Search..." /><br />
         <div id="divTable"></div>
         <script type="text/javascript">
-            GenerateTable("/api/Inventory/table/", "part", "divTable");
+GenerateTable("/api/Inventory/table/", "part", "divTable");
 
             $(document).ready(function(){
                 $("#SearchBox").on("keyup", function() {
@@ -273,7 +275,7 @@
                     $("#TableBody tr").filter(function() {
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
-                
+
 
                 });
             });
@@ -302,19 +304,29 @@
                 else {
                     if(row[row.length - 1].innerText == "part") {
                         modal = document.getElementById('partModal');
-                        var name = document.getElementById('partName');
-                        name.innerHTML = row[1].innerText;
-                        var sku = document.getElementById('partSku');
-                        sku.innerHTML = row[2].innerText;
-                        var count = document.getElementById('partCount');
-                        count.innerHTML = row[4].innerText;
+                        var name = document.getElementsByClassName('partName');
+                        [].slice.call( name ).forEach(function ( name ) {
+                            name.innerHTML = row[1].innerText;
+                        });
+                        var sku = document.getElementsByClassName('partSku');
+                        [].slice.call( sku ).forEach(function ( sku ) {
+                            sku.innerHTML = row[2].innerText;
+                        });
+                        var count = document.getElementsByClassName('partCount');
+                        [].slice.call( count ).forEach(function ( count ) {
+                            count.innerHTML = row[4].innerText;
+                        });
                     }
                     if(row[row.length - 1].innerText == "system") {
                         modal = document.getElementById('systemModal');
-                        var name = document.getElementById('systemName');
-                        name.innerHTML = row[1].innerText;
-                        var sku = document.getElementById('systemSku');
-                        sku.innerHTML = row[2].innerText;
+                        var name = document.getElementsByClassName('systemName');
+                        [].slice.call( name ).forEach(function ( name ) {
+                            name.innerHTML = row[1].innerText;
+                        });
+                        var sku = document.getElementsByClassName('systemSku');
+                        [].slice.call( sku ).forEach(function ( sku ) {
+                            sku.innerHTML = row[2].innerText;
+                        });
                     }
                     modal.style.display = "block";
                }
@@ -334,8 +346,7 @@
                 if (event.target == editModal) {
                     editModal.style.display = "none";
                 }
-            }
-        </script>
+            }</script>
     </div>
 </body>
 </html>

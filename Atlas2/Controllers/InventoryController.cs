@@ -21,7 +21,7 @@ namespace Atlas2.Controllers
             }
             else if (search == "systemEdit")
             {
-                return Request.CreateResponse(HttpStatusCode.OK, )
+                return Request.CreateResponse(HttpStatusCode.OK, Backend.Parts.PartMiniTables.MiniPartsTable.GetMiniPartsTable());
             }
             else return Request.CreateResponse(HttpStatusCode.BadRequest);
         }

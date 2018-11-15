@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Parts.PartMiniTables
 {
-    class MiniPart
+    public class MiniPart
     {
         public int partID { get; set; }
         public string name { get; set; }

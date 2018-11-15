@@ -63,28 +63,28 @@ WriteLiteral("></script>\n  \n    <style>\n        body {\n            margin: 0
 ": 17px;\n            }\n\n                .topnav a:hover {\n                    bac" +
 "kground-color: #B0EEFA;\n                    color: black;\n                }\n\n   " +
 "             .topnav a.active {\n                    background-color: #7ED8F9;\n " +
-"                   color: #343E46;\n                }\n\r\n        .modal {\r\n       " +
-"     display: none; /* Hidden by default */\r\n            position: fixed; /* Sta" +
-"y in place */\r\n            z-index: 1; /* Sit on top */\r\n            padding-top" +
-": 100px; /* Location of the box */\r\n            left: 0;\r\n            top: 0;\r\n " +
-"           width: 100%; /* Full width */\r\n            height: 100%; /* Full heig" +
-"ht */\r\n            overflow: auto; /* Enable scroll if needed */\r\n            ba" +
-"ckground-color: rgb(0,0,0); /* Fallback color */\r\n            background-color: " +
-"rgba(0,0,0,0.4); /* Black w/ opacity */\r\n        }\r\n\r\n        .modal-content {\r\n" +
-"            background-color: #fefefe;\r\n            margin: auto;\r\n            p" +
-"adding: 20px;\r\n            border: 1px solid #888;\r\n            width: 80%;\r\n   " +
-"     }\r\n\r\n        .modal input[type=text], select, textarea {\r\n            width" +
-": 100%; /* Full width */\r\n            padding: 12px; /* Some padding */\r\n       " +
-"     border: 1px solid #ccc; /* Gray border */\r\n            border-radius: 4px; " +
-"/* Rounded borders */\r\n            box-sizing: border-box; /* Make sure that pad" +
-"ding and width stays in place */\r\n            margin-top: 6px; /* Add a top marg" +
-"in */\r\n            margin-bottom: 16px; /* Bottom margin */\r\n            resize:" +
-" vertical /* Allow the user to vertically resize the textarea (not horizontally)" +
-" */\r\n        }\r\n\r\n        .close {\r\n            color: #aaaaaa;\r\n            flo" +
-"at: right;\r\n            font-size: 28px;\r\n            font-weight: bold;\r\n      " +
-"  }\r\n\r\n            .close:hover,\r\n            .close:focus {\r\n                co" +
-"lor: #000;\r\n                text-decoration: none;\r\n                cursor: poin" +
-"ter;\r\n            }\n    </style>\n</head>\n<body>\n    <div");
+"                   color: #343E46;\n                }\n\n        .modal {\n         " +
+"   display: none; /* Hidden by default */\n            position: fixed; /* Stay i" +
+"n place */\n            z-index: 1; /* Sit on top */\n            padding-top: 100" +
+"px; /* Location of the box */\n            left: 0;\n            top: 0;\n         " +
+"   width: 100%; /* Full width */\n            height: 100%; /* Full height */\n   " +
+"         overflow: auto; /* Enable scroll if needed */\n            background-co" +
+"lor: rgb(0,0,0); /* Fallback color */\n            background-color: rgba(0,0,0,0" +
+".4); /* Black w/ opacity */\n        }\n\n        .modal-content {\n            back" +
+"ground-color: #fefefe;\n            margin: auto;\n            padding: 20px;\n    " +
+"        border: 1px solid #888;\n            width: 80%;\n        }\n\n        .moda" +
+"l input[type=text], select, textarea {\n            width: 100%; /* Full width */" +
+"\n            padding: 12px; /* Some padding */\n            border: 1px solid #cc" +
+"c; /* Gray border */\n            border-radius: 4px; /* Rounded borders */\n     " +
+"       box-sizing: border-box; /* Make sure that padding and width stays in plac" +
+"e */\n            margin-top: 6px; /* Add a top margin */\n            margin-bott" +
+"om: 16px; /* Bottom margin */\n            resize: vertical /* Allow the user to " +
+"vertically resize the textarea (not horizontally) */\n        }\n\n        .close {" +
+"\n            color: #aaaaaa;\n            float: right;\n            font-size: 28" +
+"px;\n            font-weight: bold;\n        }\n\n            .close:hover,\n        " +
+"    .close:focus {\n                color: #000;\n                text-decoration:" +
+" none;\n                cursor: pointer;\n            }\n    </style>\n</head>\n<body" +
+">\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -114,36 +114,36 @@ WriteLiteral(">\n        <div");
 
 WriteLiteral(" class=\"modal-content\"");
 
-WriteLiteral(">\r\n            <span");
+WriteLiteral(">\n            <span");
 
 WriteLiteral(" class=\"close\"");
 
-WriteLiteral(">&times;</span>\r\n            <p>Edit Contact</p>\r\n            <div");
+WriteLiteral(">&times;</span>\n            <p>Edit Contact</p>\n            <div");
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>Location</label>\r\n                <input");
+WriteLiteral(">\n                <label>Location</label>\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" /><br />\r\n                <label>Address</label>\r\n                <input");
+WriteLiteral(" /><br />\n                <label>Address</label>\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" /><br />\r\n                <label>Email</label>\r\n                <input");
+WriteLiteral(" /><br />\n                <label>Email</label>\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" /><br />\r\n                <label>Phone Number</label>\r\n                <input");
+WriteLiteral(" /><br />\n                <label>Phone Number</label>\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" /><br />\r\n                <button>Edit</button>\r\n            </div>\r\n           " +
-" <div");
+WriteLiteral(" /><br />\n                <button>Edit</button>\n            </div>\n            <d" +
+"iv");
 
 WriteLiteral(" id=\"popupContent\"");
 
-WriteLiteral("></div>\r\n        </div>\n    </div>\n    <div");
+WriteLiteral("></div>\n        </div>\n    </div>\n    <div");
 
 WriteLiteral(" id=\"myModal\"");
 
@@ -155,33 +155,33 @@ WriteLiteral(" class=\"modal\"");
 
 WriteLiteral(" style=\"z-index:1999\"");
 
-WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+WriteLiteral(">\n        <!-- Modal content -->\n        <div");
 
 WriteLiteral(" class=\"modal-content\"");
 
-WriteLiteral(">\r\n            <span");
+WriteLiteral(">\n            <span");
 
 WriteLiteral(" class=\"close\"");
 
-WriteLiteral(">&times;</span>\r\n            <p>Part Modal</p>\r\n            <div");
+WriteLiteral(">&times;</span>\n            <p>Part Modal</p>\n            <div");
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>Part Name: </label>\r\n                <label");
+WriteLiteral(">\n                <label>Part Name: </label>\n                <label");
 
-WriteLiteral(" id=\"partName\"");
+WriteLiteral(" class=\"partName\"");
 
-WriteLiteral("></label>\r\n                <br /><br />\r\n                <label>SKU: </label>\n   " +
+WriteLiteral("></label>\n                <br /><br />\n                <label>SKU: </label>\n     " +
+"           <label");
+
+WriteLiteral(" class=\"partSku\"");
+
+WriteLiteral("></label>\n                <br /><br />\n                <label>Count: </label>\n   " +
 "             <label");
 
-WriteLiteral(" id=\"partSku\"");
+WriteLiteral(" class=\"partCount\"");
 
-WriteLiteral("></label>\r\n                <br /><br />\r\n                <label>Count: </label>\n " +
-"               <label");
-
-WriteLiteral(" id=\"partCount\"");
-
-WriteLiteral("></label>\r\n                <br /><br />\r\n                <table");
+WriteLiteral("></label>\n                <br /><br />\n                <table");
 
 WriteLiteral(" id=\"modalTable\"");
 
@@ -197,11 +197,11 @@ WriteLiteral(" class=\"editButton\"");
 
 WriteLiteral(" accesskey=\"partAdd\"");
 
-WriteLiteral(">Add to System</button>\r\n                <script>\r\n                    ");
+WriteLiteral(">Add to System</button>\n                <script>\n                    ");
 
-WriteLiteral("\r\n                        $(\".editButton\").click(function() {\r\n                  " +
-"          openModal(this.accessKey);\r\n                        });\r\n             " +
-"   </script>\r\n            </div>\r\n        </div>\r\n    </div>\n    <div");
+WriteLiteral("\n                        $(\".editButton\").click(function() {\n                    " +
+"        openModal(this.accessKey);\n                        });\n                <" +
+"/script>\n            </div>\n        </div>\n    </div>\n    <div");
 
 WriteLiteral(" id=\"partEditModal\"");
 
@@ -213,22 +213,22 @@ WriteLiteral(">\n        <div");
 
 WriteLiteral(" class=\"modal-content\"");
 
-WriteLiteral(">\r\n            <span");
+WriteLiteral(">\n            <span");
 
 WriteLiteral(" class=\"close\"");
 
-WriteLiteral(">&times;</span>\r\n            <p>Part Edit Modal</p>\r\n            <div");
+WriteLiteral(">&times;</span>\n            <p>Part Edit Modal</p>\n            <div");
 
 WriteLiteral(" class=\"container\"");
 
 WriteLiteral(">\n                <label>Part Name: </label>\n                <label");
 
-WriteLiteral(" id=\"partName\"");
+WriteLiteral(" class=\"partName\"");
 
 WriteLiteral("></label>\n                <br/>\n                <label>Count: </label>\n          " +
 "      <label");
 
-WriteLiteral(" id=\"partCount\"");
+WriteLiteral(" class=\"partCount\"");
 
 WriteLiteral("></label>\n                <br/>\n                <button>Add: </button>\n          " +
 "      <input");
@@ -244,7 +244,7 @@ WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" style=\"width: 50px; height: 30px\"");
 
-WriteLiteral("/>\r\n            </div>\r\n        </div>\n    </div>\n    <div");
+WriteLiteral("/>\n            </div>\n        </div>\n    </div>\n    <div");
 
 WriteLiteral(" id=\"partSystemModal\"");
 
@@ -278,49 +278,48 @@ WriteLiteral(" class=\"modal\"");
 
 WriteLiteral(" style=\"z-index:1999\"");
 
-WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+WriteLiteral(">\n        <!-- Modal content -->\n        <div");
 
 WriteLiteral(" class=\"modal-content\"");
 
-WriteLiteral(">\r\n            <span");
+WriteLiteral(">\n            <span");
 
 WriteLiteral(" class=\"close\"");
 
-WriteLiteral(">&times;</span>\r\n            <p>System Modal</p>\r\n            <div");
+WriteLiteral(">&times;</span>\n            <p>System Modal</p>\n            <div");
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>System Name: </label>\r\n                <label");
+WriteLiteral(">\n                <label>System Name: </label>\n                <label");
 
-WriteLiteral(" id=\"systemName\"");
+WriteLiteral(" class=\"systemName\"");
 
-WriteLiteral("></label>\r\n                <br /><br />\r\n                <label>SKU: </label>\n   " +
-"             <label");
+WriteLiteral("></label>\n                <br /><br />\n                <label>SKU: </label>\n     " +
+"           <label");
 
-WriteLiteral(" id=\"systemSku\"");
+WriteLiteral(" class=\"systemSku\"");
 
-WriteLiteral("></label>\r\n                <br /><br />\r\n                <table");
+WriteLiteral("></label>\n                <br /><br />\n                <table");
 
 WriteLiteral(" id=\"systemTable\"");
 
-WriteLiteral("></table>\r\n                <button");
+WriteLiteral("></table>\n                <button");
 
 WriteLiteral(" class=\"editButton\"");
 
 WriteLiteral(" accesskey=\"systemEdit\"");
 
-WriteLiteral(">Open Edit Modal</button>\r\n                <button");
+WriteLiteral(">Open Edit Modal</button>\n                <button");
 
 WriteLiteral(" class=\"editButton\"");
 
 WriteLiteral(" accesskey=\"systemBuild\"");
 
-WriteLiteral(">Build New System</button>\r\n                <script>\r\n                    $(\".edi" +
-"tButton\").click(function() {\r\n                        openModal(this.accessKey);" +
-"\r\n                    });\r\n                    ");
+WriteLiteral(">Build New System</button>\n                <script>\n                    $(\".editB" +
+"utton\").click(function() {\n                        openModal(this.accessKey);\n  " +
+"                  });\n                    ");
 
-WriteLiteral("\r\n                </script>\r\n            </div>\r\n        </div>\r\n    </div>\n    <" +
-"div");
+WriteLiteral("\n                </script>\n            </div>\n        </div>\n    </div>\n    <div");
 
 WriteLiteral(" id=\"systemEditModal\"");
 
@@ -332,22 +331,30 @@ WriteLiteral(">\n        <div");
 
 WriteLiteral(" class=\"modal-content\"");
 
-WriteLiteral(">\r\n            <span");
+WriteLiteral(">\n            <span");
 
 WriteLiteral(" class=\"close\"");
 
-WriteLiteral(">&times;</span>\r\n            <p>System Edit Modal</p>\r\n            <div");
+WriteLiteral(">&times;</span>\n            <p>System Edit Modal</p>\n            <div");
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>System Name: </label>\n                <br />\r\n         " +
-"       <label>SKU: </label>\r\n                <br />\r\n                <div");
+WriteLiteral(">\n                <label>System Name: </label>\n                <label");
+
+WriteLiteral(" class=\"systemName\"");
+
+WriteLiteral("></label>\n                <br />\n                <label>SKU: </label>\n           " +
+"     <label");
+
+WriteLiteral(" class=\"systemSku\"");
+
+WriteLiteral("></label>\n                <br />\n                <div");
 
 WriteLiteral(" id=\"systemEditTable\"");
 
-WriteLiteral("></div>\n                <script>\n                    GenerateTable(\"api/Inventory" +
-"/table\", \"systemEdit\", \"systemEditTable\");\n                </script>\r\n          " +
-"  </div>\r\n        </div>\n    </div>\n    <div>\n    <div");
+WriteLiteral("></div>\n                <script>\n                    GenerateTable(\"/api/Inventor" +
+"y/table/\", \"systemEdit\", \"systemEditTable\");\n                </script>\n         " +
+"   </div>\n        </div>\n    </div>\n    <div>\n    <div");
 
 WriteLiteral(" id=\"systemBuildModal\"");
 
@@ -364,17 +371,17 @@ WriteLiteral(">\n            <span");
 WriteLiteral(" class=\"close\"");
 
 WriteLiteral(">&times;</span>\n            <p>Build New System Modal</p>\n        </div>\n    </di" +
-"v>\r\n        <h2");
+"v>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Inventory Page</h2>\r\n        <label");
+WriteLiteral(">Inventory Page</h2>\n        <label");
 
 WriteLiteral(" id=\"Srchlbl\"");
 
 WriteLiteral(" style=\"padding-left: 15px\"");
 
-WriteLiteral(">Keyword: </label>\r\n        <input");
+WriteLiteral(">Keyword: </label>\n        <input");
 
 WriteLiteral(" type=\"text\"");
 
@@ -394,46 +401,53 @@ WriteLiteral(@" style=""
 
 WriteLiteral(" placeholder=\"Search...\"");
 
-WriteLiteral(" /><br />\r\n        <div");
+WriteLiteral(" /><br />\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
-WriteLiteral("></div>\r\n        <script");
+WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(">\r\n            GenerateTable(\"/api/Inventory/table/\", \"part\", \"divTable\");\r\n\r\n   " +
-"         $(document).ready(function(){\r\n                $(\"#SearchBox\").on(\"keyu" +
-"p\", function() {\r\n                    var value = $(this).val().toLowerCase();\r\n" +
-"                    $(\"#TableBody tr\").filter(function() {\r\n                    " +
-"    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\r\n          " +
-"          });\r\n                \r\n\r\n                });\r\n            });\r\n\r\n     " +
-"       var modal = document.getElementById(\'myModal\');\r\n            var editModa" +
-"l = document.getElementById(\'editModal\');\r\n            var span = document.getEl" +
-"ementsByClassName(\"close\")[0];\r\n            var modalType = document.getElementB" +
-"yId(\"Category\");\r\n\r\n            function openModal(row) {\r\n                if(mo" +
-"dal.style.display == \"block\") {\r\n                    if(row == \"partEdit\") {\r\n  " +
-"                      editModal = document.getElementById(\'partEditModal\');\r\n   " +
-"                 }\n                    else if(row == \"partAdd\") {\n             " +
-"           editModal = document.getElementById(\'partSystemModal\');\n             " +
-"       }\r\n                    else if(row == \"systemEdit\") {\r\n                  " +
-"      editModal = document.getElementById(\'systemEditModal\');\r\n                 " +
-"   }\n                    else if(row == \"systemBuild\") {\n                       " +
-" editModal = document.getElementById(\'systemBuildModal\');\n                    }\r" +
-"\n                    editModal.style.display = \"block\";\r\n                }\r\n    " +
-"            else {\r\n                    if(row[row.length - 1].innerText == \"par" +
-"t\") {\r\n                        modal = document.getElementById(\'partModal\');\r\n  " +
-"                      var name = document.getElementById(\'partName\');\r\n         " +
-"               name.innerHTML = row[1].innerText;\r\n                        var s" +
-"ku = document.getElementById(\'partSku\');\r\n                        sku.innerHTML " +
-"= row[2].innerText;\r\n                        var count = document.getElementById" +
-"(\'partCount\');\r\n                        count.innerHTML = row[4].innerText;\r\n   " +
-"                 }\r\n                    if(row[row.length - 1].innerText == \"sys" +
-"tem\") {\r\n                        modal = document.getElementById(\'systemModal\');" +
-"\n                        var name = document.getElementById(\'systemName\');\n     " +
-"                   name.innerHTML = row[1].innerText;\n                        va" +
-"r sku = document.getElementById(\'systemSku\');\n                        sku.innerH" +
-"TML = row[2].innerText;\r\n                    }\r\n                    modal.style." +
+WriteLiteral(">\r\nGenerateTable(\"/api/Inventory/table/\", \"part\", \"divTable\");\r\n\r\n            $(d" +
+"ocument).ready(function(){\r\n                $(\"#SearchBox\").on(\"keyup\", function" +
+"() {\r\n                    var value = $(this).val().toLowerCase();\r\n            " +
+"        $(\"#TableBody tr\").filter(function() {\r\n                        $(this)." +
+"toggle($(this).text().toLowerCase().indexOf(value) > -1)\r\n                    })" +
+";\r\n\r\n\r\n                });\r\n            });\r\n\r\n            var modal = document." +
+"getElementById(\'myModal\');\r\n            var editModal = document.getElementById(" +
+"\'editModal\');\r\n            var span = document.getElementsByClassName(\"close\")[0" +
+"];\r\n            var modalType = document.getElementById(\"Category\");\r\n\r\n        " +
+"    function openModal(row) {\r\n                if(modal.style.display == \"block\"" +
+") {\r\n                    if(row == \"partEdit\") {\r\n                        editMo" +
+"dal = document.getElementById(\'partEditModal\');\r\n                    }\r\n        " +
+"            else if(row == \"partAdd\") {\r\n                        editModal = doc" +
+"ument.getElementById(\'partSystemModal\');\r\n                    }\r\n               " +
+"     else if(row == \"systemEdit\") {\r\n                        editModal = documen" +
+"t.getElementById(\'systemEditModal\');\r\n                    }\r\n                   " +
+" else if(row == \"systemBuild\") {\r\n                        editModal = document.g" +
+"etElementById(\'systemBuildModal\');\r\n                    }\r\n                    e" +
+"ditModal.style.display = \"block\";\r\n                }\r\n                else {\r\n  " +
+"                  if(row[row.length - 1].innerText == \"part\") {\r\n               " +
+"         modal = document.getElementById(\'partModal\');\r\n                        " +
+"var name = document.getElementsByClassName(\'partName\');\r\n                       " +
+" [].slice.call( name ).forEach(function ( name ) {\r\n                            " +
+"name.innerHTML = row[1].innerText;\r\n                        });\r\n               " +
+"         var sku = document.getElementsByClassName(\'partSku\');\r\n                " +
+"        [].slice.call( sku ).forEach(function ( sku ) {\r\n                       " +
+"     sku.innerHTML = row[2].innerText;\r\n                        });\r\n           " +
+"             var count = document.getElementsByClassName(\'partCount\');\r\n        " +
+"                [].slice.call( count ).forEach(function ( count ) {\r\n           " +
+"                 count.innerHTML = row[4].innerText;\r\n                        })" +
+";\r\n                    }\r\n                    if(row[row.length - 1].innerText =" +
+"= \"system\") {\r\n                        modal = document.getElementById(\'systemMo" +
+"dal\');\r\n                        var name = document.getElementsByClassName(\'syst" +
+"emName\');\r\n                        [].slice.call( name ).forEach(function ( name" +
+" ) {\r\n                            name.innerHTML = row[1].innerText;\r\n          " +
+"              });\r\n                        var sku = document.getElementsByClass" +
+"Name(\'systemSku\');\r\n                        [].slice.call( sku ).forEach(functio" +
+"n ( sku ) {\r\n                            sku.innerHTML = row[2].innerText;\r\n    " +
+"                    });\r\n                    }\r\n                    modal.style." +
 "display = \"block\";\r\n               }\r\n            }\r\n\r\n            span.onclick " +
 "= function() {\r\n                if(editModal.style.display == \"none\") {\r\n       " +
 "             modal.style.display = \"none\";\r\n                }\r\n                e" +
@@ -441,8 +455,7 @@ WriteLiteral(">\r\n            GenerateTable(\"/api/Inventory/table/\", \"part\"
 "ck = function(event) {\r\n                if (event.target == modal) {\r\n          " +
 "          modal.style.display = \"none\";\r\n                }\r\n                if (" +
 "event.target == editModal) {\r\n                    editModal.style.display = \"non" +
-"e\";\r\n                }\r\n            }\r\n        </script>\r\n    </div>\n</body>\n</h" +
-"tml>\n");
+"e\";\r\n                }\r\n            }</script>\n    </div>\n</body>\n</html>\n");
 
 }
 }
