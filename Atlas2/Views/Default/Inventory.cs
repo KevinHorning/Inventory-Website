@@ -340,22 +340,14 @@ WriteLiteral(">&times;</span>\r\n            <p>System Edit Modal</p>\r\n       
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>Part Name: </label>\r\n                <label>Count: </la" +
-"bel>\r\n                <br />\r\n                <button>Add: </button>\r\n          " +
-"      <input");
+WriteLiteral(">\r\n                <label>System Name: </label>\n                <br />\r\n         " +
+"       <label>SKU: </label>\r\n                <br />\r\n                <div");
 
-WriteLiteral(" type=\"text\"");
+WriteLiteral(" id=\"systemEditTable\"");
 
-WriteLiteral(" width=\"100\"");
-
-WriteLiteral(" />\r\n                <br />\r\n                <label>Remove: </label>\r\n           " +
-"     <input");
-
-WriteLiteral(" type=\"text\"");
-
-WriteLiteral(" width=\"100\"");
-
-WriteLiteral(" />\r\n            </div>\r\n        </div>\n    </div>\n    <div>\n    <div");
+WriteLiteral("></div>\n                <script>\n                    GenerateTable(\"api/Inventory" +
+"/table\", \"systemEdit\", \"systemEditTable\");\n                </script>\r\n          " +
+"  </div>\r\n        </div>\n    </div>\n    <div>\n    <div");
 
 WriteLiteral(" id=\"systemBuildModal\"");
 
@@ -440,16 +432,17 @@ WriteLiteral(">\r\n            GenerateTable(\"/api/Inventory/table/\", \"part\"
 "tem\") {\r\n                        modal = document.getElementById(\'systemModal\');" +
 "\n                        var name = document.getElementById(\'systemName\');\n     " +
 "                   name.innerHTML = row[1].innerText;\n                        va" +
-"r sku = document.getElementById(\'systemSku\');\r\n                    }\r\n          " +
-"          modal.style.display = \"block\";\r\n               }\r\n            }\r\n\r\n   " +
-"         span.onclick = function() {\r\n                if(editModal.style.display" +
-" == \"none\") {\r\n                    modal.style.display = \"none\";\r\n              " +
-"  }\r\n                else editModal.style.display = \"none\";\r\n            }\r\n\r\n  " +
-"          window.onclick = function(event) {\r\n                if (event.target =" +
-"= modal) {\r\n                    modal.style.display = \"none\";\r\n                }" +
-"\r\n                if (event.target == editModal) {\r\n                    editModa" +
-"l.style.display = \"none\";\r\n                }\r\n            }\r\n        </script>\r\n" +
-"    </div>\n</body>\n</html>\n");
+"r sku = document.getElementById(\'systemSku\');\n                        sku.innerH" +
+"TML = row[2].innerText;\r\n                    }\r\n                    modal.style." +
+"display = \"block\";\r\n               }\r\n            }\r\n\r\n            span.onclick " +
+"= function() {\r\n                if(editModal.style.display == \"none\") {\r\n       " +
+"             modal.style.display = \"none\";\r\n                }\r\n                e" +
+"lse editModal.style.display = \"none\";\r\n            }\r\n\r\n            window.oncli" +
+"ck = function(event) {\r\n                if (event.target == modal) {\r\n          " +
+"          modal.style.display = \"none\";\r\n                }\r\n                if (" +
+"event.target == editModal) {\r\n                    editModal.style.display = \"non" +
+"e\";\r\n                }\r\n            }\r\n        </script>\r\n    </div>\n</body>\n</h" +
+"tml>\n");
 
 }
 }

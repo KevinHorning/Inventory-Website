@@ -222,7 +222,7 @@
                         openModal(this.accessKey);
                     });
                     @*var name = document.getElementById("assemblyName").innerHTML():
-                    GenerateTable("api/Inventory/table", name, "assemblyTable");*@
+                    GenerateTable("api/Inventory/table", name, "systemTable");*@
                 </script>
             </div>
         </div>
@@ -232,14 +232,14 @@
             <span class="close">&times;</span>
             <p>System Edit Modal</p>
             <div class="container">
-                <label>Part Name: </label>
-                <label>Count: </label>
+                <label>System Name: </label>
                 <br />
-                <button>Add: </button>
-                <input type="text" width="100" />
+                <label>SKU: </label>
                 <br />
-                <label>Remove: </label>
-                <input type="text" width="100" />
+                <div id="systemEditTable"></div>
+                <script>
+                    GenerateTable("api/Inventory/table", "systemEdit", "systemEditTable");
+                </script>
             </div>
         </div>
     </div>
@@ -314,6 +314,7 @@
                         var name = document.getElementById('systemName');
                         name.innerHTML = row[1].innerText;
                         var sku = document.getElementById('systemSku');
+                        sku.innerHTML = row[2].innerText;
                     }
                     modal.style.display = "block";
                }

@@ -11,13 +11,17 @@ namespace Atlas2.Controllers
         [Route("table")]
         public HttpResponseMessage TableInfo(string search)
         {
-            if(search == "part") 
+            if (search == "part")
             {
                 return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.InventoryTable.GetInventoryTable());
             }
-            if (search == "partSystem")
+            else if (search == "partSystem")
             {
                 return Request.CreateResponse(HttpStatusCode.OK, Backend.Systems.SelectSystem.SubSystemsTable.GetSubSystemsTable());
+            }
+            else if (search == "systemEdit")
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, )
             }
             else return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
