@@ -2,21 +2,21 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Backend.Systems
+namespace Backend.Systems.SelectSystem
 {
-    public class SystemsTable
+    public class SubSystemsTable
     {
         public String[] Headers { get; set; }
         public Object[] Data { get; set; }
 
-        public SystemsTable()
+        public SubSystemsTable()
         {
             Synchronize().Wait();
         }
 
-        public static SystemsTable GetSystemsTable()
+        public static SubSystemsTable GetSubSystemsTable()
         {
-            return new SystemsTable();
+            return new SubSystemsTable();
         }
 
         public async Task Synchronize()
@@ -28,24 +28,23 @@ namespace Backend.Systems
                 var headerTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getHeadersQuery.QueryString).ConfigureAwait(false);
 
                 Headers = new string[headerTable.Length];
-                for (int i = 0; i < headerTable.Length; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     Headers[i] = (string)headerTable[i][0];
                 }
 
-                Query getDataQuery = new Query { QueryString = "SELECT * FROM systems" };
+                Query getDataQuery = new Query { QueryString = "SELECT systemID, name, SKU, serialNumber FROM systems" };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
 
-                System[] data = new System[dataTable.Length];
+                SubSystem[] data = new SubSystem[dataTable.Length];
                 for (int i = 0; i < data.Length; i++)
                 {
-                    data[i] = new System
+                    data[i] = new SubSystem
                     {
                         itemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],
                         SKU = (string)dataTable[i][2],
-                        serialNumber = (string)dataTable[i][3],
-                        systemTempateID = (int)dataTable[i][4]
+                        serialNumber = (string)dataTable[i][3]
                     };
                 }
                 Data = data;
