@@ -256,13 +256,13 @@ WriteLiteral(">&times;</span>\n            <p>Add to System</p>\n            <di
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\n                <table");
+WriteLiteral(">\n                <div");
 
-WriteLiteral(" id=\"partToSystemTable\"");
+WriteLiteral(" id=\"partSystemTable\"");
 
-WriteLiteral("></table>\n                <script>\n                     ");
-
-WriteLiteral("\n                </script>\n            </div>\n        </div>\n    </div>\n    <div");
+WriteLiteral("></div>\n                <script>\n                     GenerateTable(\"/api/Invento" +
+"ry/table/\", \"partSystem\", \"partSystemTable\");\n                </script>\n        " +
+"    </div>\n        </div>\n    </div>\n    <div");
 
 WriteLiteral(" id=\"systemModal\"");
 

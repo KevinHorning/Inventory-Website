@@ -27,7 +27,7 @@ namespace Backend.Systems.SelectSystem
                 Query getHeadersQuery = new Query { QueryString = "SELECT COLUMN_NAME FROM atlas.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'systems'" };
                 var headerTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getHeadersQuery.QueryString).ConfigureAwait(false);
 
-                Headers = new string[headerTable.Length];
+                Headers = new string[headerTable.Length - 1];
                 for (int i = 0; i < 4; i++)
                 {
                     Headers[i] = (string)headerTable[i][0];
@@ -41,7 +41,7 @@ namespace Backend.Systems.SelectSystem
                 {
                     data[i] = new SubSystem
                     {
-                        itemID = (int)dataTable[i][0],
+                        systemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],
                         SKU = (string)dataTable[i][2],
                         serialNumber = (string)dataTable[i][3]
