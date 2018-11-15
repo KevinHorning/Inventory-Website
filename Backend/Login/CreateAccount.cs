@@ -18,29 +18,40 @@ namespace Backend.Login
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
 
-            var UN = new KeyValuePair<string, object>("userName", userName);
-            var HS = new KeyValuePair<String, Object>("hashString", hashedString);
-            var values = new[] { UN, HS };
-            MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
-            Query query = QBuilder.BuildInsertQuery("users", values);
-            DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), query.QueryString, query.Parameters).Wait();
-            DatabaseManager.GetConnection().Close();
+            try
+            {
+                var UN = new KeyValuePair<string, object>("userName", userName);
+                var HS = new KeyValuePair<String, Object>("hashString", hashedString);
+                var values = new[] { UN, HS };
+                MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
+                Query query = QBuilder.BuildInsertQuery("users", values);
+                DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), query.QueryString, query.Parameters).Wait();
+            }
+            finally
+            {
+                DatabaseManager.GetConnection().Close();
+            }
         }
 
         public static Boolean NotDuplicate(string userName)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
-
-            getUserNames(DatabaseManager).Wait();
-            for (int i = 0; i < userNames.Count; i++)
+            try
             {
-                if (userName.Equals(userNames[i]))
+                getUserNames(DatabaseManager).Wait();
+                for (int i = 0; i < userNames.Count; i++)
                 {
-                    userNameExixts = true;
-                    break;
+                    if (userName.Equals(userNames[i]))
+                    {
+                        userNameExixts = true;
+                        break;
+                    }
                 }
             }
-            DatabaseManager.GetConnection().Close();
+            finally
+            {
+                DatabaseManager.GetConnection().Close();
+            }
             return userNameExixts;
         }
 

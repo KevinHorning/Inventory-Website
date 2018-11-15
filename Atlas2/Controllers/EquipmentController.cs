@@ -11,7 +11,7 @@ namespace Atlas2.Controllers
         [Route("table")]
         public HttpResponseMessage TableInfo(string search)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.TableData.getTableData(search));
+            return Request.CreateResponse(HttpStatusCode.OK, Backend.Equipment.EquipmentTable.GetEquipmentTable());
         }
     }
 }
