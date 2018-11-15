@@ -11,5 +11,6 @@ namespace Backend.Equipment
         public int equipmentID { get; set; }
         public string name { get; set; }
         public string location { get; set; }
+        public string notes { get; set; }
     }
 }
