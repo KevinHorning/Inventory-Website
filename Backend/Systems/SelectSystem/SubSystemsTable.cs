@@ -7,7 +7,7 @@ namespace Backend.Systems.SelectSystem
     public class SubSystemsTable
     {
         public String[] Headers { get; set; }
-        public Object[] Data { get; set; }
+        public System[] Data { get; set; }
 
         public SubSystemsTable()
         {

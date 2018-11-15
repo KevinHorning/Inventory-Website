@@ -1,6 +1,6 @@
 ﻿namespace Backend.Systems
 {
-    class System
+    public class System
     {
         public int itemID { get; set; }
         public string name { get; set; }
