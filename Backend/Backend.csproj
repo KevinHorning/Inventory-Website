@@ -68,6 +68,7 @@
     <Compile Include="Systems\SystemsTable.cs" />
     <Compile Include="Testing\Test.cs" />
     <Compile Include="Parts\Part.cs" />
+    <Compile Include="Verification\PartAvailabilityVerification.cs" />
     <Compile Include="Verification\PartIDverification.cs" />
     <Compile Include="Verification\SerialNumberVerification.cs" />
     <Compile Include="Verification\SystemIDverification.cs" />

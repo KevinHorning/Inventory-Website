@@ -10,14 +10,14 @@ namespace Backend.Parts
     {
         // return values
         // 0 = success
-        // 1 = systemID does not exist
-        // 2 = partID does not exist
+        // 1 = partID does not exist
+        // 2 = systemID does not exist
         public static int Add(int systemID, int partID)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
             {
-                if (SystemIDverification.Verify(systemID) && PartIDverification.Verify(partID))
+                if (!SystemIDverification.Verify(systemID) && !PartIDverification.Verify(partID))
                 {
                     var systemIDpair = new KeyValuePair<String, object>("systemID", systemID);
                     var partIDpair = new KeyValuePair<String, object>("partID", partID);
@@ -27,7 +27,7 @@ namespace Backend.Parts
                     Query insertQuery = QBuilder.BuildInsertQuery("systemParts", values);
                     DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), insertQuery.QueryString, insertQuery.Parameters).Wait();
                 }
-                else if (PartIDverification.Verify(systemID))
+                else if (PartIDverification.Verify(partID))
                 {
                     return 1;
                 }
@@ -35,6 +35,7 @@ namespace Backend.Parts
                 {
                     return 2;
                 }
+
                 return 0;
             }
             finally

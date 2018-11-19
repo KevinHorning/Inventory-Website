@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace Backend.Verification
 {
-    // return values
-    // true = systemID does not exist
-    // false = systemID does exist
     public class SystemIDverification
     {
+        // return values
+        // true = systemID does not exist
+        // false = systemID does exist
         public static Boolean Verify(int systemID)
         {
             var task = Synchronize(systemID).Result;
@@ -30,10 +30,8 @@ namespace Backend.Verification
                     if (systemID.Equals(systemIDs[i][0]))
                         systemExists = true;
                 }
-                if (!systemExists)
-                    return false;
-                else
-                    return true;
+
+                return systemExists;
             }
             finally
             {
