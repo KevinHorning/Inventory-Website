@@ -61,7 +61,7 @@
     <Compile Include="Shared\DBconnection.cs" />
     <Compile Include="Systems\AddSystem.cs" />
     <Compile Include="Systems\CondensedSystem\CondensedSystemsTable.cs" />
-    <Compile Include="Systems\CondensedSystem\SpecificTypeSystemsTable.cs" />
+    <Compile Include="Systems\CondensedSystem\DuplicatesTable.cs" />
     <Compile Include="Systems\MiniSystem\SubSystemsTable.cs" />
     <Compile Include="Systems\MiniSystem\MiniSystem.cs" />
     <Compile Include="Systems\System.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Testing\Test.cs" />
     <Compile Include="Parts\Part.cs" />
     <Compile Include="Verification\PartIDverification.cs" />
+    <Compile Include="Verification\SerialNumberVerification.cs" />
     <Compile Include="Verification\SystemIDverification.cs" />
     <Compile Include="Verification\TableNameVerification.cs" />
   </ItemGroup>
