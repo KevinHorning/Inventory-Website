@@ -2,50 +2,50 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Backend.Parts.PartMiniTables
+namespace Backend.Systems.CondensedSystems
 {
-    public class MiniPartsTable
+    class DuplicatesTable
     {
         public String[] Headers { get; set; }
         public Object[] Data { get; set; }
 
-        public MiniPartsTable()
+        public DuplicatesTable(string SKU)
         {
-            Synchronize().Wait();
+            Synchronize(SKU).Wait();
         }
 
-        public static MiniPartsTable GetMiniPartsTable()
+        public static DuplicatesTable GetSpecificTypeSystemTable(string SKU)
         {
-            return new MiniPartsTable();
+            return new DuplicatesTable(SKU);
         }
 
-        public async Task Synchronize()
+        public async Task Synchronize(String SKU)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
             {
-                Query getHeadersQuery = new Query { QueryString = "SELECT COLUMN_NAME FROM atlas.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'parts'" };
+                Query getHeadersQuery = new Query { QueryString = "SELECT COLUMN_NAME FROM atlas.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'systems'" };
                 var headerTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getHeadersQuery.QueryString).ConfigureAwait(false);
 
-                Headers = new string[headerTable.Length - 1];
-                for (int i = 0; i < 4; i++)
+                Headers = new string[headerTable.Length];
+                for (int i = 0; i < headerTable.Length; i++)
                 {
                     Headers[i] = (string)headerTable[i][0];
                 }
 
-                Query getDataQuery = new Query { QueryString = "SELECT partID, name, SKU, serialNumber, count FROM parts" };
+                Query getDataQuery = new Query { QueryString = "SELECT * FROM systems WHERE SKU = " + SKU };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
 
-                MiniPart[] data = new MiniPart[dataTable.Length];
+                System[] data = new System[dataTable.Length];
                 for (int i = 0; i < data.Length; i++)
                 {
-                    data[i] = new MiniPart
+                    data[i] = new System
                     {
-                        partID = (int)dataTable[i][0],
+                        itemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],
                         SKU = (string)dataTable[i][2],
                         serialNumber = (string)dataTable[i][3],
-                        count = (int)dataTable[i][4]
+                        systemTempateID = (int)dataTable[i][4]
                     };
                 }
                 Data = data;

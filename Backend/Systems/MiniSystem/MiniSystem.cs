@@ -1,6 +1,6 @@
-﻿namespace Backend.Systems.SelectSystem
+﻿namespace Backend.Systems.MiniSystem
 {
-    public class SubSystem
+    public class MiniSystem
     {
         public int systemID { get; set; }
         public string name { get; set; }

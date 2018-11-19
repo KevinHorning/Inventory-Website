@@ -1,4 +1,4 @@
-﻿namespace Backend.Parts.PartMiniTables
+﻿namespace Backend.Parts.MiniPart
 {
     class MiniPart
     {

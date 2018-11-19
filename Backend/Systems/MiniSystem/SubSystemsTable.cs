@@ -2,12 +2,12 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Backend.Systems.SelectSystem
+namespace Backend.Systems.MiniSystem
 {
     public class SubSystemsTable
     {
         public String[] Headers { get; set; }
-        public SubSystem[] Data { get; set; }
+        public MiniSystem[] Data { get; set; }
 
         public SubSystemsTable()
         {
@@ -36,10 +36,10 @@ namespace Backend.Systems.SelectSystem
                 Query getDataQuery = new Query { QueryString = "SELECT systemID, name, SKU, serialNumber FROM systems" };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
 
-                SubSystem[] data = new SubSystem[dataTable.Length];
+                MiniSystem[] data = new MiniSystem[dataTable.Length];
                 for (int i = 0; i < data.Length; i++)
                 {
-                    data[i] = new SubSystem
+                    data[i] = new MiniSystem
                     {
                         systemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],

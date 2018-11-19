@@ -1,5 +1,6 @@
 ﻿using CTG.Database;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,57 +14,48 @@ namespace Backend.Systems.CondensedSystem
 
         public static List<System> listData = new List<System>();
 
-        public CondensedSystemsTable()
-        {
-            Synchronize().Wait();
-        }
-
         public static CondensedSystemsTable GetCondensedSystemsTable()
         {
             return new CondensedSystemsTable();
         }
 
-        public async Task Synchronize()
+        public CondensedSystemsTable()
         {
-            var DatabaseManager = Shared.DBconnection.GetManager();
-            try
-            {
-                SystemsTable systems = SystemsTable.GetSystemsTable();
-                listData = systems.Data.OfType<System>().ToList();
-                Headers = systems.Headers;
+            SystemsTable systems = SystemsTable.GetSystemsTable();
+            Headers = systems.Headers;
+            listData = systems.Data.OfType<System>().ToList();
 
-                for (int i = 0; i < Data.Length; i++)
-                {
-                    List<int> otherSystemIndices = new List<int>();
-                    for (int j = i + 1; j < Data.Length; j++)
-                    {
-                        if (Data[i].SKU.Equals(Data[j].SKU))
-                            otherSystemIndices.Add(j);                  
-                    }
-                    if (otherSystemIndices.Count > 1)
-                    {
-                        Condense(Data[i], otherSystemIndices);
-                        i--;
-                    }
-                }
-                Data = listData.ToArray();
-            }
-            finally
+            for (int i = 0; i < listData.Count; i++)
             {
-                DatabaseManager.GetConnection().Close();
+                Stack<int> duplicateSystemsIndices = new Stack<int>();
+                duplicateSystemsIndices.Push(i);
+                for (int j = i + 1; j < listData.Count; j++)
+                {
+                    if (listData[i].SKU.Equals(listData[j].SKU))
+                        duplicateSystemsIndices.Push(j);
+                }
+                if (duplicateSystemsIndices.Count > 1)
+                {
+                    Condense(listData[i], duplicateSystemsIndices);
+                    i--;
+                }
             }
+            Data = listData.ToArray();
         }
 
         //TODO index variable too to maintain position
-        public static void Condense(System system, List<int> list)
+        public static void Condense(System system, Stack<int> stack)
         {
-            for (int i = list.Count - 1; i >= 0; i--)
+            int size = stack.Count;
+            for (int i = 0; i < size; i++)
             {
-                listData.RemoveAt(i);
+                listData.RemoveAt(stack.Pop());
             }
 
+
             System replacementSystem = system;
-            replacementSystem.count = list.Count;
+            replacementSystem.count = stack.Count;
+            replacementSystem.serialNumber = "NA";
             listData.Add(replacementSystem);
         }
     }
