@@ -43,72 +43,49 @@ WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
 
-WriteLiteral(@"></script>
+WriteLiteral("></script>\n\n    <title></title>\n    \n    <script");
 
-    <title></title>
+WriteLiteral(" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"");
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        h2 {
-            padding-left: 15px;
-        }
-
-        table {
-            border: 1px solid #ccc;
-            border-collapse: collapse;
-            width: 80%;
-        }
-
-            table th {
-                background-color: #F7F7F7;
-                color: #333;
-                font-weight: bold;
-                text-align: left;
-            }
-
-            table th, table td {
-                padding: 15px;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-            }
-
-            tr:hover {
-                background-color: #f5f5f5;
-            }
-
-
-
-        .topnav {
-            overflow: hidden;
-            background-color: #25275A;
-        }
-
-            .topnav a {
-                float: left;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
-            }
-
-                .topnav a:hover {
-                    background-color: #B0EEFA;
-                    color: black;
-                }
-
-                .topnav a.active {
-                    background-color: #7ED8F9;
-                    color: #343E46;
-                }
-    </style>
-</head>
-<body>
-    <div");
+WriteLiteral("></script>\n\n    <style>\n        body {\n            margin: 0;\n            font-fa" +
+"mily: Arial, Helvetica, sans-serif;\n        }\n\n        h2 {\n            padding-" +
+"left: 15px;\n        }\n\n        table {\n            border: 1px solid #ccc;\n     " +
+"       border-collapse: collapse;\n            width: 80%;\n        }\n\n           " +
+" table th {\n                background-color: #F7F7F7;\n                color: #3" +
+"33;\n                font-weight: bold;\n                text-align: left;\n       " +
+"     }\n\n            table th, table td {\n                padding: 15px;\n        " +
+"        text-align: left;\n                border-bottom: 1px solid #ddd;\n       " +
+"         text-overflow: ellipsis;\n            }\n\n            tr:hover {\n        " +
+"        background-color: #f5f5f5;\n            }\n\n        .topnav {\n            " +
+"overflow: hidden;\n            background-color: #25275A;\n        }\n\n            " +
+".topnav a {\n                float: left;\n                color: #f2f2f2;\n       " +
+"         text-align: center;\n                padding: 14px 16px;\n               " +
+" text-decoration: none;\n                font-size: 17px;\n            }\n\n        " +
+"        .topnav a:hover {\n                    background-color: #B0EEFA;\n       " +
+"             color: black;\n                }\n\n                .topnav a.active {" +
+"\n                    background-color: #7ED8F9;\n                    color: #343E" +
+"46;\n                }\r\n        \r\n        .modal {\r\n            display: none; /*" +
+" Hidden by default */\r\n            position: fixed; /* Stay in place */\r\n       " +
+"     z-index: 1; /* Sit on top */\r\n            padding-top: 100px; /* Location o" +
+"f the box */\r\n            left: 0;\r\n            top: 0;\r\n            width: 100%" +
+"; /* Full width */\r\n            height: 100%; /* Full height */\r\n            ove" +
+"rflow: auto; /* Enable scroll if needed */\r\n            background-color: rgb(0," +
+"0,0); /* Fallback color */\r\n            background-color: rgba(0,0,0,0.4); /* Bl" +
+"ack w/ opacity */\r\n        }\r\n        \r\n        .modal-content {\r\n            ba" +
+"ckground-color: #fefefe;\r\n            margin: auto;\r\n            padding: 20px;\r" +
+"\n            border: 1px solid #888;\r\n            width: 80%;\r\n        }\r\n\r\n    " +
+"    .modal input[type=text], select, textarea {\r\n            width: 100%; /* Ful" +
+"l width */\r\n            padding: 12px; /* Some padding */\r\n            border: 1" +
+"px solid #ccc; /* Gray border */\r\n            border-radius: 4px; /* Rounded bor" +
+"ders */\r\n            box-sizing: border-box; /* Make sure that padding and width" +
+" stays in place */\r\n            margin-top: 6px; /* Add a top margin */\r\n       " +
+"     margin-bottom: 16px; /* Bottom margin */\r\n            resize: vertical /* A" +
+"llow the user to vertically resize the textarea (not horizontally) */\r\n        }" +
+"\n        \r\n        .close {\r\n            color: #aaaaaa;\r\n            float: rig" +
+"ht;\r\n            font-size: 28px;\r\n            font-weight: bold;\r\n        }\r\n\r\n" +
+"        .close:hover,\r\n        .close:focus {\r\n            color: #000;\r\n       " +
+"     text-decoration: none;\r\n            cursor: pointer;\r\n        }\n    </style" +
+">\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -126,11 +103,87 @@ WriteLiteral(" class=\"active\"");
 
 WriteLiteral(" href=\"Contacts\"");
 
-WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
+WriteLiteral(">Contacts</a>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"myModal\"");
+
+WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\r\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\r\n            <p>Edit Contact</p>\r\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\r\n                <label>Name</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"nameBox\"");
+
+WriteLiteral("/><br />\r\n                <label>Address</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"addressBox\"");
+
+WriteLiteral("/><br />\r\n                <label>Email</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"emailBox\"");
+
+WriteLiteral("/><br />\r\n                <label>Phone Number</label>\r\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"phoneBox\"");
+
+WriteLiteral("/><br />\r\n                <button");
+
+WriteLiteral(" id=\"modalEditButton\"");
+
+WriteLiteral(">Edit</button>\r\n            </div>\n            <div");
+
+WriteLiteral(" id=\"popupContent\"");
+
+WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Contacts Page</h2>\n        <div");
+WriteLiteral(">Contacts</h2>\n        <label");
+
+WriteLiteral(" id=\"Srchlbl\"");
+
+WriteLiteral(" style=\"padding-left: 15px\"");
+
+WriteLiteral(">Keyword: </label>\n        <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"SearchBox\"");
+
+WriteLiteral(@" style=""
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url(Downloads/searchicon.png);
+            background-position: 10px 10px; 
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px; }""");
+
+WriteLiteral(" placeholder=\"Search...\"");
+
+WriteLiteral("/><br />\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
@@ -138,7 +191,51 @@ WriteLiteral("></div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(">\n            GenerateTable();\n        </script>\n    </div>\n</body>\n</html>");
+WriteLiteral(@">
+            GenerateTable(""/api/Contacts/table/"", ""contact"", ""divTable"");
+            $(document).ready(function(){
+                $(""#SearchBox"").on(""keyup"", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(""#TableBody tr"").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+
+            ");
+
+WriteLiteral(@"
+
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById(""tempButton"");
+            var span = document.getElementsByClassName(""close"")[0];
+
+            function openModal(row) {
+                var name = document.getElementById('nameBox');
+                name.setAttribute(""placeholder"", row[1].innerText);
+                var address = document.getElementById('addressBox');
+                address.setAttribute(""placeholder"", row[2].innerText);
+                var email = document.getElementById('emailBox');
+                email.setAttribute(""placeholder"", row[3].innerText);
+                var phone = document.getElementById('phoneBox');
+                phone.setAttribute(""placeholder"", row[4].innerText);
+                modal.style.display = ""block"";
+            }
+
+            span.onclick = function() {
+                modal.style.display = ""none"";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = ""none"";
+                }
+            }
+           
+        </script>
+    </div>
+</body>
+</html>");
 
 }
 }

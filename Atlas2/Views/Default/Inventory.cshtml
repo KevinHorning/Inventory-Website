@@ -3,20 +3,54 @@
 <head>
     <meta name="viewport" content="width=device-width" />
 
-    <script type="text/javascript" src="/Scripts/jquery-3.3.1.min.js">
-    </script>
+    <script type="text/javascript" src="/Scripts/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript" src="/Scripts/GenerateTable.js"></script>
 
     <title></title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
     <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        h2 {
+            padding-left: 15px;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+            table th {
+                background-color: #F7F7F7;
+                color: #333;
+                font-weight: bold;
+                text-align: left;
+            }
+
+            table th, table td {
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+
+
         .topnav {
             overflow: hidden;
-            background-color: #333;
+            background-color: #25275A;
         }
 
             .topnav a {
@@ -29,14 +63,72 @@
             }
 
                 .topnav a:hover {
-                    background-color: #ddd;
+                    background-color: #B0EEFA;
                     color: black;
                 }
 
                 .topnav a.active {
-                    background-color: #4CAF50;
-                    color: white;
+                    background-color: #7ED8F9;
+                    color: #343E46;
                 }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .w3-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .w3-modal input[type=text], select, textarea {
+            width: 100%; /* Full width */
+            padding: 12px; /* Some padding */
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 4px; /* Rounded borders */
+            box-sizing: border-box; /* Make sure that padding and width stays in place */
+            margin-top: 6px; /* Add a top margin */
+            margin-bottom: 16px; /* Bottom margin */
+            resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+        }
+
+        .w3-modal button {
+            background-color: #25275A;
+            border: none;
+            color: white;
+            padding: 8px 21px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
     </style>
 </head>
 <body>
@@ -45,8 +137,226 @@
         <a href="Equipment">Equipment</a>
         <a href="Contacts">Contacts</a>
     </div>
+    <div id="editModal" class="w3-modal" style="z-index:2000">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Edit Contact</p>
+            <div class="w3-modal-content w3-animate-right">
+                <label>Location</label>
+                <input type="text" /><br />
+                <label>Address</label>
+                <input type="text" /><br />
+                <label>Email</label>
+                <input type="text" /><br />
+                <label>Phone Number</label>
+                <input type="text" /><br />
+                <button>Edit</button>
+            </div>
+            <div id="popupContent"></div>
+        </div>
+    </div>
+    <div id="myModal"></div>
+    <div id="partModal" class="w3-modal" style="z-index:1999">
+        <!-- Modal content -->
+        <div class="w3-modal-content w3-animate-right">
+            <span class="close">&times;</span>
+            <p>Part Modal</p>
+            <div class="container">
+                <label>Part Name: </label>
+                <label class="partName"></label>
+                <br /><br />
+                <label>SKU: </label>
+                <label class="partSku"></label>
+                <br /><br />
+                <label>Count: </label>
+                <label class="partCount"></label>
+                <br /><br />
+                <table id="modalTable"></table>
+                <button class="editButton" accesskey="partEdit">Open Edit Modal</button>
+                <button class="editButton" accesskey="partAdd">Add to System</button>
+                <script>
+                    @*var name = document.getElementById("assemblyName").innerHTML():
+                    GenerateTable("api/Inventory/table", name, "assemblyTable");*@
+                        $(".editButton").click(function() {
+                            openModal(this.accessKey);
+                        });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div id="partEditModal" class="w3-modal" style="z-index:2000">
+        <div class="w3-modal-content w3-animate-right">
+            <span class="close">&times;</span>
+            <div class="container">
+                <label>Part Name: </label>
+                <label class="partName"></label>
+                <br/>
+                <label>Count: </label>
+                <label class="partCount"></label>
+                <br/>
+                <button>Add: </button>
+                <input type="text" style="width:45px; height: 40px"/>
+                <br/>
+                <button>Remove: </button>
+                <input type="text" style="width:45px; height: 40px"/>
+            </div>
+        </div>
+    </div>
+    <div id="partSystemModal" class="w3-modal" style="z-index:2000">
+        <div class="w3-modal-content w3-animate-right">
+            <span class="close">&times;</span>
+            <p>Add to System</p>
+            <div class="container">
+                <div id="partSystemTable"></div>
+                <script>
+                     GenerateTable("/api/Inventory/table/", "partSystem", "partSystemTable");
+                </script>
+            </div>
+        </div>
+    </div>
+    <div id="systemModal" class="w3-modal" style="z-index:1999">
+        <!-- Modal content -->
+        <div class="w3-modal-content w3-animate-right">
+            <span class="close">&times;</span>
+            <div class="container">
+                <label>System Name: </label>
+                <label class="systemName"></label>
+                <br /><br />
+                <label>SKU: </label>
+                <label class="systemSku"></label>
+                <br /><br />
+                <table id="systemTable"></table>
+                <button class="editButton" accesskey="systemEdit">Open Edit Modal</button>
+                <button class="editButton" accesskey="systemBuild">Build New System</button>
+                <script>
+                    $(".editButton").click(function() {
+                        openModal(this.accessKey);
+                    });
+                    @*var name = document.getElementById("assemblyName").innerHTML():
+                    GenerateTable("api/Inventory/table", name, "systemTable");*@
+                </script>
+            </div>
+        </div>
+    </div>
+    <div id="systemEditModal" class="w3-modal" style="z-index: 2000">
+        <div class="w3-modal-content w3-animate-right">
+            <span class="close">&times;</span>
+            <div class="container">
+                <label>System Name: </label>
+                <label class="systemName"></label>
+                <br />
+                <label>SKU: </label>
+                <label class="systemSku"></label>
+                <br />
+                <div id="systemEditTable"></div>
+                <script>
+                    GenerateTable("/api/Inventory/table/", "systemEdit", "systemEditTable");
+                </script>
+            </div>
+        </div>
+    </div>
     <div>
-        <h2 id="Mainlbl">Inventory Page</h2>
+    <div id="systemBuildModal" class="w3-modal" style="z-index: 2000">
+        <div class="w3-modal-content w3-animate-right">
+            <span class="close">&times;</span>
+            <p>Build New System</p>
+        </div>
+    </div>
+        <h2 id="Mainlbl">Inventory</h2>
+        <label id="Srchlbl" style="padding-left: 15px">Keyword: </label>
+        <input type="text" id="SearchBox" style="
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url(Downloads/searchicon.png);
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px; }" placeholder="Search..." /><br />
+        <div id="divTable"></div>
+        <script type="text/javascript">
+        GenerateTable("/api/Inventory/table/", "part", "divTable");
+
+            $(document).ready(function(){
+                $("#SearchBox").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#TableBody tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+
+
+                });
+            });
+
+            var modal = document.getElementById('myModal');
+            var editModal = document.getElementById('editModal');
+            var span = document.getElementsByClassName("close")[0];
+            var modalType = document.getElementById("Category");
+
+            function openModal(row) {
+                if(modal.style.display == "block") {
+                    if(row == "partEdit") {
+                        editModal = document.getElementById('partEditModal');
+                    }
+                    else if(row == "partAdd") {
+                        editModal = document.getElementById('partSystemModal');
+                    }
+                    else if(row == "systemEdit") {
+                        editModal = document.getElementById('systemEditModal');
+                    }
+                    else if(row == "systemBuild") {
+                        editModal = document.getElementById('systemBuildModal');
+                    }
+                    editModal.style.display = "block";
+                }
+                else {
+                    if(row[row.length - 1].innerText == "part") {
+                        modal = document.getElementById('partModal');
+                        var name = document.getElementsByClassName('partName');
+                        [].slice.call( name ).forEach(function ( name ) {
+                            name.innerHTML = row[1].innerText;
+                        });
+                        var sku = document.getElementsByClassName('partSku');
+                        [].slice.call( sku ).forEach(function ( sku ) {
+                            sku.innerHTML = row[2].innerText;
+                        });
+                        var count = document.getElementsByClassName('partCount');
+                        [].slice.call( count ).forEach(function ( count ) {
+                            count.innerHTML = row[4].innerText;
+                        });
+                    }
+                    if(row[row.length - 1].innerText == "system") {
+                        modal = document.getElementById('systemModal');
+                        var name = document.getElementsByClassName('systemName');
+                        [].slice.call( name ).forEach(function ( name ) {
+                            name.innerHTML = row[1].innerText;
+                        });
+                        var sku = document.getElementsByClassName('systemSku');
+                        [].slice.call( sku ).forEach(function ( sku ) {
+                            sku.innerHTML = row[2].innerText;
+                        });
+                    }
+                    modal.style.display = "block";
+               }
+            }
+
+            span.onclick = function() {
+                if(editModal.style.display == "none") {
+                    modal.style.display = "none";
+                }
+                else editModal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                if (event.target == editModal) {
+                    editModal.style.display = "none";
+                }
+            }</script>
     </div>
 </body>
 </html>

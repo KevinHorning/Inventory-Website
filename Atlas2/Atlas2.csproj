@@ -206,6 +206,7 @@
     <Compile Include="Models\Part.cs" />
     <Compile Include="Models\TableResponse.cs" />
     <Compile Include="Models\Equipment.cs" />
+    <Compile Include="Models\SearchFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -240,9 +241,9 @@
       <Project>{1bef7d41-0167-4db5-9119-3889c0020363}</Project>
       <Name>Atlas2.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CTG.Database\CTG.Database.csproj">
-      <Project>{29297bb4-9ab5-4883-b910-bf23bcbd4448}</Project>
-      <Name>CTG.Database</Name>
+    <ProjectReference Include="..\Backend\Backend.csproj">
+      <Project>{d90b5572-27f5-446d-a0a2-72a01df37e21}</Project>
+      <Name>Backend</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
-﻿function GenerateTable() {
-        $.get( "/api/Contacts/table/", function(data) {
+﻿function GenerateTable(url, search, tableId) {
+        $.get(url, { search }, function(data) {
             
             var table = document.createElement("TABLE");
             table.border = "1";
@@ -12,9 +12,14 @@
                 row.appendChild(cell);
             }
 
+            var tableBody = document.createElement("tbody");
+            tableBody.setAttribute("id", "TableBody");
+            table.appendChild(tableBody);
+
             for (var i = 0; i < data.Data.length; i++) {
                 var current = data.Data[i];
-                var row = table.insertRow(-1);
+                var row = tableBody.insertRow(-1);
+                row.setAttribute("onclick", "openModal(this.cells)");
 
                 for (var j = 0; j < data.Headers.length; j++) {
                     var cell = document.createElement("td");
@@ -23,7 +28,7 @@
                 }
             }
             
-            var divTable = document.getElementById("divTable");
+            var divTable = document.getElementById(tableId);
             divTable.innerHTML = "";
             divTable.appendChild(table);
         });

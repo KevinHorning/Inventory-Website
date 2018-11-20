@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Atlas2.Models;
 
 namespace Atlas2.Controllers
 {
@@ -10,9 +9,9 @@ namespace Atlas2.Controllers
     {
         [HttpGet]
         [Route("table")]
-        public HttpResponseMessage TableInfo()
+        public HttpResponseMessage TableInfo(string search)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, new TableResponse<Equipment> {});
+            return Request.CreateResponse(HttpStatusCode.OK, Backend.Equipment.EquipmentTable.GetEquipmentTable());
         }
     }
 }

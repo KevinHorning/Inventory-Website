@@ -1,25 +1,19 @@
-﻿using CTG.Database.Models;
-using MySql.Data.MySqlClient;
-using System.Data.Common;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using CTG.Database.Models;
 
-namespace CTG.Database
+namespace CTG.Database.Models
 {
     public interface IDatabaseManager
     {
-        MySqlConnection GetConnection();
+        IConnectionWrapper GetConnection();
 
-        Task<DbDataReader> ExecuteRawAsync(string query, SqlParameter[] parameters = null);
-        Task<DbDataReader> ExecuteRawAsync(MySqlConnection connection, string query, SqlParameter[] parameters = null);
-
-
-        Task<int> ExecuteScalarAsync(MySqlConnection connection, string query, SqlParameter[] parameters = null);
+        Task<int> ExecuteScalarAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null);
         Task<int> ExecuteScalarAsync(string query, SqlParameter[] parameters = null);
 
-        Task<DbDataReader> ExecuteReaderAsync(MySqlConnection connection, string query, SqlParameter[] parameters = null);
-        Task<DbDataReader> ExecuteReaderAsync(string query, SqlParameter[] parameters = null);
+        Task<object[][]> ExecuteTableAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null);
+        Task<object[][]> ExecuteTableAsync(string query, SqlParameter[] parameters = null);
 
-        Task ExecuteNonQueryAsync(MySqlConnection connection, string query, SqlParameter[] parameters = null);
+        Task ExecuteNonQueryAsync(IConnectionWrapper connection, string query, SqlParameter[] parameters = null);
         Task ExecuteNonQueryAsync(string query, SqlParameter[] parameters = null);
     }
 }

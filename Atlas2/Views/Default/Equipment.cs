@@ -37,44 +37,54 @@ WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-WriteLiteral(@"></script>
+WriteLiteral("></script>\n\n    <script");
 
-    <title></title>
+WriteLiteral(" type=\"text/javascript\"");
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
 
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
+WriteLiteral("></script>\n\n    <title></title>\n\n    <script");
 
-            .topnav a {
-                 float: left;
-                 color: #f2f2f2;
-                 text-align: center;
-                 padding: 14px 16px;
-                 text-decoration: none;
-                 font-size: 17px;
-                
-            }
+WriteLiteral(" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"");
 
-                .topnav a:hover {
-                     background-color: #ddd;
-                     color: black;            
-                }
-
-                .topnav a.active {
-                    background-color: #4CAF50;
-                    color: white;
-                }
-    </style>
-</head>
-<body>
-    <div");
+WriteLiteral("></script>\n\n    <style>\n        body {\n            margin: 0;\n            font-fa" +
+"mily: Arial, Helvetica, sans-serif;\n        }\n\n        h2 {\n            padding-" +
+"left: 15px;\n        }\n\n        table {\n            border: 1px solid #ccc;\n     " +
+"       border-collapse: collapse;\n            width: 80%;\n        }\n\n           " +
+" table th {\n                background-color: #F7F7F7;\n                color: #3" +
+"33;\n                font-weight: bold;\n                text-align: left;\n       " +
+"     }\n\n            table th, table td {\n                padding: 15px;\n        " +
+"        text-align: left;\n                border-bottom: 1px solid #ddd;\n       " +
+"     }\n\n        tr:hover {\n            background-color: #f5f5f5;\n        }\n\n\n\n " +
+"       .topnav {\n            overflow: hidden;\n            background-color: #25" +
+"275A;\n        }\n\n            .topnav a {\n                float: left;\n          " +
+"      color: #f2f2f2;\n                text-align: center;\n                paddin" +
+"g: 14px 16px;\n                text-decoration: none;\n                font-size: " +
+"17px;\n            }\n\n                .topnav a:hover {\n                    backg" +
+"round-color: #B0EEFA;\n                    color: black;\n                }\n\n     " +
+"           .topnav a.active {\n                    background-color: #7ED8F9;\n   " +
+"                 color: #343E46;\n                }\r\n\r\n        .modal {\r\n        " +
+"    display: none; /* Hidden by default */\r\n            position: fixed; /* Stay" +
+" in place */\r\n            z-index: 1; /* Sit on top */\r\n            padding-top:" +
+" 100px; /* Location of the box */\r\n            left: 0;\r\n            top: 0;\r\n  " +
+"          width: 100%; /* Full width */\r\n            height: 100%; /* Full heigh" +
+"t */\r\n            overflow: auto; /* Enable scroll if needed */\r\n            bac" +
+"kground-color: rgb(0,0,0); /* Fallback color */\r\n            background-color: r" +
+"gba(0,0,0,0.4); /* Black w/ opacity */\r\n        }\r\n\r\n        .modal-content {\r\n " +
+"           background-color: #fefefe;\r\n            margin: auto;\r\n            pa" +
+"dding: 20px;\r\n            border: 1px solid #888;\r\n            width: 80%;\r\n    " +
+"    }\r\n\r\n        .modal input[type=text], select, textarea {\r\n            width:" +
+" 100%; /* Full width */\r\n            padding: 12px; /* Some padding */\r\n        " +
+"    border: 1px solid #ccc; /* Gray border */\r\n            border-radius: 4px; /" +
+"* Rounded borders */\r\n            box-sizing: border-box; /* Make sure that padd" +
+"ing and width stays in place */\r\n            margin-top: 6px; /* Add a top margi" +
+"n */\r\n            margin-bottom: 16px; /* Bottom margin */\r\n            resize: " +
+"vertical /* Allow the user to vertically resize the textarea (not horizontally) " +
+"*/\r\n        }\r\n\r\n        .close {\r\n            color: #aaaaaa;\r\n            floa" +
+"t: right;\r\n            font-size: 28px;\r\n            font-weight: bold;\r\n       " +
+" }\r\n\r\n            .close:hover,\r\n            .close:focus {\r\n                col" +
+"or: #000;\r\n                text-decoration: none;\r\n                cursor: point" +
+"er;\r\n            }\n    </style>\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -92,11 +102,115 @@ WriteLiteral(">Equipment</a>\n        <a");
 
 WriteLiteral(" href=\"Contacts\"");
 
-WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
+WriteLiteral(">Contacts</a>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"myModal\"");
+
+WriteLiteral(" class=\"modal\"");
+
+WriteLiteral(">\n        <!-- Modal content -->\n        <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\n            <p>Edit Contact</p>\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\n                <label>Location</label>\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\n                <label>Address</label>\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\n                <label>Email</label>\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\n                <label>Phone Number</label>\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\n                <button>Edit</button>\n            </div>\n            <d" +
+"iv");
+
+WriteLiteral(" id=\"popupContent\"");
+
+WriteLiteral("></div>\n        </div>\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Equipment Page</h2>\n    </div>\n</body>\n</html>");
+WriteLiteral(">Equipment</h2>\n        <label");
+
+WriteLiteral(" id=\"Srchlbl\"");
+
+WriteLiteral(" style=\"padding-left: 15px\"");
+
+WriteLiteral(">Keyword: </label>\n        <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"SearchBox\"");
+
+WriteLiteral(@" style=""
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url(Downloads/searchicon.png);
+            background-position: 10px 10px; 
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px; }""");
+
+WriteLiteral(" placeholder=\"Search...\"");
+
+WriteLiteral("/><br />\n        <div");
+
+WriteLiteral(" id=\"divTable\"");
+
+WriteLiteral("></div>\n        <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(@">
+            GenerateTable(""/api/Equipment/table/"", ""equipment"", ""divTable"");
+            $(document).ready(function(){
+                $(""#SearchBox"").on(""keyup"", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(""#TableBody tr"").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+
+            var modal = document.getElementById('myModal');
+            var btn = document.getElementById(""tempButton"");
+            var span = document.getElementsByClassName(""close"")[0];
+
+            btn.onclick = function() {
+                modal.style.display = ""block"";
+            }
+
+            span.onclick = function() {
+                modal.style.display = ""none"";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = ""none"";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>");
 
 }
 }

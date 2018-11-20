@@ -37,44 +37,63 @@ WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(" src=\"/Scripts/jquery-3.3.1.min.js\"");
 
-WriteLiteral(@">
-    </script>
+WriteLiteral("></script>\n\n    <script");
 
-    <title></title>
+WriteLiteral(" type=\"text/javascript\"");
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+WriteLiteral(" src=\"/Scripts/GenerateTable.js\"");
 
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
+WriteLiteral("></script>\n\n    <title></title>\n\n    <script");
 
-            .topnav a {
-                float: left;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
-            }
+WriteLiteral(" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"");
 
-                .topnav a:hover {
-                    background-color: #ddd;
-                    color: black;
-                }
+WriteLiteral("></script>\n\n    <link");
 
-                .topnav a.active {
-                    background-color: #4CAF50;
-                    color: white;
-                }
-    </style>
-</head>
-<body>
-    <div");
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" href=\"https://www.w3schools.com/w3css/4/w3.css\"");
+
+WriteLiteral(">\n  \n    <style>\n        body {\n            margin: 0;\n            font-family: A" +
+"rial, Helvetica, sans-serif;\n        }\n\n        h2 {\n            padding-left: 1" +
+"5px;\n        }\n\n        table {\n            border: 1px solid #ccc;\n            " +
+"border-collapse: collapse;\n            width: 80%;\n        }\n\n            table " +
+"th {\n                background-color: #F7F7F7;\n                color: #333;\n   " +
+"             font-weight: bold;\n                text-align: left;\n            }\n" +
+"\n            table th, table td {\n                padding: 15px;\n               " +
+" text-align: left;\n                border-bottom: 1px solid #ddd;\n            }\n" +
+"\n        tr:hover {\n            background-color: #f5f5f5;\n        }\n\n\n\n        " +
+".topnav {\n            overflow: hidden;\n            background-color: #25275A;\n " +
+"       }\n\n            .topnav a {\n                float: left;\n                c" +
+"olor: #f2f2f2;\n                text-align: center;\n                padding: 14px" +
+" 16px;\n                text-decoration: none;\n                font-size: 17px;\n " +
+"           }\n\n                .topnav a:hover {\n                    background-c" +
+"olor: #B0EEFA;\n                    color: black;\n                }\n\n            " +
+"    .topnav a.active {\n                    background-color: #7ED8F9;\n          " +
+"          color: #343E46;\n                }\n\n        .modal {\n            displa" +
+"y: none; /* Hidden by default */\n            position: fixed; /* Stay in place *" +
+"/\n            z-index: 1; /* Sit on top */\n            padding-top: 100px; /* Lo" +
+"cation of the box */\n            left: 0;\n            top: 0;\n            width:" +
+" 100%; /* Full width */\n            height: 100%; /* Full height */\n            " +
+"overflow: auto; /* Enable scroll if needed */\n            background-color: rgb(" +
+"0,0,0); /* Fallback color */\n            background-color: rgba(0,0,0,0.4); /* B" +
+"lack w/ opacity */\n        }\n\n        .w3-modal-content {\n            background" +
+"-color: #fefefe;\n            margin: auto;\n            padding: 20px;\n          " +
+"  border: 1px solid #888;\n            width: 80%;\n        }\n\n        .w3-modal i" +
+"nput[type=text], select, textarea {\n            width: 100%; /* Full width */\n  " +
+"          padding: 12px; /* Some padding */\n            border: 1px solid #ccc; " +
+"/* Gray border */\n            border-radius: 4px; /* Rounded borders */\n        " +
+"    box-sizing: border-box; /* Make sure that padding and width stays in place *" +
+"/\n            margin-top: 6px; /* Add a top margin */\n            margin-bottom:" +
+" 16px; /* Bottom margin */\n            resize: vertical /* Allow the user to ver" +
+"tically resize the textarea (not horizontally) */\n        }\r\n\r\n        .w3-modal" +
+" button {\r\n            background-color: #25275A;\r\n            border: none;\r\n  " +
+"          color: white;\r\n            padding: 8px 21px;\r\n            text-align:" +
+" center;\r\n            text-decoration: none;\r\n            display: inline-block;" +
+"\r\n            font-size: 16px;\r\n        }\n\n        .close {\n            color: #" +
+"aaaaaa;\n            float: right;\n            font-size: 28px;\n            font-" +
+"weight: bold;\n        }\n\n            .close:hover,\n            .close:focus {\n  " +
+"              color: #000;\n                text-decoration: none;\n              " +
+"  cursor: pointer;\n            }\n    </style>\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -92,11 +111,361 @@ WriteLiteral(">Equipment</a>\n        <a");
 
 WriteLiteral(" href=\"Contacts\"");
 
-WriteLiteral(">Contacts</a>\n    </div>\n    <div>\n        <h2");
+WriteLiteral(">Contacts</a>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"editModal\"");
+
+WriteLiteral(" class=\"w3-modal\"");
+
+WriteLiteral(" style=\"z-index:2000\"");
+
+WriteLiteral(">\n        <div");
+
+WriteLiteral(" class=\"modal-content\"");
+
+WriteLiteral(">\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\n            <p>Edit Contact</p>\n            <div");
+
+WriteLiteral(" class=\"w3-modal-content w3-animate-right\"");
+
+WriteLiteral(">\n                <label>Location</label>\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\n                <label>Address</label>\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\n                <label>Email</label>\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\n                <label>Phone Number</label>\n                <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" /><br />\n                <button>Edit</button>\n            </div>\n            <d" +
+"iv");
+
+WriteLiteral(" id=\"popupContent\"");
+
+WriteLiteral("></div>\n        </div>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"myModal\"");
+
+WriteLiteral("></div>\n    <div");
+
+WriteLiteral(" id=\"partModal\"");
+
+WriteLiteral(" class=\"w3-modal\"");
+
+WriteLiteral(" style=\"z-index:1999\"");
+
+WriteLiteral(">\n        <!-- Modal content -->\n        <div");
+
+WriteLiteral(" class=\"w3-modal-content w3-animate-right\"");
+
+WriteLiteral(">\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\n            <p>Part Modal</p>\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\n                <label>Part Name: </label>\n                <label");
+
+WriteLiteral(" class=\"partName\"");
+
+WriteLiteral("></label>\n                <br /><br />\n                <label>SKU: </label>\n     " +
+"           <label");
+
+WriteLiteral(" class=\"partSku\"");
+
+WriteLiteral("></label>\n                <br /><br />\n                <label>Count: </label>\n   " +
+"             <label");
+
+WriteLiteral(" class=\"partCount\"");
+
+WriteLiteral("></label>\n                <br /><br />\n                <table");
+
+WriteLiteral(" id=\"modalTable\"");
+
+WriteLiteral("></table>\n                <button");
+
+WriteLiteral(" class=\"editButton\"");
+
+WriteLiteral(" accesskey=\"partEdit\"");
+
+WriteLiteral(">Open Edit Modal</button>\n                <button");
+
+WriteLiteral(" class=\"editButton\"");
+
+WriteLiteral(" accesskey=\"partAdd\"");
+
+WriteLiteral(">Add to System</button>\n                <script>\n                    ");
+
+WriteLiteral("\n                        $(\".editButton\").click(function() {\n                    " +
+"        openModal(this.accessKey);\n                        });\n                <" +
+"/script>\n            </div>\n        </div>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"partEditModal\"");
+
+WriteLiteral(" class=\"w3-modal\"");
+
+WriteLiteral(" style=\"z-index:2000\"");
+
+WriteLiteral(">\n        <div");
+
+WriteLiteral(" class=\"w3-modal-content w3-animate-right\"");
+
+WriteLiteral(">\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\n                <label>Part Name: </label>\n                <label");
+
+WriteLiteral(" class=\"partName\"");
+
+WriteLiteral("></label>\n                <br/>\n                <label>Count: </label>\n          " +
+"      <label");
+
+WriteLiteral(" class=\"partCount\"");
+
+WriteLiteral("></label>\n                <br/>\n                <button>Add: </button>\n          " +
+"      <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" style=\"width:45px; height: 40px\"");
+
+WriteLiteral("/>\n                <br/>\n                <button>Remove: </button>\n              " +
+"  <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" style=\"width:45px; height: 40px\"");
+
+WriteLiteral("/>\n            </div>\n        </div>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"partSystemModal\"");
+
+WriteLiteral(" class=\"w3-modal\"");
+
+WriteLiteral(" style=\"z-index:2000\"");
+
+WriteLiteral(">\n        <div");
+
+WriteLiteral(" class=\"w3-modal-content w3-animate-right\"");
+
+WriteLiteral(">\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\n            <p>Add to System</p>\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\n                <div");
+
+WriteLiteral(" id=\"partSystemTable\"");
+
+WriteLiteral("></div>\n                <script>\n                     GenerateTable(\"/api/Invento" +
+"ry/table/\", \"partSystem\", \"partSystemTable\");\n                </script>\n        " +
+"    </div>\n        </div>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"systemModal\"");
+
+WriteLiteral(" class=\"w3-modal\"");
+
+WriteLiteral(" style=\"z-index:1999\"");
+
+WriteLiteral(">\n        <!-- Modal content -->\n        <div");
+
+WriteLiteral(" class=\"w3-modal-content w3-animate-right\"");
+
+WriteLiteral(">\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\n                <label>System Name: </label>\n                <label");
+
+WriteLiteral(" class=\"systemName\"");
+
+WriteLiteral("></label>\n                <br /><br />\n                <label>SKU: </label>\n     " +
+"           <label");
+
+WriteLiteral(" class=\"systemSku\"");
+
+WriteLiteral("></label>\n                <br /><br />\n                <table");
+
+WriteLiteral(" id=\"systemTable\"");
+
+WriteLiteral("></table>\n                <button");
+
+WriteLiteral(" class=\"editButton\"");
+
+WriteLiteral(" accesskey=\"systemEdit\"");
+
+WriteLiteral(">Open Edit Modal</button>\n                <button");
+
+WriteLiteral(" class=\"editButton\"");
+
+WriteLiteral(" accesskey=\"systemBuild\"");
+
+WriteLiteral(">Build New System</button>\n                <script>\n                    $(\".editB" +
+"utton\").click(function() {\n                        openModal(this.accessKey);\n  " +
+"                  });\n                    ");
+
+WriteLiteral("\n                </script>\n            </div>\n        </div>\n    </div>\n    <div");
+
+WriteLiteral(" id=\"systemEditModal\"");
+
+WriteLiteral(" class=\"w3-modal\"");
+
+WriteLiteral(" style=\"z-index: 2000\"");
+
+WriteLiteral(">\n        <div");
+
+WriteLiteral(" class=\"w3-modal-content w3-animate-right\"");
+
+WriteLiteral(">\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\n            <div");
+
+WriteLiteral(" class=\"container\"");
+
+WriteLiteral(">\n                <label>System Name: </label>\n                <label");
+
+WriteLiteral(" class=\"systemName\"");
+
+WriteLiteral("></label>\n                <br />\n                <label>SKU: </label>\n           " +
+"     <label");
+
+WriteLiteral(" class=\"systemSku\"");
+
+WriteLiteral("></label>\n                <br />\n                <div");
+
+WriteLiteral(" id=\"systemEditTable\"");
+
+WriteLiteral("></div>\n                <script>\n                    GenerateTable(\"/api/Inventor" +
+"y/table/\", \"systemEdit\", \"systemEditTable\");\n                </script>\n         " +
+"   </div>\n        </div>\n    </div>\n    <div>\n    <div");
+
+WriteLiteral(" id=\"systemBuildModal\"");
+
+WriteLiteral(" class=\"w3-modal\"");
+
+WriteLiteral(" style=\"z-index: 2000\"");
+
+WriteLiteral(">\n        <div");
+
+WriteLiteral(" class=\"w3-modal-content w3-animate-right\"");
+
+WriteLiteral(">\n            <span");
+
+WriteLiteral(" class=\"close\"");
+
+WriteLiteral(">&times;</span>\n            <p>Build New System</p>\n        </div>\n    </div>\n   " +
+"     <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
-WriteLiteral(">Inventory Page</h2>\n    </div>\n</body>\n</html>\n");
+WriteLiteral(">Inventory</h2>\n        <label");
+
+WriteLiteral(" id=\"Srchlbl\"");
+
+WriteLiteral(" style=\"padding-left: 15px\"");
+
+WriteLiteral(">Keyword: </label>\n        <input");
+
+WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" id=\"SearchBox\"");
+
+WriteLiteral(@" style=""
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url(Downloads/searchicon.png);
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px; }""");
+
+WriteLiteral(" placeholder=\"Search...\"");
+
+WriteLiteral(" /><br />\n        <div");
+
+WriteLiteral(" id=\"divTable\"");
+
+WriteLiteral("></div>\n        <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(">\r\n        GenerateTable(\"/api/Inventory/table/\", \"part\", \"divTable\");\r\n\r\n       " +
+"     $(document).ready(function(){\r\n                $(\"#SearchBox\").on(\"keyup\", " +
+"function() {\r\n                    var value = $(this).val().toLowerCase();\r\n    " +
+"                $(\"#TableBody tr\").filter(function() {\r\n                        " +
+"$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\r\n              " +
+"      });\r\n\r\n\r\n                });\r\n            });\r\n\r\n            var modal = d" +
+"ocument.getElementById(\'myModal\');\r\n            var editModal = document.getElem" +
+"entById(\'editModal\');\r\n            var span = document.getElementsByClassName(\"c" +
+"lose\")[0];\r\n            var modalType = document.getElementById(\"Category\");\r\n\r\n" +
+"            function openModal(row) {\r\n                if(modal.style.display ==" +
+" \"block\") {\r\n                    if(row == \"partEdit\") {\r\n                      " +
+"  editModal = document.getElementById(\'partEditModal\');\r\n                    }\r\n" +
+"                    else if(row == \"partAdd\") {\r\n                        editMod" +
+"al = document.getElementById(\'partSystemModal\');\r\n                    }\r\n       " +
+"             else if(row == \"systemEdit\") {\r\n                        editModal =" +
+" document.getElementById(\'systemEditModal\');\r\n                    }\r\n           " +
+"         else if(row == \"systemBuild\") {\r\n                        editModal = do" +
+"cument.getElementById(\'systemBuildModal\');\r\n                    }\r\n             " +
+"       editModal.style.display = \"block\";\r\n                }\r\n                el" +
+"se {\r\n                    if(row[row.length - 1].innerText == \"part\") {\r\n       " +
+"                 modal = document.getElementById(\'partModal\');\r\n                " +
+"        var name = document.getElementsByClassName(\'partName\');\r\n               " +
+"         [].slice.call( name ).forEach(function ( name ) {\r\n                    " +
+"        name.innerHTML = row[1].innerText;\r\n                        });\r\n       " +
+"                 var sku = document.getElementsByClassName(\'partSku\');\r\n        " +
+"                [].slice.call( sku ).forEach(function ( sku ) {\r\n               " +
+"             sku.innerHTML = row[2].innerText;\r\n                        });\r\n   " +
+"                     var count = document.getElementsByClassName(\'partCount\');\r\n" +
+"                        [].slice.call( count ).forEach(function ( count ) {\r\n   " +
+"                         count.innerHTML = row[4].innerText;\r\n                  " +
+"      });\r\n                    }\r\n                    if(row[row.length - 1].inn" +
+"erText == \"system\") {\r\n                        modal = document.getElementById(\'" +
+"systemModal\');\r\n                        var name = document.getElementsByClassNa" +
+"me(\'systemName\');\r\n                        [].slice.call( name ).forEach(functio" +
+"n ( name ) {\r\n                            name.innerHTML = row[1].innerText;\r\n  " +
+"                      });\r\n                        var sku = document.getElement" +
+"sByClassName(\'systemSku\');\r\n                        [].slice.call( sku ).forEach" +
+"(function ( sku ) {\r\n                            sku.innerHTML = row[2].innerTex" +
+"t;\r\n                        });\r\n                    }\r\n                    moda" +
+"l.style.display = \"block\";\r\n               }\r\n            }\r\n\r\n            span." +
+"onclick = function() {\r\n                if(editModal.style.display == \"none\") {\r" +
+"\n                    modal.style.display = \"none\";\r\n                }\r\n         " +
+"       else editModal.style.display = \"none\";\r\n            }\r\n\r\n            wind" +
+"ow.onclick = function(event) {\r\n                if (event.target == modal) {\r\n  " +
+"                  modal.style.display = \"none\";\r\n                }\r\n            " +
+"    if (event.target == editModal) {\r\n                    editModal.style.displa" +
+"y = \"none\";\r\n                }\r\n            }</script>\n    </div>\n</body>\n</html" +
+">\n");
 
 }
 }

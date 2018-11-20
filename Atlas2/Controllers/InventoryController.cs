@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Atlas2.Models;
 
 namespace Atlas2.Controllers
 {
@@ -10,9 +9,21 @@ namespace Atlas2.Controllers
     {
         [HttpGet]
         [Route("table")]
-        public HttpResponseMessage TableInfo() 
+        public HttpResponseMessage TableInfo(string search)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, new TableResponse<Part>{});
+            if (search == "part")
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.InventoryTable.GetInventoryTable());
+            }
+            else if (search == "partSystem")
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, Backend.Systems.SelectSystem.SubSystemsTable.GetSubSystemsTable());
+            }
+            else if (search == "systemEdit")
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, Backend.Parts.PartMiniTables.MiniPartsTable.GetMiniPartsTable());
+            }
+            else return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
     }
 }
