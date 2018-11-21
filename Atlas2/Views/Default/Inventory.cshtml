@@ -138,41 +138,13 @@
         <a href="Contacts">Contacts</a>
     </div>
     <div id="sendModal" class="w3-modal" style="z-index: 2001">
-        <div class="modal-content">
+        <!-- Modal content -->
+        <div class="w3-modal-content w3-animate-right">
             <span class="close">&times;</span>
-            <p>Edit Contact</p>
-            <div class="w3-modal-content w3-animate-right">
-                <label>Location</label>
-                <input type="text" /><br />
-                <label>Address</label>
-                <input type="text" /><br />
-                <label>Email</label>
-                <input type="text" /><br />
-                <label>Phone Number</label>
-                <input type="text" /><br />
-                <button>Edit</button>
-            </div>
-            <div id="popupContent"></div>
+            <p>Send Modal</p>
         </div>
     </div>
-    <div id="editModal" class="w3-modal" style="z-index:2000">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Edit Contact</p>
-            <div class="w3-modal-content w3-animate-right">
-                <label>Location</label>
-                <input type="text" /><br />
-                <label>Address</label>
-                <input type="text" /><br />
-                <label>Email</label>
-                <input type="text" /><br />
-                <label>Phone Number</label>
-                <input type="text" /><br />
-                <button>Edit</button>
-            </div>
-            <div id="popupContent"></div>
-        </div>
-    </div>
+    <div id="editModal"></div>
     <div id="myModal"></div>
     <div id="partModal" class="w3-modal" style="z-index:1999">
         <!-- Modal content -->
@@ -192,13 +164,6 @@
                 <table id="modalTable"></table>
                 <button class="editButton" accesskey="partEdit">Open Edit Modal</button>
                 <button class="editButton" accesskey="partAdd">Add to System</button>
-                <script>
-                    @*var name = document.getElementById("assemblyName").innerHTML():
-                    GenerateTable("api/Inventory/table", name, "assemblyTable");*@
-                        $(".editButton").click(function() {
-                            openModal(this.accessKey);
-                        });
-                </script>
             </div>
         </div>
     </div>
@@ -258,6 +223,19 @@
             </div>
         </div>
     </div>
+    <div id="addPartSystemModal" class="w3-modal" style="z-index:2001">
+        <div class="w3-modal-content w3-animate-right">
+            <span class="close">&times;</span>
+            <p>Add to System</p>
+            <div class="container">
+                <label class="partName"></label><br />
+                <label>Available: </label>
+                <label class="partCount"></label><br />
+                <button class="partButton">Add: </button>
+                <input id="addPartSystemBox" type="text" style="width:45px; height: 40px"/>
+            </div>
+        </div>
+    </div>
     <div id="systemModal" class="w3-modal" style="z-index:1999">
         <!-- Modal content -->
         <div class="w3-modal-content w3-animate-right">
@@ -272,13 +250,6 @@
                 <table id="systemTable"></table>
                 <button class="editButton" accesskey="systemEdit">Open Edit Modal</button>
                 <button class="editButton" accesskey="systemBuild">Build New System</button>
-                <script>
-                    $(".editButton").click(function() {
-                        openModal(this.accessKey);
-                    });
-                    @*var name = document.getElementById("assemblyName").innerHTML():
-                    GenerateTable("api/Inventory/table", name, "systemTable");*@
-                </script>
             </div>
         </div>
     </div>
@@ -306,6 +277,19 @@
             <p>Build New System</p>
         </div>
     </div>
+    <div id="addSystemPartModal" class="w3-modal" style="z-index: 2001">
+        <div class="w3-modal-content w3-animate-right">
+            <span class="close">&times;</span>
+            <label>System: </label>
+            <label class="systemName"></label><br />
+            <label>Part: </label>
+            <label class="partName"></label><br />
+            <label>Available: </label>
+            <label class="partCount"></label><br />
+            <button class="partButton">Add: </button>
+            <input id="addSystemPartBox" type="text" style="width:45px; height: 40px"/>
+        </div>
+    </div>
         <h2 id="Mainlbl">Inventory</h2>
         <label id="Srchlbl" style="padding-left: 15px">Keyword: </label>
         <input type="text" id="SearchBox" style="
@@ -329,8 +313,6 @@
                     $("#TableBody tr").filter(function() {
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
-
-
                 });
             });
 
@@ -338,10 +320,34 @@
             var editModal = document.getElementById('editModal');
             var sendModal = document.getElementById('sendModal');
             var span = document.getElementsByClassName("close")[0];
-            var modalType = document.getElementById("Category");
+
+            $(".editButton").click(function() {
+                openModal(this.accessKey);
+            });
 
             function openModal(row) {
-               if(modal.style.display == "block") {
+               if(modal.style.display == "block" && editModal.style.display == "block") {
+                    if(editModal.id == "partSystemModal") {
+                        sendModal = document.getElementById('addPartSystemModal');
+                        var name = document.getElementsByClassName('systemName');
+                        [].slice.call( name ).forEach(function ( name ) {
+                            name.innerHTML = row[1].innerText;
+                        });
+                    }
+                    if(editModal.id == "systemEditModal") {
+                        sendModal = document.getElementById('addSystemPartModal');
+                        var name = document.getElementsByClassName('partName');
+                        [].slice.call( name ).forEach(function ( name ) {
+                            name.innerHTML = row[1].innerText;
+                        });
+                        var count = document.getElementsByClassName('partCount');
+                        @*[].slice.call( count ).forEach(function ( count ) {
+                            count.innerHTML = row[4].innerText;
+                        });*@
+                    }
+                    sendModal.style.display = "block";
+               }
+               else if(modal.style.display == "block") {
                     if(row == "partEdit") {
                         editModal = document.getElementById('partEditModal');
                     }
@@ -372,7 +378,7 @@
                             count.innerHTML = row[4].innerText;
                         });
                     }
-                    if(row[row.length - 1].innerText == "system") {
+                    else if(row[row.length - 1].innerText == "system") {
                         modal = document.getElementById('systemModal');
                         var name = document.getElementsByClassName('systemName');
                         [].slice.call( name ).forEach(function ( name ) {
@@ -384,7 +390,7 @@
                         });
                     }
                     modal.style.display = "block";
-                    
+
                }
             }
 
@@ -401,6 +407,9 @@
                 }
                 if (event.target == editModal) {
                     editModal.style.display = "none";
+                }
+                if (event.target == sendModal) {
+                    sendModal.style.display = "none";
                 }
             }</script>
     </div>
