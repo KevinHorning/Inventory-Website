@@ -1,25 +1,22 @@
 ﻿using CTG.Database;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend.Systems.SelectSystem
+namespace Backend.Systems.CondensedSystems
 {
-    public class DuplicateSystemsTable
+    class DuplicatesTable
     {
         public String[] Headers { get; set; }
         public Object[] Data { get; set; }
 
-        public DuplicateSystemsTable(string SKU)
+        public DuplicatesTable(string SKU)
         {
             Synchronize(SKU).Wait();
         }
 
-        public static SubSystemsTable GetDuplicateSystemsTable(string SKU)
+        public static DuplicatesTable GetSpecificTypeSystemTable(string SKU)
         {
-            return new SubSystemsTable();
+            return new DuplicatesTable(SKU);
         }
 
         public async Task Synchronize(String SKU)
@@ -38,6 +35,20 @@ namespace Backend.Systems.SelectSystem
 
                 Query getDataQuery = new Query { QueryString = "SELECT * FROM systems WHERE SKU = " + SKU };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
+
+                System[] data = new System[dataTable.Length];
+                for (int i = 0; i < data.Length; i++)
+                {
+                    data[i] = new System
+                    {
+                        itemID = (int)dataTable[i][0],
+                        name = (string)dataTable[i][1],
+                        SKU = (string)dataTable[i][2],
+                        serialNumber = (string)dataTable[i][3],
+                        systemTempateID = (int)dataTable[i][4]
+                    };
+                }
+                Data = data;
             }
             finally
             {

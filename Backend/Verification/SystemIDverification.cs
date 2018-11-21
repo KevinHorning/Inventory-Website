@@ -4,8 +4,11 @@ using System.Threading.Tasks;
 
 namespace Backend.Verification
 {
-    class SystemIDverification
+    public class SystemIDverification
     {
+        // return values
+        // true = systemID does not exist
+        // false = systemID does exist
         public static Boolean Verify(int systemID)
         {
             var task = Synchronize(systemID).Result;
@@ -21,22 +24,19 @@ namespace Backend.Verification
                 Query getSystemIDsQuery = new Query { QueryString = "SELECT systemID FROM systems" };
                 var systemIDs = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getSystemIDsQuery.QueryString).ConfigureAwait(false);
 
-                Boolean tableExists = false;
+                Boolean systemExists = false;
                 for (int i = 0; i < systemIDs.Length; i++)
                 {
                     if (systemID.Equals(systemIDs[i][0]))
-                        tableExists = true;
+                        systemExists = true;
                 }
-                if (!tableExists)
-                    return false;
-                else
-                    return true;
+
+                return systemExists;
             }
             finally
             {
                 DatabaseManager.GetConnection().Close();
             }
         }
-
     }
 }

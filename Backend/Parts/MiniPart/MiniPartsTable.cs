@@ -1,11 +1,8 @@
 ﻿using CTG.Database;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend.Parts.PartMiniTables
+namespace Backend.Parts.MiniPart
 {
     public class MiniPartsTable
     {
@@ -57,5 +54,6 @@ namespace Backend.Parts.PartMiniTables
             {
                 DatabaseManager.GetConnection().Close();
             }
+        }
     }
     }}

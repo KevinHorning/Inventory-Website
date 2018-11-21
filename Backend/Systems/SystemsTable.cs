@@ -7,7 +7,7 @@ namespace Backend.Systems
     public class SystemsTable
     {
         public String[] Headers { get; set; }
-        public Object[] Data { get; set; }
+        public System[] Data { get; set; }
 
         public SystemsTable()
         {
