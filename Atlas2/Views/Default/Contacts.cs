@@ -187,7 +187,7 @@ WriteLiteral("/><br />\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
-WriteLiteral("></div>\n        <script");
+WriteLiteral(">Loading...</div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 

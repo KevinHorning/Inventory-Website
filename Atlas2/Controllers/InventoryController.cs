@@ -25,5 +25,21 @@ namespace Atlas2.Controllers
             }
             else return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
+
+        [HttpPost]
+        [Route("addCount")]
+        public HttpResponseMessage addCount(int partID, int count) 
+        {
+            return Request.CreateResponse(HttpStatusCode.OK/*,BackendMethod(partID, count) */);
+        }
+
+        [HttpPost]
+        [Route("removeCount")]
+        public HttpResponseMessage removeCount(int partID, int count)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK/*,BackendMethod(partID, count) */);
+        }
+
+
     }
 }
