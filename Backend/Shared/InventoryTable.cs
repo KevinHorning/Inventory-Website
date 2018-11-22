@@ -21,17 +21,16 @@ namespace Backend.Shared
         public InventoryTable()
         {
             Headers = PartsTable.GetPartsTable().Headers;
-            Headers[0] = "itemID";
-
             string[] temp = Headers;
             Array.Resize<String>(ref temp, Headers.Length + 1);
             Headers = temp;
+            Headers[0] = "itemID";
             Headers[Headers.Length - 1] = "itemType";
 
             partsData = PartsTable.GetPartsTable().Data;
             systemsData = SystemsTable.GetSystemsTable().Data;
 
-            Data =  partsData.Concat(systemsData).ToArray();
+            Data = partsData.Concat(systemsData).ToArray();
 
         }
     }

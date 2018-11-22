@@ -4,6 +4,9 @@ using Backend.Parts;
 using System.Threading.Tasks;
 using CTG.Database;
 using CTG.Database.Models;
+using Backend.Systems.CondensedSystem;
+using Backend.Systems;
+using System.Collections.Generic;
 
 namespace Backend.Testing
 {
@@ -16,11 +19,14 @@ namespace Backend.Testing
             {
                 Console.WriteLine("Connection Successful");
 
-                Systems.SelectSystem.SubSystemsTable.GetSubSystemsTable();
                 //Equipment.AddEquipment.addEquipment("Dell Inspiron 7559", "Office B Storage Closet", "has radioactive robotics testing software");
                 //Deletion.Delete("parts", 7);
 
-                //Parts.AddPart.addPart("7mm bolt", "8948667", 52, 0).Wait();
+                PartsTable table = PartsTable.GetPartsTable();
+                Console.WriteLine(table.Data[2].serializable);
+
+                //int result = AddToSystem.Add(2, 1111);
+                //Console.WriteLine(result);
 
                 Console.ReadKey();
             }

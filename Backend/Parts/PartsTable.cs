@@ -7,7 +7,7 @@ namespace Backend.Parts
     public class PartsTable
     {
         public String[] Headers { get; set; }
-        public Object[] Data { get; set; }
+        public Part[] Data { get; set; }
 
         public PartsTable()
         {
@@ -30,8 +30,9 @@ namespace Backend.Parts
                 Headers = new string[headerTable.Length];
                 for (int i = 0; i < headerTable.Length; i++)
                 {
-                    Headers[i] = (string)headerTable[i][0];
+                    Headers[i] = (string)headerTable[i][0];                   
                 }
+                Headers[Headers.Length - 1] = "serializable"; 
 
                 Query getDataQuery = new Query { QueryString = "SELECT * FROM parts" };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
@@ -39,6 +40,7 @@ namespace Backend.Parts
                 Part[] data = new Part[dataTable.Length];
                 for (int i = 0; i < data.Length; i++)
                 {
+
                     data[i] = new Part
                     {
                         itemID = (int)dataTable[i][0],
@@ -46,7 +48,11 @@ namespace Backend.Parts
                         SKU = (string)dataTable[i][2],
                         serialNumber = (string)dataTable[i][3],
                         count = (int)dataTable[i][4]
-                    };
+                };
+                    if ((int)dataTable[i][4] > 1)
+                        data[i].serializable = false;
+                    else
+                        data[i].serializable = true;
                 }
                 Data = data;
             }

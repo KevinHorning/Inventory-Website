@@ -8,5 +8,6 @@
         public string serialNumber { get; set; }
         public int count { get; set; }
         public string itemType = "part";
+        public bool serializable { get; set; }
     }
 }

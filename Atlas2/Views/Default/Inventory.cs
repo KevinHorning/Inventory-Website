@@ -85,15 +85,15 @@ WriteLiteral(">\n  \n    <style>\n        body {\n            margin: 0;\n      
 "    box-sizing: border-box; /* Make sure that padding and width stays in place *" +
 "/\n            margin-top: 6px; /* Add a top margin */\n            margin-bottom:" +
 " 16px; /* Bottom margin */\n            resize: vertical /* Allow the user to ver" +
-"tically resize the textarea (not horizontally) */\n        }\r\n\r\n        .w3-modal" +
-" button {\r\n            background-color: #25275A;\r\n            border: none;\r\n  " +
-"          color: white;\r\n            padding: 8px 21px;\r\n            text-align:" +
-" center;\r\n            text-decoration: none;\r\n            display: inline-block;" +
-"\r\n            font-size: 16px;\r\n        }\n\n        .close {\n            color: #" +
-"aaaaaa;\n            float: right;\n            font-size: 28px;\n            font-" +
-"weight: bold;\n        }\n\n            .close:hover,\n            .close:focus {\n  " +
-"              color: #000;\n                text-decoration: none;\n              " +
-"  cursor: pointer;\n            }\n    </style>\n</head>\n<body>\n    <div");
+"tically resize the textarea (not horizontally) */\n        }\n\n        .w3-modal b" +
+"utton {\n            background-color: #25275A;\n            border: none;\n       " +
+"     color: white;\n            padding: 8px 21px;\n            text-align: center" +
+";\n            text-decoration: none;\n            display: inline-block;\n        " +
+"    font-size: 16px;\n        }\n\n        .close {\n            color: #aaaaaa;\n   " +
+"         float: right;\n            font-size: 28px;\n            font-weight: bol" +
+"d;\n        }\n\n            .close:hover,\n            .close:focus {\n             " +
+"   color: #000;\n                text-decoration: none;\n                cursor: p" +
+"ointer;\n            }\n    </style>\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -510,72 +510,71 @@ WriteLiteral(">Loading...</div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(">\r\n        GenerateTable(\"/api/Inventory/table/\", \"part\", \"divTable\");\r\n\r\n       " +
-"     $(document).ready(function(){\r\n                $(\"#SearchBox\").on(\"keyup\", " +
-"function() {\r\n                    var value = $(this).val().toLowerCase();\r\n    " +
-"                $(\"#TableBody tr\").filter(function() {\r\n                        " +
-"$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)\r\n              " +
-"      });\r\n                });\r\n            });\r\n\r\n            var modal = docum" +
-"ent.getElementById(\'myModal\');\r\n            var editModal = document.getElementB" +
-"yId(\'editModal\');\r\n            var sendModal = document.getElementById(\'sendModa" +
-"l\');\r\n            var span = document.getElementsByClassName(\"close\")[0];\r\n\r\n   " +
-"         $(\".editButton\").click(function() {\r\n                openModal(this.acc" +
-"essKey);\r\n            });\r\n\r\n            function openModal(row) {\r\n            " +
-"   if(modal.style.display == \"block\" && editModal.style.display == \"block\") {\r\n " +
-"                   if(editModal.id == \"partSystemModal\") {\r\n                    " +
-"    sendModal = document.getElementById(\'addPartSystemModal\');\r\n                " +
-"        var name = document.getElementsByClassName(\'systemName\');\r\n             " +
-"           [].slice.call( name ).forEach(function ( name ) {\r\n                  " +
-"          name.innerHTML = row[1].innerText;\r\n                        });\r\n     " +
-"               }\r\n                    if(editModal.id == \"systemEditModal\") {\r\n " +
-"                       sendModal = document.getElementById(\'addSystemPartModal\')" +
-";\r\n                        var name = document.getElementsByClassName(\'partName\'" +
-");\r\n                        [].slice.call( name ).forEach(function ( name ) {\r\n " +
-"                           name.innerHTML = row[1].innerText;\r\n                 " +
-"       });\r\n                        var count = document.getElementsByClassName(" +
-"\'partCount\');\r\n                        ");
+WriteLiteral(">\n        GenerateTable(\"/api/Inventory/table/\", \"part\", \"divTable\");\n\n          " +
+"  $(document).ready(function(){\n                $(\"#SearchBox\").on(\"keyup\", func" +
+"tion() {\n                    var value = $(this).val().toLowerCase();\n          " +
+"          $(\"#TableBody tr\").filter(function() {\n                        $(this)" +
+".toggle($(this).text().toLowerCase().indexOf(value) > -1)\n                    })" +
+";\n                });\n            });\n\n            var modal = document.getEleme" +
+"ntById(\'myModal\');\n            var editModal = document.getElementById(\'editModa" +
+"l\');\n            var sendModal = document.getElementById(\'sendModal\');\n         " +
+"   var span = document.getElementsByClassName(\"close\")[0];\n\n            $(\".edit" +
+"Button\").click(function() {\n                openModal(this.accessKey);\n         " +
+"   });\n\n            function openModal(row) {\n               if(modal.style.disp" +
+"lay == \"block\" && editModal.style.display == \"block\") {\n                    if(e" +
+"ditModal.id == \"partSystemModal\") {\n                        sendModal = document" +
+".getElementById(\'addPartSystemModal\');\n                        var name = docume" +
+"nt.getElementsByClassName(\'systemName\');\n                        [].slice.call( " +
+"name ).forEach(function ( name ) {\n                            name.innerHTML = " +
+"row[1].innerText;\n                        });\n                    }\n            " +
+"        if(editModal.id == \"systemEditModal\") {\n                        sendModa" +
+"l = document.getElementById(\'addSystemPartModal\');\n                        var n" +
+"ame = document.getElementsByClassName(\'partName\');\n                        [].sl" +
+"ice.call( name ).forEach(function ( name ) {\n                            name.in" +
+"nerHTML = row[1].innerText;\n                        });\n                        " +
+"var count = document.getElementsByClassName(\'partCount\');\n                      " +
+"  ");
 
-WriteLiteral("\r\n                    }\r\n                    sendModal.style.display = \"block\";\r\n" +
-"               }\r\n               else if(modal.style.display == \"block\") {\r\n    " +
-"                if(row == \"partEdit\") {\r\n                        editModal = doc" +
-"ument.getElementById(\'partEditModal\');\r\n                    }\r\n                 " +
-"   else if(row == \"partAdd\") {\r\n                        editModal = document.get" +
-"ElementById(\'partSystemModal\');\r\n                    }\r\n                    else" +
-" if(row == \"systemEdit\") {\r\n                        editModal = document.getElem" +
-"entById(\'systemEditModal\');\r\n                    }\r\n                    else if(" +
-"row == \"systemBuild\") {\r\n                        editModal = document.getElement" +
-"ById(\'systemBuildModal\');\r\n                    }\r\n                    editModal." +
-"style.display = \"block\";\r\n                }\r\n                else {\r\n           " +
-"         if(row[row.length - 1].innerText == \"part\") {\r\n                        " +
-"modal = document.getElementById(\'partModal\');\r\n                        var name " +
-"= document.getElementsByClassName(\'partName\');\r\n                        [].slice" +
-".call( name ).forEach(function ( name ) {\r\n                            name.inne" +
-"rHTML = row[1].innerText;\r\n                        });\r\n                        " +
-"var sku = document.getElementsByClassName(\'partSku\');\r\n                        [" +
-"].slice.call( sku ).forEach(function ( sku ) {\r\n                            sku." +
-"innerHTML = row[2].innerText;\r\n                        });\r\n                    " +
-"    var count = document.getElementsByClassName(\'partCount\');\r\n                 " +
-"       [].slice.call( count ).forEach(function ( count ) {\r\n                    " +
-"        count.innerHTML = row[4].innerText;\r\n                        });\r\n      " +
-"              }\r\n                    else if(row[row.length - 1].innerText == \"s" +
-"ystem\") {\r\n                        modal = document.getElementById(\'systemModal\'" +
-");\r\n                        var name = document.getElementsByClassName(\'systemNa" +
-"me\');\r\n                        [].slice.call( name ).forEach(function ( name ) {" +
-"\r\n                            name.innerHTML = row[1].innerText;\r\n              " +
-"          });\r\n                        var sku = document.getElementsByClassName" +
-"(\'systemSku\');\r\n                        [].slice.call( sku ).forEach(function ( " +
-"sku ) {\r\n                            sku.innerHTML = row[2].innerText;\r\n        " +
-"                });\r\n                    }\r\n                    modal.style.disp" +
-"lay = \"block\";\r\n\r\n               }\r\n            }\r\n\r\n            span.onclick = " +
-"function() {\r\n                if(editModal.style.display == \"none\") {\r\n         " +
-"           modal.style.display = \"none\";\r\n                }\r\n                els" +
-"e editModal.style.display = \"none\";\r\n            }\r\n\r\n            window.onclick" +
-" = function(event) {\r\n                if (event.target == modal) {\r\n            " +
-"        modal.style.display = \"none\";\r\n                }\r\n                if (ev" +
-"ent.target == editModal) {\r\n                    editModal.style.display = \"none\"" +
-";\r\n                }\r\n                if (event.target == sendModal) {\r\n        " +
-"            sendModal.style.display = \"none\";\r\n                }\r\n            }<" +
-"/script>\n    </div>\n</body>\n</html>\n");
+WriteLiteral("\n                    }\n                    sendModal.style.display = \"block\";\n   " +
+"            }\n               else if(modal.style.display == \"block\") {\n         " +
+"           if(row == \"partEdit\") {\n                        editModal = document." +
+"getElementById(\'partEditModal\');\n                    }\n                    else " +
+"if(row == \"partAdd\") {\n                        editModal = document.getElementBy" +
+"Id(\'partSystemModal\');\n                    }\n                    else if(row == " +
+"\"systemEdit\") {\n                        editModal = document.getElementById(\'sys" +
+"temEditModal\');\n                    }\n                    else if(row == \"system" +
+"Build\") {\n                        editModal = document.getElementById(\'systemBui" +
+"ldModal\');\n                    }\n                    editModal.style.display = \"" +
+"block\";\n                }\n                else {\n                    if(row[row." +
+"length - 1].innerText == \"part\") {\n                        modal = document.getE" +
+"lementById(\'partModal\');\n                        var name = document.getElements" +
+"ByClassName(\'partName\');\n                        [].slice.call( name ).forEach(f" +
+"unction ( name ) {\n                            name.innerHTML = row[1].innerText" +
+";\n                        });\n                        var sku = document.getElem" +
+"entsByClassName(\'partSku\');\n                        [].slice.call( sku ).forEach" +
+"(function ( sku ) {\n                            sku.innerHTML = row[2].innerText" +
+";\n                        });\n                        var count = document.getEl" +
+"ementsByClassName(\'partCount\');\n                        [].slice.call( count ).f" +
+"orEach(function ( count ) {\n                            count.innerHTML = row[4]" +
+".innerText;\n                        });\n                    }\n                  " +
+"  else if(row[row.length - 1].innerText == \"system\") {\n                        m" +
+"odal = document.getElementById(\'systemModal\');\n                        var name " +
+"= document.getElementsByClassName(\'systemName\');\n                        [].slic" +
+"e.call( name ).forEach(function ( name ) {\n                            name.inne" +
+"rHTML = row[1].innerText;\n                        });\n                        va" +
+"r sku = document.getElementsByClassName(\'systemSku\');\n                        []" +
+".slice.call( sku ).forEach(function ( sku ) {\n                            sku.in" +
+"nerHTML = row[2].innerText;\n                        });\n                    }\n  " +
+"                  modal.style.display = \"block\";\n\n               }\n            }" +
+"\n\n            span.onclick = function() {\n                if(editModal.style.dis" +
+"play == \"none\") {\n                    modal.style.display = \"none\";\n            " +
+"    }\n                else editModal.style.display = \"none\";\n            }\n\n    " +
+"        window.onclick = function(event) {\n                if (event.target == m" +
+"odal) {\n                    modal.style.display = \"none\";\n                }\n    " +
+"            if (event.target == editModal) {\n                    editModal.style" +
+".display = \"none\";\n                }\n                if (event.target == sendMod" +
+"al) {\n                    sendModal.style.display = \"none\";\n                }\n  " +
+"          }</script>\n    </div>\n</body>\n</html>\n");
 
 }
 }

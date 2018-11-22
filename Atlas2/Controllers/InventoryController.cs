@@ -17,11 +17,11 @@ namespace Atlas2.Controllers
             }
             else if (search == "partSystem")
             {
-                return Request.CreateResponse(HttpStatusCode.OK, Backend.Systems.SelectSystem.SubSystemsTable.GetSubSystemsTable());
+                return Request.CreateResponse(HttpStatusCode.OK, Backend.Systems.MiniSystem.SubSystemsTable.GetSubSystemsTable());
             }
             else if (search == "systemEdit")
             {
-                return Request.CreateResponse(HttpStatusCode.OK, Backend.Parts.PartMiniTables.MiniPartsTable.GetMiniPartsTable());
+                return Request.CreateResponse(HttpStatusCode.OK, Backend.Parts.MiniPart.MiniPartsTable.GetMiniPartsTable());
             }
             else return Request.CreateResponse(HttpStatusCode.BadRequest);
         }

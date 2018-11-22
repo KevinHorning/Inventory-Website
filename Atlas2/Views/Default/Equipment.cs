@@ -63,28 +63,28 @@ WriteLiteral("></script>\n\n    <style>\n        body {\n            margin: 0;\
 "17px;\n            }\n\n                .topnav a:hover {\n                    backg" +
 "round-color: #B0EEFA;\n                    color: black;\n                }\n\n     " +
 "           .topnav a.active {\n                    background-color: #7ED8F9;\n   " +
-"                 color: #343E46;\n                }\r\n\r\n        .modal {\r\n        " +
-"    display: none; /* Hidden by default */\r\n            position: fixed; /* Stay" +
-" in place */\r\n            z-index: 1; /* Sit on top */\r\n            padding-top:" +
-" 100px; /* Location of the box */\r\n            left: 0;\r\n            top: 0;\r\n  " +
-"          width: 100%; /* Full width */\r\n            height: 100%; /* Full heigh" +
-"t */\r\n            overflow: auto; /* Enable scroll if needed */\r\n            bac" +
-"kground-color: rgb(0,0,0); /* Fallback color */\r\n            background-color: r" +
-"gba(0,0,0,0.4); /* Black w/ opacity */\r\n        }\r\n\r\n        .modal-content {\r\n " +
-"           background-color: #fefefe;\r\n            margin: auto;\r\n            pa" +
-"dding: 20px;\r\n            border: 1px solid #888;\r\n            width: 80%;\r\n    " +
-"    }\r\n\r\n        .modal input[type=text], select, textarea {\r\n            width:" +
-" 100%; /* Full width */\r\n            padding: 12px; /* Some padding */\r\n        " +
-"    border: 1px solid #ccc; /* Gray border */\r\n            border-radius: 4px; /" +
-"* Rounded borders */\r\n            box-sizing: border-box; /* Make sure that padd" +
-"ing and width stays in place */\r\n            margin-top: 6px; /* Add a top margi" +
-"n */\r\n            margin-bottom: 16px; /* Bottom margin */\r\n            resize: " +
-"vertical /* Allow the user to vertically resize the textarea (not horizontally) " +
-"*/\r\n        }\r\n\r\n        .close {\r\n            color: #aaaaaa;\r\n            floa" +
-"t: right;\r\n            font-size: 28px;\r\n            font-weight: bold;\r\n       " +
-" }\r\n\r\n            .close:hover,\r\n            .close:focus {\r\n                col" +
-"or: #000;\r\n                text-decoration: none;\r\n                cursor: point" +
-"er;\r\n            }\n    </style>\n</head>\n<body>\n    <div");
+"                 color: #343E46;\n                }\n\n        .modal {\n           " +
+" display: none; /* Hidden by default */\n            position: fixed; /* Stay in " +
+"place */\n            z-index: 1; /* Sit on top */\n            padding-top: 100px" +
+"; /* Location of the box */\n            left: 0;\n            top: 0;\n           " +
+" width: 100%; /* Full width */\n            height: 100%; /* Full height */\n     " +
+"       overflow: auto; /* Enable scroll if needed */\n            background-colo" +
+"r: rgb(0,0,0); /* Fallback color */\n            background-color: rgba(0,0,0,0.4" +
+"); /* Black w/ opacity */\n        }\n\n        .modal-content {\n            backgr" +
+"ound-color: #fefefe;\n            margin: auto;\n            padding: 20px;\n      " +
+"      border: 1px solid #888;\n            width: 80%;\n        }\n\n        .modal " +
+"input[type=text], select, textarea {\n            width: 100%; /* Full width */\n " +
+"           padding: 12px; /* Some padding */\n            border: 1px solid #ccc;" +
+" /* Gray border */\n            border-radius: 4px; /* Rounded borders */\n       " +
+"     box-sizing: border-box; /* Make sure that padding and width stays in place " +
+"*/\n            margin-top: 6px; /* Add a top margin */\n            margin-bottom" +
+": 16px; /* Bottom margin */\n            resize: vertical /* Allow the user to ve" +
+"rtically resize the textarea (not horizontally) */\n        }\n\n        .close {\n " +
+"           color: #aaaaaa;\n            float: right;\n            font-size: 28px" +
+";\n            font-weight: bold;\n        }\n\n            .close:hover,\n          " +
+"  .close:focus {\n                color: #000;\n                text-decoration: n" +
+"one;\n                cursor: pointer;\n            }\n    </style>\n</head>\n<body>\n" +
+"    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
