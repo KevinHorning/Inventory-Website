@@ -10,5 +10,6 @@
 
         public int count = 1;
         public string itemType = "system";
+        public bool serializable = true;
     }
 }

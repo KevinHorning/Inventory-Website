@@ -32,6 +32,7 @@ namespace Backend.Systems
                 {
                     Headers[i] = (string)headerTable[i][0];
                 }
+                Headers[Headers.Length - 1] = "serializable";
 
                 Query getDataQuery = new Query { QueryString = "SELECT * FROM systems" };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
@@ -45,7 +46,7 @@ namespace Backend.Systems
                         name = (string)dataTable[i][1],
                         SKU = (string)dataTable[i][2],
                         serialNumber = (string)dataTable[i][3],
-                        systemTempateID = (int)dataTable[i][4]
+                        systemTempateID = (int)dataTable[i][4],
                     };
                 }
                 Data = data;

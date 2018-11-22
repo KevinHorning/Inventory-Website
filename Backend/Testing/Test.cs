@@ -22,9 +22,12 @@ namespace Backend.Testing
                 //Equipment.AddEquipment.addEquipment("Dell Inspiron 7559", "Office B Storage Closet", "has radioactive robotics testing software");
                 //Deletion.Delete("parts", 7);
 
-                int result = AddToSystem.Add(2, 1111);
+                PartsTable table = PartsTable.GetPartsTable();
+                Console.WriteLine(table.Data[2].serializable);
 
-                Console.WriteLine(result);
+                //int result = AddToSystem.Add(2, 1111);
+                //Console.WriteLine(result);
+
                 Console.ReadKey();
             }
             catch (Exception ex)
