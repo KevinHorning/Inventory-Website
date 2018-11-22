@@ -73,8 +73,6 @@
     <Compile Include="Verification\SerialNumberVerification.cs" />
     <Compile Include="Verification\SystemIDverification.cs" />
     <Compile Include="Verification\TableNameVerification.cs" />
-    <Compile Include="Parts\PartMiniTables\MiniPart.cs" />
-    <Compile Include="Parts\PartMiniTables\MiniPartsTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,7 +6,7 @@ namespace Backend.Parts.MiniPart
 {
     public class MiniPartsTable
     {
-        public String[] Headers { get; set; }
+        public System.String[] Headers { get; set; }
         public Object[] Data { get; set; }
 
         public MiniPartsTable()
@@ -56,4 +56,4 @@ namespace Backend.Parts.MiniPart
             }
         }
     }
-    }}
+}

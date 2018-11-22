@@ -64,28 +64,27 @@ WriteLiteral("></script>\n\n    <style>\n        body {\n            margin: 0;\
 "        .topnav a:hover {\n                    background-color: #B0EEFA;\n       " +
 "             color: black;\n                }\n\n                .topnav a.active {" +
 "\n                    background-color: #7ED8F9;\n                    color: #343E" +
-"46;\n                }\r\n        \r\n        .modal {\r\n            display: none; /*" +
-" Hidden by default */\r\n            position: fixed; /* Stay in place */\r\n       " +
-"     z-index: 1; /* Sit on top */\r\n            padding-top: 100px; /* Location o" +
-"f the box */\r\n            left: 0;\r\n            top: 0;\r\n            width: 100%" +
-"; /* Full width */\r\n            height: 100%; /* Full height */\r\n            ove" +
-"rflow: auto; /* Enable scroll if needed */\r\n            background-color: rgb(0," +
-"0,0); /* Fallback color */\r\n            background-color: rgba(0,0,0,0.4); /* Bl" +
-"ack w/ opacity */\r\n        }\r\n        \r\n        .modal-content {\r\n            ba" +
-"ckground-color: #fefefe;\r\n            margin: auto;\r\n            padding: 20px;\r" +
-"\n            border: 1px solid #888;\r\n            width: 80%;\r\n        }\r\n\r\n    " +
-"    .modal input[type=text], select, textarea {\r\n            width: 100%; /* Ful" +
-"l width */\r\n            padding: 12px; /* Some padding */\r\n            border: 1" +
-"px solid #ccc; /* Gray border */\r\n            border-radius: 4px; /* Rounded bor" +
-"ders */\r\n            box-sizing: border-box; /* Make sure that padding and width" +
-" stays in place */\r\n            margin-top: 6px; /* Add a top margin */\r\n       " +
-"     margin-bottom: 16px; /* Bottom margin */\r\n            resize: vertical /* A" +
-"llow the user to vertically resize the textarea (not horizontally) */\r\n        }" +
-"\n        \r\n        .close {\r\n            color: #aaaaaa;\r\n            float: rig" +
-"ht;\r\n            font-size: 28px;\r\n            font-weight: bold;\r\n        }\r\n\r\n" +
-"        .close:hover,\r\n        .close:focus {\r\n            color: #000;\r\n       " +
-"     text-decoration: none;\r\n            cursor: pointer;\r\n        }\n    </style" +
-">\n</head>\n<body>\n    <div");
+"46;\n                }\n        \n        .modal {\n            display: none; /* Hi" +
+"dden by default */\n            position: fixed; /* Stay in place */\n            " +
+"z-index: 1; /* Sit on top */\n            padding-top: 100px; /* Location of the " +
+"box */\n            left: 0;\n            top: 0;\n            width: 100%; /* Full" +
+" width */\n            height: 100%; /* Full height */\n            overflow: auto" +
+"; /* Enable scroll if needed */\n            background-color: rgb(0,0,0); /* Fal" +
+"lback color */\n            background-color: rgba(0,0,0,0.4); /* Black w/ opacit" +
+"y */\n        }\n        \n        .modal-content {\n            background-color: #" +
+"fefefe;\n            margin: auto;\n            padding: 20px;\n            border:" +
+" 1px solid #888;\n            width: 80%;\n        }\n\n        .modal input[type=te" +
+"xt], select, textarea {\n            width: 100%; /* Full width */\n            pa" +
+"dding: 12px; /* Some padding */\n            border: 1px solid #ccc; /* Gray bord" +
+"er */\n            border-radius: 4px; /* Rounded borders */\n            box-sizi" +
+"ng: border-box; /* Make sure that padding and width stays in place */\n          " +
+"  margin-top: 6px; /* Add a top margin */\n            margin-bottom: 16px; /* Bo" +
+"ttom margin */\n            resize: vertical /* Allow the user to vertically resi" +
+"ze the textarea (not horizontally) */\n        }\n        \n        .close {\n      " +
+"      color: #aaaaaa;\n            float: right;\n            font-size: 28px;\n   " +
+"         font-weight: bold;\n        }\n\n        .close:hover,\n        .close:focu" +
+"s {\n            color: #000;\n            text-decoration: none;\n            curs" +
+"or: pointer;\n        }\n    </style>\n</head>\n<body>\n    <div");
 
 WriteLiteral(" class=\"topnav\"");
 
@@ -109,51 +108,51 @@ WriteLiteral(" id=\"myModal\"");
 
 WriteLiteral(" class=\"modal\"");
 
-WriteLiteral(">\r\n        <!-- Modal content -->\r\n        <div");
+WriteLiteral(">\n        <!-- Modal content -->\n        <div");
 
 WriteLiteral(" class=\"modal-content\"");
 
-WriteLiteral(">\r\n            <span");
+WriteLiteral(">\n            <span");
 
 WriteLiteral(" class=\"close\"");
 
-WriteLiteral(">&times;</span>\r\n            <p>Edit Contact</p>\r\n            <div");
+WriteLiteral(">&times;</span>\n            <p>Edit Contact</p>\n            <div");
 
 WriteLiteral(" class=\"container\"");
 
-WriteLiteral(">\r\n                <label>Name</label>\r\n                <input");
+WriteLiteral(">\n                <label>Name</label>\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" id=\"nameBox\"");
 
-WriteLiteral("/><br />\r\n                <label>Address</label>\r\n                <input");
+WriteLiteral("/><br />\n                <label>Address</label>\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" id=\"addressBox\"");
 
-WriteLiteral("/><br />\r\n                <label>Email</label>\r\n                <input");
+WriteLiteral("/><br />\n                <label>Email</label>\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" id=\"emailBox\"");
 
-WriteLiteral("/><br />\r\n                <label>Phone Number</label>\r\n                <input");
+WriteLiteral("/><br />\n                <label>Phone Number</label>\n                <input");
 
 WriteLiteral(" type=\"text\"");
 
 WriteLiteral(" id=\"phoneBox\"");
 
-WriteLiteral("/><br />\r\n                <button");
+WriteLiteral("/><br />\n                <button");
 
 WriteLiteral(" id=\"modalEditButton\"");
 
-WriteLiteral(">Edit</button>\r\n            </div>\n            <div");
+WriteLiteral(">Edit</button>\n            </div>\n            <div");
 
 WriteLiteral(" id=\"popupContent\"");
 
-WriteLiteral("></div>\r\n        </div>\r\n    </div>\n    <div>\n        <h2");
+WriteLiteral("></div>\n        </div>\n    </div>\n    <div>\n        <h2");
 
 WriteLiteral(" id=\"Mainlbl\"");
 
@@ -187,7 +186,7 @@ WriteLiteral("/><br />\n        <div");
 
 WriteLiteral(" id=\"divTable\"");
 
-WriteLiteral("></div>\n        <script");
+WriteLiteral(">Loading...</div>\n        <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
