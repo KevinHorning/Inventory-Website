@@ -8,12 +8,12 @@ namespace Backend.Parts
 {
     class AddPart
     {
-        public static void addPart(String name, String SKU, string serialNumber, int count)
+        public static void addPart(System.String name, System.String SKU, string serialNumber, int count)
         {
             Synchronize(name, SKU, serialNumber, count).Wait();
         }
 
-        public static async Task Synchronize(String name, String SKU, string serialNumber, int count)
+        public static async Task Synchronize(System.String name, System.String SKU, string serialNumber, int count)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
 
@@ -21,9 +21,9 @@ namespace Backend.Parts
             {
                 //TODO check for name and serialNumber duplication
                 var namePair = new KeyValuePair<string, object>("name", name);
-                var SKUpair = new KeyValuePair<String, object>("SKU", SKU);
-                var serialNumberPair = new KeyValuePair<String, object>("serialNumber", serialNumber);
-                var countPair = new KeyValuePair<String, object>("count", count);
+                var SKUpair = new KeyValuePair<System.String, object>("SKU", SKU);
+                var serialNumberPair = new KeyValuePair<System.String, object>("serialNumber", serialNumber);
+                var countPair = new KeyValuePair<System.String, object>("count", count);
                 var values = new[] { namePair, SKUpair, serialNumberPair, countPair};
 
                 MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();

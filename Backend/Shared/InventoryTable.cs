@@ -7,7 +7,7 @@ namespace Backend.Shared
 {
     public class InventoryTable
     {
-        public String[] Headers { get; set; }
+        public System.String[] Headers { get; set; }
         public Object[] Data { get; set; }
 
         public static Object[] partsData;
@@ -22,7 +22,7 @@ namespace Backend.Shared
         {
             Headers = PartsTable.GetPartsTable().Headers;
             string[] temp = Headers;
-            Array.Resize<String>(ref temp, Headers.Length + 1);
+            Array.Resize<System.String>(ref temp, Headers.Length + 1);
             Headers = temp;
             Headers[0] = "itemID";
             Headers[Headers.Length - 1] = "itemType";

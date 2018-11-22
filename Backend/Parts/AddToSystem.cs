@@ -19,8 +19,8 @@ namespace Backend.Parts
             {
                 if (!SystemIDverification.Verify(systemID) && !PartIDverification.Verify(partID))
                 {
-                    var systemIDpair = new KeyValuePair<String, object>("systemID", systemID);
-                    var partIDpair = new KeyValuePair<String, object>("partID", partID);
+                    var systemIDpair = new KeyValuePair<System.String, object>("systemID", systemID);
+                    var partIDpair = new KeyValuePair<System.String, object>("partID", partID);
                     var values = new[] { systemIDpair, partIDpair};
 
                     MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
