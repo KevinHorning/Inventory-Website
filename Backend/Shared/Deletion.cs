@@ -69,12 +69,5 @@ namespace Backend.Shared
                 DatabaseManager.GetConnection().Close();
             }
         }
-
-        class CustomException : Exception
-        {
-            public CustomException(string message)
-            {
-            }
-        }
     }
 }

@@ -44,23 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Equipment\Equipment.cs" />
-    <Compile Include="Equipment\EquipmentTable.cs" />
-    <Compile Include="Login\CreateAccount.cs" />
-    <Compile Include="Login\Login.cs" />
-    <Compile Include="Parts\PartsTable.cs" />
+    <Compile Include="Managers\DatabaseManager.cs" />
+    <Compile Include="Models\Equipment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\ItemSelling.cs" />
     <Compile Include="Shared\Deletion.cs" />
     <Compile Include="Shared\InventoryTable.cs" />
     <Compile Include="Shared\DBconnection.cs" />
-    <Compile Include="Systems\CondensedSystem\CondensedSystemsTable.cs" />
-    <Compile Include="Systems\CondensedSystem\DuplicatesTable.cs" />
-    <Compile Include="Systems\System.cs" />
-    <Compile Include="Systems\SystemsTable.cs" />
+    <Compile Include="Tables\CondensedSystemsTable.cs" />
+    <Compile Include="Tables\DuplicatesTable.cs" />
+    <Compile Include="Models\System.cs" />
     <Compile Include="Testing\Test.cs" />
-    <Compile Include="Parts\Part.cs" />
-    <Compile Include="Verification\TableNameVerification.cs" />
+    <Compile Include="Models\Part.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
