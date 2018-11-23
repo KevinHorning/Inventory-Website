@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Http;
-using Backend.Login;
 
 namespace Atlas2.Controllers
 {
@@ -24,12 +23,13 @@ namespace Atlas2.Controllers
         [Route("")]
         public HttpResponseMessage LogInRequest(Account model)
         {
+            var dbManager = new Backend.Managers.DatabaseManager();
             String hashed = GenerateSHA256String(model.Password);
 
-            if(Backend.Login.Login.Authenticate(model.Username, hashed).Item1 == true)
+            if(dbManager.Authenticate(model.Username, hashed).Result == true)
                 return Request.CreateResponse(HttpStatusCode.OK, model.Username + "Log In Successful.");
             else
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful. " + Login.Authenticate(model.Username, hashed).Item2);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Log In Not Successful. " + dbManager.Authenticate(model.Username, hashed).Result);
         }
 
         public static string GenerateSHA256String(string inputString)

@@ -1,4 +1,4 @@
-﻿namespace Backend.Parts
+﻿namespace Backend.Models
 {
     public class Part
     {
