@@ -8,32 +8,34 @@ namespace Atlas2.Controllers
     [RoutePrefix("api/Inventory")]
     public class InventoryController : ApiController
     {
+        private static Backend.Shared.InventoryTable currentTable;
+
         [HttpGet]
         [Route("table")]
         public HttpResponseMessage TableInfo(string search)
         {
             if (search == "part")
             {
-                var a = Backend.Shared.InventoryTable.GetInventoryTable();
-                object[] t = new object[a.partsData.Length + a.systemsData.Length];
+                currentTable = Backend.Shared.InventoryTable.GetInventoryTable();
+                object[] t = new object[currentTable.partsData.Length + currentTable.systemsData.Length];
                 for (int i = 0; i < t.Length; i++) {
-                    if (i < a.partsData.Length)
+                    if (i < currentTable.partsData.Length)
                     {
                         t[i] = new Backend.Parts.Part
                         {
-                            name = a.partsData[i].name,
-                            SKU = a.partsData[i].SKU,
-                            count = a.partsData[i].count,
-                            itemType = a.partsData[i].itemType
+                            name = currentTable.partsData[i].name,
+                            SKU = currentTable.partsData[i].SKU,
+                            count = currentTable.partsData[i].count,
+                            itemType = currentTable.partsData[i].itemType
                         };
                     }
                     else
                         t[i] = new Backend.Systems.System
                         {
-                            name = a.systemsData[i - a.partsData.Length].name,
-                            SKU = a.systemsData[i - a.partsData.Length].SKU,
-                            count = a.systemsData[i - a.partsData.Length].count,
-                            itemType = a.systemsData[i - a.partsData.Length].itemType
+                            name = currentTable.systemsData[i - currentTable.partsData.Length].name,
+                            SKU = currentTable.systemsData[i - currentTable.partsData.Length].SKU,
+                            count = currentTable.systemsData[i - currentTable.partsData.Length].count,
+                            itemType = currentTable.systemsData[i - currentTable.partsData.Length].itemType
                         };
                 }
 
@@ -69,6 +71,29 @@ namespace Atlas2.Controllers
             return Request.CreateResponse(HttpStatusCode.OK/*,BackendMethod(partID, count) */);
         }
 
+        [HttpGet]
+        [Route("modalData")]
+        public HttpResponseMessage modalData(string sku)
+        {
+            for (int i = 0; i < currentTable.partsData.Length + currentTable.systemsData.Length; i++) 
+            {
+                if(i < currentTable.partsData.Length) 
+                {
+                    if (sku == currentTable.partsData[i].SKU)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, currentTable.partsData[i]);
+                    }
+                } 
+                else 
+                {
+                    if (sku == currentTable.systemsData[i - currentTable.partsData.Length].SKU) 
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, currentTable.systemsData[i - currentTable.partsData.Length]);
+                    }
+                }
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
 
     }
 }

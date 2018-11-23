@@ -363,7 +363,38 @@
                     editModal.style.display = "block";
                 }
                 else {
-                    if(row[row.length - 1].innerText == "part") {
+                    var sku = row[1].innerText;
+                    modal = document.getElementById('partModal');
+                    $.get("/api/Inventory/modalData/", {sku}, function(data){
+                        if(data.itemType == "part") {
+                            modal = document.getElementById('partModal');
+                            var name = document.getElementsByClassName('partName');
+                            [].slice.call( name ).forEach(function ( name ) {
+                                name.innerHTML = data.name;
+                            });
+                            var sku = document.getElementsByClassName('partSku');
+                            [].slice.call( sku ).forEach(function ( sku ) {
+                                sku.innerHTML = data.SKU;
+                            });
+                            var count = document.getElementsByClassName('partCount');
+                            [].slice.call( count ).forEach(function ( count ) {
+                                count.innerHTML = data.count;
+                            });    
+                        }
+                        else if(data.itemType == "system") {
+                            modal = document.getElementById('systemModal');
+                            var name = document.getElementsByClassName('systemName');
+                            [].slice.call( name ).forEach(function ( name ) {
+                                name.innerHTML = data.name;
+                            });
+                            var sku = document.getElementsByClassName('systemSku');
+                            [].slice.call( sku ).forEach(function ( sku ) {
+                                sku.innerHTML = data.SKU;
+                            });
+                        }
+                    });    
+                    
+                    @*if(row[row.length - 1].innerText == "part") {
                         modal = document.getElementById('partModal');
                         var name = document.getElementsByClassName('partName');
                         [].slice.call( name ).forEach(function ( name ) {
@@ -388,7 +419,7 @@
                         [].slice.call( sku ).forEach(function ( sku ) {
                             sku.innerHTML = row[2].innerText;
                         });
-                    }
+                    }*@
                     modal.style.display = "block";
 
                }
