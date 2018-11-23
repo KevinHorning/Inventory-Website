@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Atlas2.Models;
 
 namespace Atlas2.Controllers
 {
@@ -13,7 +14,35 @@ namespace Atlas2.Controllers
         {
             if (search == "part")
             {
-                return Request.CreateResponse(HttpStatusCode.OK, Backend.Shared.InventoryTable.GetInventoryTable());
+                var a = Backend.Shared.InventoryTable.GetInventoryTable();
+                object[] t = new object[a.partsData.Length + a.systemsData.Length];
+                for (int i = 0; i < t.Length; i++) {
+                    if (i < a.partsData.Length)
+                    {
+                        t[i] = new Backend.Parts.Part
+                        {
+                            name = a.partsData[i].name,
+                            SKU = a.partsData[i].SKU,
+                            count = a.partsData[i].count,
+                            itemType = a.partsData[i].itemType
+                        };
+                    }
+                    else
+                        t[i] = new Backend.Systems.System
+                        {
+                            name = a.systemsData[i - a.partsData.Length].name,
+                            SKU = a.systemsData[i - a.partsData.Length].SKU,
+                            count = a.systemsData[i - a.partsData.Length].count,
+                            itemType = a.systemsData[i - a.partsData.Length].itemType
+                        };
+                }
+
+                var b = new TableInfo
+                {
+                    Headers = new []{"name", "SKU", "count", "itemType"},
+                    Data = t
+                };
+                return Request.CreateResponse(HttpStatusCode.OK, b);
             }
             else if (search == "partSystem")
             {

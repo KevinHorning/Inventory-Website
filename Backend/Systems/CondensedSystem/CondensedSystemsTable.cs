@@ -54,7 +54,7 @@ namespace Backend.Systems.CondensedSystem
 
 
             System replacementSystem = system;
-            replacementSystem.count = stack.Count;
+            replacementSystem.count = size;
             replacementSystem.serialNumber = "NA";
             listData.Add(replacementSystem);
         }

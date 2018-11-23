@@ -367,15 +367,15 @@
                         modal = document.getElementById('partModal');
                         var name = document.getElementsByClassName('partName');
                         [].slice.call( name ).forEach(function ( name ) {
-                            name.innerHTML = row[1].innerText;
+                            name.innerHTML = row[0].innerText;
                         });
                         var sku = document.getElementsByClassName('partSku');
                         [].slice.call( sku ).forEach(function ( sku ) {
-                            sku.innerHTML = row[2].innerText;
+                            sku.innerHTML = row[1].innerText;
                         });
                         var count = document.getElementsByClassName('partCount');
                         [].slice.call( count ).forEach(function ( count ) {
-                            count.innerHTML = row[4].innerText;
+                            count.innerHTML = row[2].innerText;
                         });
                     }
                     else if(row[row.length - 1].innerText == "system") {

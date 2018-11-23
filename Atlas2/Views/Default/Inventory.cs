@@ -549,13 +549,13 @@ WriteLiteral("\n                    }\n                    sendModal.style.displ
 "length - 1].innerText == \"part\") {\n                        modal = document.getE" +
 "lementById(\'partModal\');\n                        var name = document.getElements" +
 "ByClassName(\'partName\');\n                        [].slice.call( name ).forEach(f" +
-"unction ( name ) {\n                            name.innerHTML = row[1].innerText" +
+"unction ( name ) {\n                            name.innerHTML = row[0].innerText" +
 ";\n                        });\n                        var sku = document.getElem" +
 "entsByClassName(\'partSku\');\n                        [].slice.call( sku ).forEach" +
-"(function ( sku ) {\n                            sku.innerHTML = row[2].innerText" +
+"(function ( sku ) {\n                            sku.innerHTML = row[1].innerText" +
 ";\n                        });\n                        var count = document.getEl" +
 "ementsByClassName(\'partCount\');\n                        [].slice.call( count ).f" +
-"orEach(function ( count ) {\n                            count.innerHTML = row[4]" +
+"orEach(function ( count ) {\n                            count.innerHTML = row[2]" +
 ".innerText;\n                        });\n                    }\n                  " +
 "  else if(row[row.length - 1].innerText == \"system\") {\n                        m" +
 "odal = document.getElementById(\'systemModal\');\n                        var name " +

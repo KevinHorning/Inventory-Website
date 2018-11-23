@@ -207,6 +207,7 @@
     <Compile Include="Models\TableResponse.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\SearchFilter.cs" />
+    <Compile Include="Models\TableInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

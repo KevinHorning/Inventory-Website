@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Linq;
 using Backend.Parts;
-using Backend.Systems;
+using Backend.Systems.CondensedSystem;
 
 namespace Backend.Shared
 {
     public class InventoryTable
     {
         public System.String[] Headers { get; set; }
-        public Object[] Data { get; set; }
 
-        public static Object[] partsData;
-        public static Object[] systemsData;
+        public Part[] partsData;
+        public Systems.System[] systemsData;
 
         public static InventoryTable GetInventoryTable()
         {
@@ -28,9 +27,7 @@ namespace Backend.Shared
             Headers[Headers.Length - 1] = "itemType";
 
             partsData = PartsTable.GetPartsTable().Data;
-            systemsData = SystemsTable.GetSystemsTable().Data;
-
-            Data = partsData.Concat(systemsData).ToArray();
+            systemsData = CondensedSystemsTable.GetCondensedSystemsTable().Data;
 
         }
     }
