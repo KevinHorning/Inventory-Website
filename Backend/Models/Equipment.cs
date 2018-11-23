@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend.Equipment
+namespace Backend.Models
 {
-    class Equipment
+    public class Equipment
     {
         public int equipmentID { get; set; }
         public string name { get; set; }

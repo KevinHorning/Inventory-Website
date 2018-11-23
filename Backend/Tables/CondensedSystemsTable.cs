@@ -10,20 +10,20 @@ namespace Backend.Systems.CondensedSystem
     public class CondensedSystemsTable
     {
         public String[] Headers { get; set; }
-        public System[] Data { get; set; }
+        public Models.System[] Data { get; set; }
 
-        public static List<System> listData = new List<System>();
+        public static List<Models.System> listData = new List<Models.System>();
 
         public static CondensedSystemsTable GetCondensedSystemsTable()
         {
             return new CondensedSystemsTable();
         }
 
-        public CondensedSystemsTable()
+        public async Task CondensedSystemsTables()
         {
-            SystemsTable systems = SystemsTable.GetSystemsTable();
-            Headers = systems.Headers;
-            listData = systems.Data.OfType<System>().ToList();
+            var databaseManager = new Managers.DatabaseManager();
+            var systems = await databaseManager.GetSystemsTable();
+            listData = systems.ToList<Models.System>();
 
             for (int i = 0; i < listData.Count; i++)
             {
@@ -41,10 +41,11 @@ namespace Backend.Systems.CondensedSystem
                 }
             }
             Data = listData.ToArray();
+            return;
         }
 
         //TODO index variable too to maintain position
-        public static void Condense(System system, Stack<int> stack)
+        public static void Condense(Models.System system, Stack<int> stack)
         {
             int size = stack.Count;
             for (int i = 0; i < size; i++)
@@ -52,7 +53,7 @@ namespace Backend.Systems.CondensedSystem
                 listData.RemoveAt(stack.Pop());
             }
 
-            System replacementSystem = system;
+            Models.System replacementSystem = system;
             replacementSystem.count = stack.Count;
             replacementSystem.serialNumber = "NA";
             listData.Add(replacementSystem);

@@ -1,5 +1,4 @@
-﻿using Backend.Parts;
-using CTG.Database;
+﻿using CTG.Database;
 using System;
 using System.Threading.Tasks;
 
@@ -7,12 +6,9 @@ namespace Backend.Shared
 {
     class Deletion
     {
-        public static void Delete(string tableName, int ID)
-        {
-            Synchronize(tableName, ID).Wait();
-        }
+        public Managers.DatabaseManager databaseManager = new Managers.DatabaseManager();
 
-        public static async Task Synchronize(string tableName, int ID)
+        public async Task Delete(string tableName, int ID)
         {
             Boolean isException = false;
             var DatabaseManager = Shared.DBconnection.GetManager();
@@ -39,10 +35,10 @@ namespace Backend.Shared
                 if (!tableExists)
                 {
                     isException = true;
-                    throw new CustomException("Table " + tableName + " does not exist.");
+                    throw new Exception("Table " + tableName + " does not exist.");
                 }
 
-                var tableData = PartsTable.GetPartsTable().Data ;
+                var tableData = await databaseManager.GetPartsTable() ;
                 Boolean IDexists = false;
                 for (int j = 0; j < tableData.Length; j++)
                 {
@@ -50,7 +46,7 @@ namespace Backend.Shared
                         IDexists = true;
                 }
                 if (!IDexists)
-                    throw new CustomException("ID does not exist");
+                    throw new Exception("ID does not exist");
 
                 if (!isException)
                 {
@@ -58,7 +54,7 @@ namespace Backend.Shared
                     DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), deleteQuery.QueryString, deleteQuery.Parameters).Wait();
                 }
             }
-            catch (CustomException ex)
+            catch (Exception ex)
             {
                 isException = true;
                 Console.WriteLine(ex.Message);

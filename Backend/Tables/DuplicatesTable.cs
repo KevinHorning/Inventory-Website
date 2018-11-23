@@ -36,10 +36,10 @@ namespace Backend.Systems.CondensedSystems
                 Query getDataQuery = new Query { QueryString = "SELECT * FROM systems WHERE SKU = " + SKU };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
 
-                System[] data = new System[dataTable.Length];
+                var data = new Models.System[dataTable.Length];
                 for (int i = 0; i < data.Length; i++)
                 {
-                    data[i] = new System
+                    data[i] = new Models.System
                     {
                         itemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],

@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Backend.Models;
+using CTG.Database;
+using CTG.Database.MSSQL;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Backend.Managers
 {
-    class DatabaseManager
+    public class DatabaseManager
     {
         public static async Task<bool> TabelNameExists(String tableName)
         {
@@ -35,7 +38,7 @@ namespace Backend.Managers
         }
         #region Equipment
 
-        public static async Task AddEquipment(String name, String location, String notes = null)
+        public static void AddEquipment(String name, String location, String notes = null)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             KeyValuePair<String, object>[] values;
@@ -62,7 +65,7 @@ namespace Backend.Managers
             }
         }
 
-        public async Task GetEquipmentTable()
+        public async Task<Equipment[]> GetEquipmentTable()
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
@@ -70,10 +73,10 @@ namespace Backend.Managers
                 Query getHeadersQuery = new Query { QueryString = "SELECT COLUMN_NAME FROM atlas.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'equipment'" };
                 var headerTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getHeadersQuery.QueryString).ConfigureAwait(false);
 
-                Headers = new string[headerTable.Length];
+                var headers = new string[headerTable.Length];
                 for (int i = 0; i < headerTable.Length; i++)
                 {
-                    Headers[i] = (string)headerTable[i][0];
+                    headers[i] = (string)headerTable[i][0];
                 }
 
                 Query getDataQuery = new Query { QueryString = "SELECT * FROM equipment" };
@@ -89,7 +92,7 @@ namespace Backend.Managers
                         location = (string)dataTable[i][2],
                     };
                 }
-                Data = data;
+                return data;
             }
             finally
             {
@@ -125,7 +128,7 @@ namespace Backend.Managers
             }
         }
 
-        public static async Task<bool> IDExists(int partID)
+        public static async Task<bool> PartIDExists(int partID)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
 
@@ -175,7 +178,7 @@ namespace Backend.Managers
             }
         }
 
-        public static async Task AddPart(System.String name, System.String SKU, string serialNumber, int count)
+        public static void AddPart(System.String name, System.String SKU, string serialNumber, int count)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
 
@@ -198,12 +201,12 @@ namespace Backend.Managers
             }
         }
 
-        public static int AddToSystem(int systemID, int partID)
+        public async Task<int> AddToSystem(int systemID, int partID)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
             {
-                if (!SystemIDverification.Verify(systemID) && !PartIDverification.Verify(partID))
+                if (!SystemIDExists(systemID).Result && !PartIDExists(partID).Result)
                 {
                     var systemIDpair = new KeyValuePair<System.String, object>("systemID", systemID);
                     var partIDpair = new KeyValuePair<System.String, object>("partID", partID);
@@ -213,11 +216,11 @@ namespace Backend.Managers
                     Query insertQuery = QBuilder.BuildInsertQuery("systemParts", values);
                     DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), insertQuery.QueryString, insertQuery.Parameters).Wait();
                 }
-                else if (PartIDverification.Verify(partID))
+                else if (await PartIDExists(partID))
                 {
                     return 1;
                 }
-                else if (SystemIDverification.Verify(systemID))
+                else if (await SystemIDExists(systemID))
                 {
                     return 2;
                 }
@@ -230,7 +233,7 @@ namespace Backend.Managers
             }
         }
 
-        public async Task GetPartsTable()
+        public async Task<Part[]> GetPartsTable()
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
@@ -246,7 +249,7 @@ namespace Backend.Managers
                     //Headers[i] = (string)headerTable[i][0];                   
                 }
                 listHeaders.Add("serializable");
-                Headers = listHeaders.ToArray();
+                var headers = listHeaders.ToArray();
 
                 Query getDataQuery = new Query { QueryString = "SELECT * FROM parts" };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
@@ -268,7 +271,7 @@ namespace Backend.Managers
                     else
                         data[i].serializable = true;
                 }
-                Data = data;
+                return data;
             }
             finally
             {
@@ -280,7 +283,7 @@ namespace Backend.Managers
 
         #region System
 
-        public static async Task<bool> IDExists(int systemID)
+        public static async Task<bool> SystemIDExists(int systemID)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
 
@@ -304,13 +307,13 @@ namespace Backend.Managers
             }
         }
 
-        public static Boolean AddSystem(String name, String SKU, String serialNumber, int systemTemplateID)
+        public async Task<bool> AddSystem(String name, String SKU, String serialNumber, int systemTemplateID)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
 
             try
             {
-                if (!SerialNumberVerification.Verify(serialNumber))
+                if (!await SerialNumberExists(serialNumber))
                 {
                     return false;
                 }
@@ -333,7 +336,7 @@ namespace Backend.Managers
             }
         }
 
-        public async Task Synchronize()
+        public async Task<Models.System[]> GetSystemsTable()
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
@@ -341,20 +344,20 @@ namespace Backend.Managers
                 Query getHeadersQuery = new Query { QueryString = "SELECT COLUMN_NAME FROM atlas.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'systems'" };
                 var headerTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getHeadersQuery.QueryString).ConfigureAwait(false);
 
-                Headers = new string[headerTable.Length];
+                var headers = new string[headerTable.Length];
                 for (int i = 0; i < headerTable.Length; i++)
                 {
-                    Headers[i] = (string)headerTable[i][0];
+                    headers[i] = (string)headerTable[i][0];
                 }
-                Headers[Headers.Length - 1] = "serializable";
+                headers[headers.Length - 1] = "serializable";
 
                 Query getDataQuery = new Query { QueryString = "SELECT * FROM systems" };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
 
-                System[] data = new System[dataTable.Length];
+                Models.System[] data = new Models.System[dataTable.Length];
                 for (int i = 0; i < data.Length; i++)
                 {
-                    data[i] = new System
+                    data[i] = new Models.System
                     {
                         itemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],
@@ -363,7 +366,7 @@ namespace Backend.Managers
                         systemTempateID = (int)dataTable[i][4],
                     };
                 }
-                Data = data;
+                return data;
             }
             finally
             {
@@ -375,13 +378,10 @@ namespace Backend.Managers
 
         #region LogIn
 
-        private static Boolean userNameExixts = false;
         private readonly static ArrayList userNames = new ArrayList();
-        private static Boolean hashPassExists;
-        private static Boolean comboExists;
-        private static String message = "";
+        private static bool comboExists;
 
-        public static async Task Authenticate(string userName, string hashPass)
+        public async Task<bool> Authenticate(string userName, string hashPass)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
@@ -390,41 +390,25 @@ namespace Backend.Managers
                 Query query = QBuilder.BuildQuery("users", new[] { "userName", "hashString" });
                 object[][] table = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), query.QueryString).ConfigureAwait(false);
 
-                if (table.Length == 0)
-                    message = "No users in database.";
-
                 for (int i = 0; i < table.Length; i++)
                 {
                     if (table[i][0].Equals(userName) && table[i][1].Equals(hashPass))
                     {
-                        comboExists = true;
-                        break;
+                        return true;
                     }
-                    else if (table[i][0].Equals(userName))
-                        usernameExists = true;
-                    else if (!usernameExists && table[i][1].Equals(hashPass))
-                        hashPassExists = true;
                 }
-
-                if (comboExists)
-                    message = "Account authenticated";
-                else if (usernameExists)
-                    message = "Password not found";
-                else if (hashPassExists)
-                    message = "Username not found";
-                else
-                    message = "Username and password not found";
             }
             finally
             {
                 DatabaseManager.GetConnection().Close();
             }
+            return false;
         }
 
         //TODO: character restrictions
         public static void EnterInfo(string userName, string hashedString)
         {
-            var DatabaseManager = Shared.DBconnection.GetManager();
+            var databaseManager = Shared.DBconnection.GetManager();
 
             try
             {
@@ -433,39 +417,39 @@ namespace Backend.Managers
                 var values = new[] { UN, HS };
                 MSSQLQueryBuilder QBuilder = new MSSQLQueryBuilder();
                 Query query = QBuilder.BuildInsertQuery("users", values);
-                DatabaseManager.ExecuteNonQueryAsync(DatabaseManager.GetConnection(), query.QueryString, query.Parameters).Wait();
+                databaseManager.ExecuteNonQueryAsync(databaseManager.GetConnection(), query.QueryString, query.Parameters).Wait();
             }
             finally
             {
-                DatabaseManager.GetConnection().Close();
+                databaseManager.GetConnection().Close();
             }
         }
 
-        public static Boolean NotDuplicate(string userName)
+        public static bool NotDuplicate(string userName)
         {
-            var DatabaseManager = Shared.DBconnection.GetManager();
+            var databaseManager = Shared.DBconnection.GetManager();
             try
             {
-                getUserNames(DatabaseManager).Wait();
+                getUserNames().Wait();
                 for (int i = 0; i < userNames.Count; i++)
                 {
                     if (userName.Equals(userNames[i]))
                     {
-                        userNameExixts = true;
-                        break;
+                        return true;
                     }
                 }
             }
             finally
             {
-                DatabaseManager.GetConnection().Close();
+                databaseManager.GetConnection().Close();
             }
-            return userNameExixts;
+            return false;
         }
 
-        public static async Task getUserNames(IDatabaseManager DatabaseManager)
+        public static async Task getUserNames()
         {
-            var table = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), "SELECT * from users").ConfigureAwait(false);
+            var databaseManager = Shared.DBconnection.GetManager();
+            var table = await databaseManager.ExecuteTableAsync(databaseManager.GetConnection(), "SELECT * from users").ConfigureAwait(false);
             for (int i = 0; i < table.Length; i++)
             {
                 userNames.Add(table[i][0]);

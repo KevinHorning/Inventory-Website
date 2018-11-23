@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Backend.Parts;
-using Backend.Systems;
-
 namespace Backend.Shared
 {
     public class InventoryTable
@@ -12,6 +9,7 @@ namespace Backend.Shared
 
         public static Object[] partsData;
         public static Object[] systemsData;
+        private Managers.DatabaseManager databaseManager = new Managers.DatabaseManager();
 
         public static InventoryTable GetInventoryTable()
         {
@@ -20,15 +18,15 @@ namespace Backend.Shared
 
         public InventoryTable()
         {
-            Headers = PartsTable.GetPartsTable().Headers;
+            var headers = databaseManager.GetPartsTable();
             string[] temp = Headers;
             Array.Resize<System.String>(ref temp, Headers.Length + 1);
             Headers = temp;
             Headers[0] = "itemID";
             Headers[Headers.Length - 1] = "itemType";
 
-            partsData = PartsTable.GetPartsTable().Data;
-            systemsData = SystemsTable.GetSystemsTable().Data;
+            partsData = databaseManager.GetPartsTable().Result;
+            systemsData = databaseManager.GetSystemsTable().Result;
 
             Data = partsData.Concat(systemsData).ToArray();
 
