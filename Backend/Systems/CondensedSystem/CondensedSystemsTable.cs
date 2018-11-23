@@ -52,7 +52,6 @@ namespace Backend.Systems.CondensedSystem
                 listData.RemoveAt(stack.Pop());
             }
 
-
             System replacementSystem = system;
             replacementSystem.count = stack.Count;
             replacementSystem.serialNumber = "NA";
