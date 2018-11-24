@@ -1,4 +1,4 @@
-﻿namespace Backend.Systems
+﻿namespace Backend.Models
 {
     public class System
     {

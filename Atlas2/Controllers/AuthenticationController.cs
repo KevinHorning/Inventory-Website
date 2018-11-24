@@ -10,7 +10,7 @@ namespace Atlas2.Controllers
     {
         [HttpGet]
         [Route("")]
-        public async Task<HttpResponseMessage> TestMethod()
+        public HttpResponseMessage TestMethod()
         {
             return Request.CreateResponse(HttpStatusCode.OK, $"WHAT UP WORLD: ");
         }
@@ -18,7 +18,7 @@ namespace Atlas2.Controllers
         [HttpGet]
         [Route("two")]
         [AuthenticationFilter]
-        public async Task<HttpResponseMessage> Testmethod2()
+        public HttpResponseMessage Testmethod2()
         {
             return Request.CreateResponse(HttpStatusCode.OK, "oh hi");
         }

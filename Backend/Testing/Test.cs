@@ -1,12 +1,4 @@
 ﻿using System;
-using Backend.Shared;
-using Backend.Parts;
-using System.Threading.Tasks;
-using CTG.Database;
-using CTG.Database.Models;
-using Backend.Systems.CondensedSystem;
-using Backend.Systems;
-using System.Collections.Generic;
 
 namespace Backend.Testing
 {
@@ -15,6 +7,7 @@ namespace Backend.Testing
         static void Main(string[] args)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
+            var dbManager = new Managers.DatabaseManager();
             try
             {
                 Console.WriteLine("Connection Successful");
@@ -22,8 +15,8 @@ namespace Backend.Testing
                 //Equipment.AddEquipment.addEquipment("Dell Inspiron 7559", "Office B Storage Closet", "has radioactive robotics testing software");
                 //Deletion.Delete("parts", 7);
 
-                PartsTable table = PartsTable.GetPartsTable();
-                Console.WriteLine(table.Data[2].serializable);
+                var table = dbManager.GetPartsTable().Result;
+                Console.WriteLine(table[2].serializable);
 
                 //int result = AddToSystem.Add(2, 1111);
                 //Console.WriteLine(result);

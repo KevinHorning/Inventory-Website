@@ -340,10 +340,6 @@
                         [].slice.call( name ).forEach(function ( name ) {
                             name.innerHTML = row[1].innerText;
                         });
-                        var count = document.getElementsByClassName('partCount');
-                        @*[].slice.call( count ).forEach(function ( count ) {
-                            count.innerHTML = row[4].innerText;
-                        });*@
                     }
                     sendModal.style.display = "block";
                }
@@ -361,36 +357,38 @@
                         editModal = document.getElementById('systemBuildModal');
                     }
                     editModal.style.display = "block";
-                }
-                else {
-                    if(row[row.length - 1].innerText == "part") {
-                        modal = document.getElementById('partModal');
-                        var name = document.getElementsByClassName('partName');
-                        [].slice.call( name ).forEach(function ( name ) {
-                            name.innerHTML = row[1].innerText;
-                        });
-                        var sku = document.getElementsByClassName('partSku');
-                        [].slice.call( sku ).forEach(function ( sku ) {
-                            sku.innerHTML = row[2].innerText;
-                        });
-                        var count = document.getElementsByClassName('partCount');
-                        [].slice.call( count ).forEach(function ( count ) {
-                            count.innerHTML = row[4].innerText;
-                        });
-                    }
-                    else if(row[row.length - 1].innerText == "system") {
-                        modal = document.getElementById('systemModal');
-                        var name = document.getElementsByClassName('systemName');
-                        [].slice.call( name ).forEach(function ( name ) {
-                            name.innerHTML = row[1].innerText;
-                        });
-                        var sku = document.getElementsByClassName('systemSku');
-                        [].slice.call( sku ).forEach(function ( sku ) {
-                            sku.innerHTML = row[2].innerText;
-                        });
-                    }
-                    modal.style.display = "block";
-
+               }
+               else {
+                    var sku = row[1].innerText;
+                    $.get("/api/Inventory/modalData/", {sku}, function(data){
+                        if (data.itemType == "part") {
+                            modal = document.getElementById('partModal');
+                            var name = document.getElementsByClassName('partName');
+                            [].slice.call( name ).forEach(function ( name ) {
+                                name.innerHTML = data.name;
+                            });
+                            var sku = document.getElementsByClassName('partSku');
+                            [].slice.call( sku ).forEach(function ( sku ) {
+                                sku.innerHTML = data.SKU;
+                            });
+                            var count = document.getElementsByClassName('partCount');
+                            [].slice.call( count ).forEach(function ( count ) {
+                                count.innerHTML = data.count;
+                            });
+                        }
+                        else if(data.itemType == "system") {
+                            modal = document.getElementById('systemModal');
+                            var name = document.getElementsByClassName('systemName');
+                            [].slice.call( name ).forEach(function ( name ) {
+                                name.innerHTML = data.name;
+                            });
+                            var sku = document.getElementsByClassName('systemSku');
+                            [].slice.call( sku ).forEach(function ( sku ) {
+                                sku.innerHTML = data.SKU;
+                            });
+                        }
+                        modal.style.display = "block";
+                    });
                }
             }
 

@@ -2,24 +2,24 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Backend.Systems
+namespace Backend.Systems.CondensedSystems
 {
-    public class SystemsTable
+    class DuplicatesTable
     {
         public String[] Headers { get; set; }
-        public System[] Data { get; set; }
+        public Object[] Data { get; set; }
 
-        public SystemsTable()
+        public DuplicatesTable(string SKU)
         {
-            Synchronize().Wait();
+            Synchronize(SKU).Wait();
         }
 
-        public static SystemsTable GetSystemsTable()
+        public static DuplicatesTable GetSpecificTypeSystemTable(string SKU)
         {
-            return new SystemsTable();
+            return new DuplicatesTable(SKU);
         }
 
-        public async Task Synchronize()
+        public async Task Synchronize(String SKU)
         {
             var DatabaseManager = Shared.DBconnection.GetManager();
             try
@@ -32,21 +32,20 @@ namespace Backend.Systems
                 {
                     Headers[i] = (string)headerTable[i][0];
                 }
-                Headers[Headers.Length - 1] = "serializable";
 
-                Query getDataQuery = new Query { QueryString = "SELECT * FROM systems" };
+                Query getDataQuery = new Query { QueryString = "SELECT * FROM systems WHERE SKU = " + SKU };
                 var dataTable = await DatabaseManager.ExecuteTableAsync(DatabaseManager.GetConnection(), getDataQuery.QueryString).ConfigureAwait(false);
 
-                System[] data = new System[dataTable.Length];
+                var data = new Models.System[dataTable.Length];
                 for (int i = 0; i < data.Length; i++)
                 {
-                    data[i] = new System
+                    data[i] = new Models.System
                     {
                         itemID = (int)dataTable[i][0],
                         name = (string)dataTable[i][1],
                         SKU = (string)dataTable[i][2],
                         serialNumber = (string)dataTable[i][3],
-                        systemTempateID = (int)dataTable[i][4],
+                        systemTempateID = (int)dataTable[i][4]
                     };
                 }
                 Data = data;
